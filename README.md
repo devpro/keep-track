@@ -1,2 +1,3 @@
-# personal-inventory
-Code to manage one personal inventory (things we did, like, saw, own)
+# Keep track
+
+Applications and libraries to save and review things we like & own, things we like & saw.
