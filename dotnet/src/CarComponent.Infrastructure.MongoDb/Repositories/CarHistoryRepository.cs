@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using KeepTrack.CarComponent.Domain;
@@ -24,7 +25,7 @@ namespace KeepTrack.CarComponent.Infrastructure.Repositories
         {
             if (!ObjectId.TryParse(id, out var objectId))
             {
-                throw new System.Exception($"Cannot find the car history. \"{id}\" is not a valid id.");
+                throw new ArgumentNullException(nameof(id), $"Cannot find the car history. \"{id}\" is not a valid id.");
             }
 
             var collection = GetCollection<CarHistory>();

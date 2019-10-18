@@ -41,7 +41,7 @@ namespace KeepTrack.ConsoleApp
             await Parser.Default.ParseArguments<CommandLineOptions>(args)
                 .MapResult(
                     (CommandLineOptions opts) => RunOptionsAndReturnExitCode(opts),
-                    errs => Task.FromResult(HandleParseError(errs))
+                    errs => Task.FromResult(HandleParseError())
                  );
         }
 
@@ -76,7 +76,7 @@ namespace KeepTrack.ConsoleApp
             }
         }
 
-        private static int HandleParseError(IEnumerable<Error> errs)
+        private static int HandleParseError()
         {
             return -2;
         }

@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using KeepTrack.CarComponent.Domain;
 using KeepTrack.CarComponent.Infrastructure.MongoDb.Entities;
 using Microsoft.Extensions.Logging;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using Withywoods.Dal.MongoDb;
 using Withywoods.Dal.MongoDb.Repositories;
@@ -23,7 +23,7 @@ namespace KeepTrack.CarComponent.Infrastructure.Repositories
         {
             if (string.IsNullOrEmpty(id))
             {
-                throw new System.Exception($"Cannot find a car. \"{id}\" is not a valid id.");
+                throw new ArgumentNullException(nameof(id), $"Cannot find a car. \"{id}\" is not a valid id.");
             }
 
             var collection = GetCollection<Car>();
