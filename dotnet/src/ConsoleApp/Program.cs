@@ -109,7 +109,8 @@ namespace KeepTrack.ConsoleApp
 
         private static void ConfigureAutoMapper(IServiceCollection serviceCollection)
         {
-            var mappingConfig = new MapperConfiguration(x => {
+            var mappingConfig = new MapperConfiguration(x =>
+            {
                 x.AddProfile(new CarComponent.Infrastructure.MongoDb.MappingProfiles.CarMappingProfile());
                 x.CreateMap<ObjectId, string>().ConvertUsing<ObjectIdToStringConverter>();
                 x.CreateMap<string, ObjectId>().ConvertUsing<StringToObjectIdConverter>();
