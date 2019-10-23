@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using KeepTrack.Api.Dto;
@@ -13,7 +14,7 @@ namespace Api.Controllers
     /// Car history controller.
     /// </summary>
     [ApiController]
-    // [Authorize()]
+    [Authorize]
     [Route("api/car-history")]
     public class CarHistoryController : ControllerBase
     {
@@ -36,7 +37,6 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="carId">Car ID</param>
         /// <returns></returns>
-        // GET: api/CarHistory
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(List<CarHistoryDto>))]
         [ProducesResponseType(400)]
@@ -48,7 +48,7 @@ namespace Api.Controllers
                 return BadRequest();
             }
 
-            var models = await _carHistoryRepository.FindAllAsync(carId);
+            var models = await _carHistoryRepository.FindAllAsync(carId, GetUserId());
             return Ok(_mapper.Map<List<CarHistoryDto>>(models));
         }
 
@@ -69,7 +69,7 @@ namespace Api.Controllers
                 return BadRequest();
             }
 
-            var model = await _carHistoryRepository.FindOneAsync(id);
+            var model = await _carHistoryRepository.FindOneAsync(id, GetUserId());
             if (model == null)
             {
                 return NotFound();
@@ -87,6 +87,7 @@ namespace Api.Controllers
         public async Task<IActionResult> Post([FromBody] CarHistoryDto dto)
         {
             var input = _mapper.Map<CarHistoryModel>(dto);
+            input.OwnerId = GetUserId();
             var model = await _carHistoryRepository.CreateAsync(input);
             return CreatedAtRoute("GetCarHistoryById", new { id = model.Id }, _mapper.Map<CarHistoryDto>(model));
         }
@@ -95,18 +96,22 @@ namespace Api.Controllers
         /// Updates a car history.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="value"></param>
+        /// <param name="dto"></param>
         [HttpPut("{id}")]
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public IActionResult Put(string id, [FromBody] string value)
+        public async Task<IActionResult> Put(string id, [FromBody] CarHistoryDto dto)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return BadRequest();
             }
 
-            throw new NotImplementedException();
+            var input = _mapper.Map<CarHistoryModel>(dto);
+            input.OwnerId = GetUserId();
+            await _carHistoryRepository.UpdateAsync(id, input, GetUserId());
+            return NoContent();
         }
 
         /// <summary>
@@ -125,8 +130,19 @@ namespace Api.Controllers
                 return BadRequest();
             }
 
-            await _carHistoryRepository.DeleteAsync(id);
+            await _carHistoryRepository.DeleteAsync(id, GetUserId());
             return NoContent();
+        }
+
+        private string GetUserId()
+        {
+            var userId = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            return userId;
         }
     }
 }

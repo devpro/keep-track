@@ -21,18 +21,18 @@ namespace KeepTrack.CarComponent.Infrastructure.Repositories
 
         protected override string CollectionName => "car_history";
 
-        public async Task<CarHistoryModel> FindOneAsync(string id)
+        public async Task<CarHistoryModel> FindOneAsync(string id, string ownerId)
         {
             var objectId = ParseObjectId(id);
             var collection = GetCollection<CarHistory>();
-            var dbEntries = await collection.FindAsync(x => x.Id == objectId);
+            var dbEntries = await collection.FindAsync(x => x.Id == objectId && x.OwnerId == ownerId);
             return Mapper.Map<CarHistoryModel>(dbEntries.FirstOrDefault());
         }
 
-        public async Task<List<CarHistoryModel>> FindAllAsync(string carId)
+        public async Task<List<CarHistoryModel>> FindAllAsync(string carId, string ownerId)
         {
             var collection = GetCollection<CarHistory>();
-            var dbEntries = await collection.FindAsync(x => x.CarId == carId);
+            var dbEntries = await collection.FindAsync(x => x.CarId == carId && x.OwnerId == ownerId);
             return Mapper.Map<List<CarHistoryModel>>(dbEntries.ToList());
         }
 
@@ -44,20 +44,20 @@ namespace KeepTrack.CarComponent.Infrastructure.Repositories
             return Mapper.Map<CarHistoryModel>(entity);
         }
 
-        public async Task<long> UpdateAsync(string id, CarHistoryModel model)
+        public async Task<long> UpdateAsync(string id, CarHistoryModel model, string ownerId)
         {
             var objectId = ParseObjectId(id);
             var collection = GetCollection<CarHistory>();
             var entity = Mapper.Map<CarHistory>(model);
-            var result = await collection.ReplaceOneAsync(x => x.Id == objectId, entity);
+            var result = await collection.ReplaceOneAsync(x => x.Id == objectId && x.OwnerId == ownerId, entity);
             return result.ModifiedCount;
         }
 
-        public async Task<long> DeleteAsync(string id)
+        public async Task<long> DeleteAsync(string id, string ownerId)
         {
             var objectId = ParseObjectId(id);
             var collection = GetCollection<CarHistory>();
-            var result = await collection.DeleteOneAsync(x => x.Id == objectId);
+            var result = await collection.DeleteOneAsync(x => x.Id == objectId && x.OwnerId == ownerId);
             return result.DeletedCount;
         }
 

@@ -55,7 +55,7 @@ namespace KeepTrack.ConsoleApp
             {
                 switch (opts.Action)
                 {
-                    case "CarDemo": 
+                    case "CarDemo":
                         var id = opts.Id;
 
                         LogVerbose(opts, "Query the car collection");
@@ -68,7 +68,7 @@ namespace KeepTrack.ConsoleApp
                         LogVerbose(opts, "Query the car history collection");
 
                         var carHistoryRepository = serviceProvider.GetService<ICarHistoryRepository>();
-                        var history = await carHistoryRepository.FindAllAsync(id);
+                        var history = await carHistoryRepository.FindAllAsync(id, "xxxx");
 
                         Console.WriteLine($"Car history found: {history.Count}");
                         break;
