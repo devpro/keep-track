@@ -3,3 +3,4 @@ Debug/
 Release/
 obj/
 appsettings.Development.json
+*.csproj.user
