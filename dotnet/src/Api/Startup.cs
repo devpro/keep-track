@@ -3,13 +3,13 @@ using System.IO;
 using System.Reflection;
 using AutoMapper;
 using KeepTrack.CarComponent.Infrastructure.MongoDb.DependencyInjection;
+using KeepTrack.MovieComponent.Infrastructure.MongoDb.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MongoDB.Bson;
@@ -42,57 +42,19 @@ namespace KeepTrack.Api
         {
             services.AddSingleton(_configuration.ConfigurationRoot)
                 .AddCarInfrastructureMongoDb()
+                .AddMovieInfrastructureMongoDb()
                 .AddMongoDbContext<AppConfiguration>();
 
             ConfigureAutoMapper(services);
 
-            IdentityModelEventSource.ShowPII = true;
+            ConfigureAuthentication(services, _configuration.ConfigurationRoot);
 
-            services
-                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.Authority = _configuration.ConfigurationRoot["Authentication:JwtBearer:Authority"];
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidIssuer = _configuration.ConfigurationRoot["Authentication:JwtBearer:TokenValidation:Issuer"],
-                        ValidateAudience = true,
-                        ValidAudience = _configuration.ConfigurationRoot["Authentication:JwtBearer:TokenValidation:Audience"],
-                        ValidateLifetime = true
-                    };
-                });
-
-            services.AddControllers();
-
-            services.AddSwaggerGen(c =>
+            services.AddControllers(opts =>
             {
-                c.SwaggerDoc(_configuration.OpenApiInfo.Version,
-                    new OpenApiInfo { Title = _configuration.OpenApiInfo.Title, Version = _configuration.OpenApiInfo.Version });
-
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-                        },
-                        new[] { "readAccess", "writeAccess" }
-                    }
-                });
-
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                opts.Filters.Add<Filters.ExceptionFilter>();
             });
+
+            ConfigureSwagger(services, _configuration.OpenApiInfo);
         }
 
         /// <summary>
@@ -134,16 +96,68 @@ namespace KeepTrack.Api
             {
                 // Infrastructure MongoDB
                 x.AddProfile(new CarComponent.Infrastructure.MongoDb.MappingProfiles.CarMappingProfile());
+                x.AddProfile(new MovieComponent.Infrastructure.MongoDb.MappingProfiles.MovieMappingProfile());
                 x.CreateMap<ObjectId, string>().ConvertUsing<ObjectIdToStringConverter>();
                 x.CreateMap<string, ObjectId>().ConvertUsing<StringToObjectIdConverter>();
                 // Api
                 x.AddProfile(new MappingProfiles.CarMappingProfile());
+                x.AddProfile(new MappingProfiles.MovieMappingProfile());
                 // General
                 x.AllowNullCollections = true;
             });
             var mapper = mappingConfig.CreateMapper();
             mapper.ConfigurationProvider.AssertConfigurationIsValid();
             serviceCollection.AddSingleton(mapper);
+        }
+
+        private static void ConfigureAuthentication(IServiceCollection serviceCollection, IConfiguration configuration)
+        {
+            serviceCollection
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = configuration["Authentication:JwtBearer:Authority"];
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = configuration["Authentication:JwtBearer:TokenValidation:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = configuration["Authentication:JwtBearer:TokenValidation:Audience"],
+                        ValidateLifetime = true
+                    };
+                });
+        }
+
+        private static void ConfigureSwagger(IServiceCollection serviceCollection, OpenApiInfo openApiInfo)
+        {
+            serviceCollection.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(openApiInfo.Version,
+                    new OpenApiInfo { Title = openApiInfo.Title, Version = openApiInfo.Version });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                        },
+                        new[] { "readAccess", "writeAccess" }
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
     }
 }

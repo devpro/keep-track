@@ -2,61 +2,55 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using KeepTrack.Api.Dto;
-using KeepTrack.CarComponent.Domain;
+using KeepTrack.MovieComponent.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace KeepTrack.Api.Controllers
 {
     /// <summary>
-    /// Car history controller.
+    /// Movie controller.
     /// </summary>
     [ApiController]
     [Authorize]
-    [Route("api/car-history")]
-    public class CarHistoryController : KeepTrack.Api.Controllers.ControllerBase
+    [Route("api/movies")]
+    public class MovieController : KeepTrack.Api.Controllers.ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ICarHistoryRepository _carHistoryRepository;
+        private readonly IMovieRepository _movieRepository;
 
         /// <summary>
-        /// Creates a new instance of <see cref="CarHistoryController"/>.
+        /// Creates a new instance of <see cref="MovieController"/>.
         /// </summary>
         /// <param name="mapper"></param>
-        /// <param name="carHistoryRepository"></param>
-        public CarHistoryController(IMapper mapper, ICarHistoryRepository carHistoryRepository)
+        /// <param name="movieRepository"></param>
+        public MovieController(IMapper mapper, IMovieRepository movieRepository)
         {
             _mapper = mapper;
-            _carHistoryRepository = carHistoryRepository;
+            _movieRepository = movieRepository;
         }
 
         /// <summary>
-        /// Gets all the history for a given car.
+        /// Gets all the movies.
         /// </summary>
-        /// <param name="carId">Car ID</param>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(List<CarHistoryDto>))]
+        [ProducesResponseType(200, Type = typeof(List<MovieDto>))]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<IActionResult> Get(string carId)
+        public async Task<IActionResult> Get()
         {
-            if (string.IsNullOrEmpty(carId))
-            {
-                return BadRequest();
-            }
-
-            var models = await _carHistoryRepository.FindAllAsync(carId, GetUserId());
-            return Ok(_mapper.Map<List<CarHistoryDto>>(models));
+            var models = await _movieRepository.FindAllAsync(GetUserId());
+            return Ok(_mapper.Map<List<MovieDto>>(models));
         }
 
         /// <summary>
-        /// Gets information from a single car history.
+        /// Gets information from a single movie.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name = "GetCarHistoryById")]
-        [ProducesResponseType(200, Type = typeof(CarHistoryDto))]
+        [HttpGet("{id}", Name = "GetMovieById")]
+        [ProducesResponseType(200, Type = typeof(MovieDto))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -67,13 +61,13 @@ namespace Api.Controllers
                 return BadRequest();
             }
 
-            var model = await _carHistoryRepository.FindOneAsync(id, GetUserId());
+            var model = await _movieRepository.FindOneAsync(id, GetUserId());
             if (model == null)
             {
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<CarHistoryDto>(model));
+            return Ok(_mapper.Map<MovieDto>(model));
         }
 
         /// <summary>
@@ -82,16 +76,16 @@ namespace Api.Controllers
         /// <param name="dto"></param>
         [HttpPost]
         [ProducesResponseType(201)]
-        public async Task<IActionResult> Post([FromBody] CarHistoryDto dto)
+        public async Task<IActionResult> Post([FromBody] MovieDto dto)
         {
-            var input = _mapper.Map<CarHistoryModel>(dto);
+            var input = _mapper.Map<MovieModel>(dto);
             input.OwnerId = GetUserId();
-            var model = await _carHistoryRepository.CreateAsync(input);
-            return CreatedAtRoute("GetCarHistoryById", new { id = model.Id }, _mapper.Map<CarHistoryDto>(model));
+            var model = await _movieRepository.CreateAsync(input);
+            return CreatedAtRoute("GetMovieById", new { id = model.Id }, _mapper.Map<MovieDto>(model));
         }
 
         /// <summary>
-        /// Updates a car history.
+        /// Updates a movie.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="dto"></param>
@@ -99,21 +93,21 @@ namespace Api.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<IActionResult> Put(string id, [FromBody] CarHistoryDto dto)
+        public async Task<IActionResult> Put(string id, [FromBody] MovieDto dto)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return BadRequest();
             }
 
-            var input = _mapper.Map<CarHistoryModel>(dto);
+            var input = _mapper.Map<MovieModel>(dto);
             input.OwnerId = GetUserId();
-            await _carHistoryRepository.UpdateAsync(id, input, GetUserId());
+            await _movieRepository.UpdateAsync(id, input, GetUserId());
             return NoContent();
         }
 
         /// <summary>
-        /// Deletes a car history.
+        /// Deletes a movie.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -128,7 +122,7 @@ namespace Api.Controllers
                 return BadRequest();
             }
 
-            await _carHistoryRepository.DeleteAsync(id, GetUserId());
+            await _movieRepository.DeleteAsync(id, GetUserId());
             return NoContent();
         }
     }

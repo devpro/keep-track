@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using KeepTrack.Dal.MongoDb.Entities;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace KeepTrack.CarComponent.Infrastructure.MongoDb.Entities
 {
-    public partial class CarHistory
+    public partial class CarHistory : IEntity
     {
         [BsonId]
         public ObjectId Id { get; set; }

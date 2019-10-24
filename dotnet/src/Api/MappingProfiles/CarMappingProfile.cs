@@ -12,7 +12,7 @@ namespace KeepTrack.Api.MappingProfiles
         /// </summary>
         public override string ProfileName
         {
-            get { return "KeepTrackApiMappingProfile"; }
+            get { return "KeepTrackApiCarMappingProfile"; }
         }
 
         /// <summary>

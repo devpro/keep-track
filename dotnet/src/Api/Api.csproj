@@ -28,6 +28,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CarComponent.Domain\CarComponent.Domain.csproj" />
     <ProjectReference Include="..\CarComponent.Infrastructure.MongoDb\CarComponent.Infrastructure.MongoDb.csproj" />
+    <ProjectReference Include="..\MovieComponent.Domain\MovieComponent.Domain.csproj" />
+    <ProjectReference Include="..\MovieComponent.Infrastructure.MongoDb\MovieComponent.Infrastructure.MongoDb.csproj" />
   </ItemGroup>
 
 </Project>
