@@ -51,7 +51,7 @@ namespace KeepTrack.Api
 
             services.AddControllers(opts =>
             {
-                opts.Filters.Add<Filters.ExceptionFilter>();
+                opts.Filters.Add<Filters.CustomExceptionFilterAttribute>();
             });
 
             ConfigureSwagger(services, _configuration.OpenApiInfo);

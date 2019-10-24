@@ -15,6 +15,12 @@ namespace KeepTrack.CarComponent.Infrastructure.MongoDb.MappingProfiles
             CreateMap<Entities.Car, Domain.CarModel>();
             CreateMap<Domain.CarModel, Entities.Car>();
 
+            MapCarHistoryModel();
+            MapCarHistory();
+        }
+
+        private void MapCarHistoryModel()
+        {
             CreateMap<Entities.CarHistory, Domain.CarHistoryModel>()
                 .ForMember(x => x.City, opt => opt.MapFrom(x => x.Location != null ? x.Location.City : null))
                 .ForMember(x => x.Longitude, opt => opt.MapFrom(x => x.Coordinates != null ? x.Coordinates[0] : (double?)null))
@@ -23,6 +29,10 @@ namespace KeepTrack.CarComponent.Infrastructure.MongoDb.MappingProfiles
                 .ForMember(x => x.IsFullTank, opt => opt.MapFrom(x => x.Fuel != null ? x.Fuel.IsFullTank : null))
                 .ForMember(x => x.DeltaMileage, opt => opt.MapFrom(x => x.Fuel != null ? x.Fuel.DeltaMileage : null))
                 .ForMember(x => x.LastRefuelHistoryId, opt => opt.MapFrom(x => x.Fuel != null ? x.Fuel.LastRefuelHistoryId : null));
+        }
+
+        private void MapCarHistory()
+        {
             CreateMap<Domain.CarHistoryModel, Entities.CarHistory>()
                 .ForMember(x => x.Location, opt => opt.MapFrom(x => x))
                 .ForMember(x => x.Coordinates, opt => opt.MapFrom(x => (x.Longitude.HasValue && x.Latitude.HasValue) ? new List<double> { x.Longitude.Value, x.Latitude.Value } : null))

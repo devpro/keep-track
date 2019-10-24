@@ -7,12 +7,12 @@ namespace KeepTrack.Api.Filters
     /// <summary>
     /// Exception filter to make sure the 
     /// </summary>
-    public sealed class ExceptionFilter : ExceptionFilterAttribute
+    public sealed class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     {
         /// <summary>
-        /// Create a new instance of <see cref="ExceptionFilter"/>.
+        /// Create a new instance of <see cref="CustomExceptionFilterAttribute"/>.
         /// </summary>
-        public ExceptionFilter()
+        public CustomExceptionFilterAttribute()
         {
         }
 
