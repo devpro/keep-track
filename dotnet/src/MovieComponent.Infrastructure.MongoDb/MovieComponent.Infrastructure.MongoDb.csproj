@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>KeepTrack.CarComponent.Infrastructure.MongoDb</AssemblyName>
-    <RootNamespace>KeepTrack.CarComponent.Infrastructure.MongoDb</RootNamespace>
-    <ProjectGuid>{F7250DAA-718B-44FB-990B-AD7DFC488AA7}</ProjectGuid>
+    <AssemblyName>KeepTrack.MovieComponent.Infrastructure.MongoDb</AssemblyName>
+    <RootNamespace>KeepTrack.MovieComponent.Infrastructure.MongoDb</RootNamespace>
+    <ProjectGuid>{02479358-D65A-4EF1-BA14-BD21706FBA20}</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarComponent.Domain\CarComponent.Domain.csproj" />
     <ProjectReference Include="..\Dal.MongoDb\Dal.MongoDb.csproj" />
+    <ProjectReference Include="..\MovieComponent.Domain\MovieComponent.Domain.csproj" />
   </ItemGroup>
 
 </Project>

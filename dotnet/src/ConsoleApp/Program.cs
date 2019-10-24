@@ -41,7 +41,7 @@ namespace KeepTrack.ConsoleApp
             await Parser.Default.ParseArguments<CommandLineOptions>(args)
                 .MapResult(
                     (CommandLineOptions opts) => RunOptionsAndReturnExitCode(opts),
-                    errs => Task.FromResult(HandleParseError(errs))
+                    errs => Task.FromResult(HandleParseError())
                  );
         }
 
@@ -53,30 +53,35 @@ namespace KeepTrack.ConsoleApp
 
             using (var serviceProvider = CreateServiceProvider(configuration))
             {
-                if (opts.Action == "CarDemo")
+                switch (opts.Action)
                 {
-                    var id = opts.Id;
+                    case "CarDemo":
+                        var id = opts.Id;
 
-                    LogVerbose(opts, "Query the car collection");
+                        LogVerbose(opts, "Query the car collection");
 
-                    var carRepository = serviceProvider.GetService<ICarRepository>();
-                    var car = await carRepository.FindOneAsync(id);
+                        var carRepository = serviceProvider.GetService<ICarRepository>();
+                        var car = await carRepository.FindOneAsync(id);
 
-                    Console.WriteLine($"Car found: {car}");
+                        Console.WriteLine($"Car found: {car}");
 
-                    LogVerbose(opts, "Query the car history collection");
+                        LogVerbose(opts, "Query the car history collection");
 
-                    var carHistoryRepository = serviceProvider.GetService<ICarHistoryRepository>();
-                    var history = await carHistoryRepository.FindAllAsync(id);
+                        var carHistoryRepository = serviceProvider.GetService<ICarHistoryRepository>();
+                        var history = await carHistoryRepository.FindAllAsync(id, "xxxx");
 
-                    Console.WriteLine($"Car history found: {history.Count}");
+                        Console.WriteLine($"Car history found: {history.Count}");
+                        break;
+                    default:
+                        Console.WriteLine($"Unknown action \"{opts.Action}\"");
+                        return -1;
                 }
 
                 return 0;
             }
         }
 
-        private static int HandleParseError(IEnumerable<Error> errs)
+        private static int HandleParseError()
         {
             return -2;
         }

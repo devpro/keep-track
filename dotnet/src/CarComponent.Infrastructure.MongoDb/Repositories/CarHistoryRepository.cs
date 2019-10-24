@@ -3,15 +3,14 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KeepTrack.CarComponent.Domain;
 using KeepTrack.CarComponent.Infrastructure.MongoDb.Entities;
+using KeepTrack.Dal.MongoDb.Repositories;
 using Microsoft.Extensions.Logging;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using Withywoods.Dal.MongoDb;
-using Withywoods.Dal.MongoDb.Repositories;
 
 namespace KeepTrack.CarComponent.Infrastructure.Repositories
 {
-    public class CarHistoryRepository : RepositoryBase, ICarHistoryRepository
+    public class CarHistoryRepository : RepositoryBase<CarHistoryModel, CarHistory>, ICarHistoryRepository
     {
         public CarHistoryRepository(IMongoDbContext mongoDbContext, ILogger<CarHistoryRepository> logger, IMapper mapper)
             : base(mongoDbContext, logger, mapper)
@@ -20,22 +19,10 @@ namespace KeepTrack.CarComponent.Infrastructure.Repositories
 
         protected override string CollectionName => "car_history";
 
-        public async Task<CarHistoryModel> FindOneAsync(string id)
-        {
-            if (!ObjectId.TryParse(id, out var objectId))
-            {
-                throw new System.Exception($"Cannot find the car history. \"{id}\" is not a valid id.");
-            }
-
-            var collection = GetCollection<CarHistory>();
-            var dbEntries = await collection.FindAsync(x => x.Id == objectId);
-            return Mapper.Map<CarHistoryModel>(dbEntries.FirstOrDefault());
-        }
-
-        public async Task<List<CarHistoryModel>> FindAllAsync(string carId)
+        public async Task<List<CarHistoryModel>> FindAllAsync(string carId, string ownerId)
         {
             var collection = GetCollection<CarHistory>();
-            var dbEntries = await collection.FindAsync(x => x.CarId == carId);
+            var dbEntries = await collection.FindAsync(x => x.CarId == carId && x.OwnerId == ownerId);
             return Mapper.Map<List<CarHistoryModel>>(dbEntries.ToList());
         }
     }
