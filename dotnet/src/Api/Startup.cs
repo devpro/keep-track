@@ -23,6 +23,8 @@ namespace KeepTrack.Api
     /// </summary>
     public class Startup
     {
+        #region Private fields & constructor
+
         private readonly AppConfiguration _configuration;
 
         /// <summary>
@@ -33,6 +35,10 @@ namespace KeepTrack.Api
         {
             _configuration = new AppConfiguration(configuration);
         }
+
+        #endregion
+
+        #region Public methods
 
         /// <summary>
         /// Configure services.
@@ -89,6 +95,10 @@ namespace KeepTrack.Api
                 endpoints.MapControllers();
             });
         }
+
+        #endregion
+
+        #region Private methods
 
         private static void ConfigureAutoMapper(IServiceCollection serviceCollection)
         {
@@ -159,5 +169,7 @@ namespace KeepTrack.Api
                 c.IncludeXmlComments(xmlPath);
             });
         }
+
+        #endregion
     }
 }

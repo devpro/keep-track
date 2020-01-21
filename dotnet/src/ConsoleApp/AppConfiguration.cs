@@ -20,7 +20,7 @@ namespace KeepTrack.ConsoleApp
 
         #region IMongoDbConfiguration properties
 
-        public string ConnectionString => _configurationRoot.GetSection("KeepTrack_MongoDbConnectionString").Value;
+        public string ConnectionString => _configurationRoot.GetSection("Infrastructure:MongoDB:ConnectionString").Value;
 
         public string DatabaseName => "inventory";
 
