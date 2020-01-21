@@ -6,16 +6,54 @@
 
 ## Dependencies
 
-- SDK: .NET Core 3.0
-- DB: MongoDB 4.2
+- [.NET Core 3.1 SDK](dot.net)
+- MongoDB 4.2 database
+  - Local server
+  - Docker
+
+  ```bash
+  docker run --name mongodb422 -d -p 27017:27017 mongo
+  ```
+
+  - MongoDB Atlas cluster
 
 ## Configuration
 
-- Value for key `KeepTrack_MongoDbConnectionString`: .NET connection string to access MongoDB cluster, ideally set as an environment variable.
+Key | Description | Default value
+--- | ----------- | -------------
+`Infrastructure:MongoDB:ConnectionString` | MongoDB connection string |
+`Infrastructure:MongoDB:DatabaseName` | MongoDB connection string | inventory
 
-## Local run
+This values can be easily provided as environment variables (replace ":" by "__") or by configuration (json).
 
-- Clone the solution: `git clone ...`
-- Build the solution: `dotnet build`
-- Run the console: `dotnet dotnet src\ConsoleApp\bin\Debug\netcoreapp3.0\KeepTrack.ConsoleApp.dll ...`
-- Run the web api: `dotnet run --project src\Api`
+## Build & debug
+
+- Clone the solution
+
+```bash
+git clone https://github.com/devpro/keep-track.git
+```
+
+- Build the solution
+
+```bash
+dotnet build
+```
+
+- Run the tests
+
+```bash
+dotnet build
+```
+
+- Run the console application:
+
+```bash
+dotnet src\ConsoleApp\bin\Debug\netcoreapp3.1\KeepTrack.ConsoleApp.dll -a CarDemo
+```
+
+- Run the web api application:
+
+```bash
+dotnet run --project src\Api
+```

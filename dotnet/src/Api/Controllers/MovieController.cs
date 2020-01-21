@@ -14,7 +14,7 @@ namespace KeepTrack.Api.Controllers
     [ApiController]
     [Authorize]
     [Route("api/movies")]
-    public class MovieController : KeepTrack.Api.Controllers.ControllerBase
+    public class MovieController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IMovieRepository _movieRepository;

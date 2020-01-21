@@ -55,6 +55,7 @@ namespace KeepTrack.Dal.MongoDb.Repositories
             {
                 throw new ArgumentException($"{message}{id} is not a valid id.", nameof(id));
             }
+
             return objectId;
         }
     }

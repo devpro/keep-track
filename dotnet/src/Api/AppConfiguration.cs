@@ -37,7 +37,7 @@ namespace KeepTrack.Api
         /// MongoDB connection string => secret!
         /// This is really a sensitive information so better defined as an environment variable.
         /// </summary>
-        public string ConnectionString => ConfigurationRoot.TryGetSection("KeepTrack_MongoDbConnectionString").Value;
+        public string ConnectionString => ConfigurationRoot.TryGetSection("Infrastructure:MongoDB:ConnectionString").Value;
 
         /// <summary>
         /// MongoDB collection name.
