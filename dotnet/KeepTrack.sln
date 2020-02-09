@@ -24,7 +24,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - Solution Items", "{73A074B8-D41E-4CCD-AC4B-95DB716EC6C6}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\.azure\pipelines\ci.yml = ..\.azure\pipelines\ci.yml
 		CodeCoverage.runsettings = CodeCoverage.runsettings
+		..\.azure\pipelines\pkg.yml = ..\.azure\pipelines\pkg.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
