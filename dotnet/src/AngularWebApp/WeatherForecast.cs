@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace AngularWebApp
+namespace KeepTrack.AngularWebApp
 {
     public class WeatherForecast
     {
