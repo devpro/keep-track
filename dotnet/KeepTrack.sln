@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieComponent.Domain", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieComponent.Infrastructure.MongoDb", "src\MovieComponent.Infrastructure.MongoDb\MovieComponent.Infrastructure.MongoDb.csproj", "{02479358-D65A-4EF1-BA14-BD21706FBA20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApp", "src\AngularWebApp\AngularWebApp.csproj", "{EDB607AB-0F89-4D2A-947E-AEBC80827F2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{02479358-D65A-4EF1-BA14-BD21706FBA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02479358-D65A-4EF1-BA14-BD21706FBA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02479358-D65A-4EF1-BA14-BD21706FBA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDB607AB-0F89-4D2A-947E-AEBC80827F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDB607AB-0F89-4D2A-947E-AEBC80827F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDB607AB-0F89-4D2A-947E-AEBC80827F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDB607AB-0F89-4D2A-947E-AEBC80827F2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{651432D5-8481-4807-A422-552EEB4DE8C2} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
 		{FAD8CE20-6164-4986-B3C1-6DF1EFF3C58B} = {A6A8275A-6360-43E7-AB5A-D8A1E96BED06}
 		{02479358-D65A-4EF1-BA14-BD21706FBA20} = {A6A8275A-6360-43E7-AB5A-D8A1E96BED06}
+		{EDB607AB-0F89-4D2A-947E-AEBC80827F2A} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {876333E7-72D4-4F43-B6F9-9432CA2B7425}
