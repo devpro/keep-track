@@ -25,6 +25,8 @@ namespace KeepTrack.Api
     {
         #region Private fields & constructor
 
+        private const string _CorsPolicyName = "CorsPolicyName";
+
         private readonly AppConfiguration _configuration;
 
         /// <summary>
@@ -54,6 +56,18 @@ namespace KeepTrack.Api
             ConfigureAutoMapper(services);
 
             ConfigureAuthentication(services, _configuration.ConfigurationRoot);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(_CorsPolicyName,
+                builder =>
+                {
+                    builder
+                        .WithOrigins(_configuration.CorsAllowedOrigin.ToArray())
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
             services.AddControllers(opts =>
             {
@@ -90,6 +104,8 @@ namespace KeepTrack.Api
 
             app.UseAuthorization();
 
+            app.UseCors(_CorsPolicyName);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -110,8 +126,7 @@ namespace KeepTrack.Api
                 x.CreateMap<ObjectId, string>().ConvertUsing<ObjectIdToStringConverter>();
                 x.CreateMap<string, ObjectId>().ConvertUsing<StringToObjectIdConverter>();
                 // Api
-                x.AddProfile(new MappingProfiles.CarMappingProfile());
-                x.AddProfile(new MappingProfiles.MovieMappingProfile());
+                x.AddProfile(new MappingProfiles.GenericMappingProfile());
                 // General
                 x.AllowNullCollections = true;
             });

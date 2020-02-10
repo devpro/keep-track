@@ -38,4 +38,8 @@ export class MovieComponent implements OnInit, OnDestroy {
     this.movieService.create({ title }).subscribe(movie => this.movies.push(movie));
   }
 
+  delete(movie: Movie) {
+    this.movieService.delete(movie).subscribe(deletedCount => this.movies.splice(this.movies.findIndex(x => x.id == movie.id), 1));
+  }
+
 }

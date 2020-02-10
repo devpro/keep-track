@@ -12,10 +12,10 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
+            <a class="nav-link text-dark" [routerLink]="['/books']">Books</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+            <a class="nav-link text-dark" [routerLink]="['/cars']">Cars</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/movies']">Movies</a>
@@ -24,10 +24,12 @@
             <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
           </li>
           <li class="nav-item" *ngIf="user">
-            <a class="nav-link text-dark"><strong>{{ user.email }}</strong></a>
+            <a class="nav-link text-dark">{{ user.email }}</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
-            <a class="nav-link text-dark" (click)="logout($event)" href="#">Logout</a>
+            <a class="nav-link" (click)="logout($event)" href="#">
+              <span class="fa fa-power-off"></span>
+            </a>
           </li>
         </ul>
       </div>

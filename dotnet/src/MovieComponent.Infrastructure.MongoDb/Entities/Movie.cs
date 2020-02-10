@@ -12,7 +12,12 @@ namespace KeepTrack.MovieComponent.Infrastructure.MongoDb.Entities
         [BsonElement("owner_id")]
         public string OwnerId { get; set; }
 
-        [BsonElement("title")]
         public string Title { get; set; }
+
+        public int Year { get; set; }
+
+        public Imdb Imdb { get; set; }
+
+        public Allocine Allocine { get; set; }
     }
 }

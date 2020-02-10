@@ -15,7 +15,7 @@
   docker run --name mongodb422 -d -p 27017:27017 mongo
   ```
 
-  - MongoDB Atlas cluster
+  - [MongoDB Atlas](https://cloud.mongodb.com/) cluster
 
 ## Configuration
 

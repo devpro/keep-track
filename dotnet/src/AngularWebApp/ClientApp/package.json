@@ -1,9 +1,9 @@
 {
-  "name": "angularwebapp",
-  "version": "0.0.0",
+  "name": "keeptrack-angularwebapp",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --configuration=dev",
     "build": "ng build",
     "build:ssr": "ng run AngularWebApp:server:dev",
     "test": "ng test",

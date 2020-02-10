@@ -70,6 +70,14 @@ namespace KeepTrack.Api
                 Version = "1.0"
             };
 
+        /// <summary>
+        /// Allowed Origin URL for Cross-Origin Requests (CORS)
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-3.1
+        /// </remarks>
+        public List<string> CorsAllowedOrigin => ConfigurationRoot.TryGetSection("AllowedOrigins").Get<List<string>>();
+
         #endregion
     }
 }

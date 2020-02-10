@@ -1,9 +1,9 @@
 import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import * as firebase from 'firebase';
 import { JwtInterceptorService } from './jwt-interceptor.service';
-import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,11 @@ export class AuthenticateService implements OnDestroy {
 
   constructor(private firebaseAuth: AngularFireAuth, private jwtInterceptorService: JwtInterceptorService) {
     this.user = firebaseAuth.authState;
-    this.userEventsSubscription = this.user.subscribe(user => user.getIdToken().then(token => {
-      jwtInterceptorService.setJwtToken(token);
-    }));
+    this.userEventsSubscription = this.user.subscribe(user => { if (user) {
+      user.getIdToken().then(token => {
+        jwtInterceptorService.setJwtToken(token);
+      })};
+    });
   }
 
   ngOnDestroy() {

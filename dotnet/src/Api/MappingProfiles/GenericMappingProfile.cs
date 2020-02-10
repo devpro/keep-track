@@ -3,26 +3,30 @@
 namespace KeepTrack.Api.MappingProfiles
 {
     /// <summary>
-    /// Movie mapping profile.
+    /// Generic mapping profile.
     /// </summary>
-    public class MovieMappingProfile : Profile
+    public class GenericMappingProfile : Profile
     {
         /// <summary>
         /// Profile name.
         /// </summary>
         public override string ProfileName
         {
-            get { return "KeepTrackApiMovieMappingProfile"; }
+            get { return "KeepTrackApiGenericMappingProfile"; }
         }
 
         /// <summary>
-        /// Create a new instance of <see cref="MovieMappingProfile"/>.
+        /// Create a new instance of <see cref="GenericMappingProfile"/>.
         /// </summary>
-        public MovieMappingProfile()
+        public GenericMappingProfile()
         {
             CreateMap<Dto.MovieDto, MovieComponent.Domain.MovieModel>()
                 .ForMember(x => x.OwnerId, opt => opt.Ignore());
             CreateMap<MovieComponent.Domain.MovieModel, Dto.MovieDto>();
+
+            CreateMap<Dto.CarHistoryDto, CarComponent.Domain.CarHistoryModel>()
+                .ForMember(x => x.OwnerId, opt => opt.Ignore());
+            CreateMap<CarComponent.Domain.CarHistoryModel, Dto.CarHistoryDto>();
         }
     }
 }

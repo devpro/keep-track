@@ -19,4 +19,8 @@ export class MovieService {
   create(input: Movie): Observable<Movie> {
     return this.httpClient.post<Movie>(`${environment.keepTrackApiUrl}/api/movies`, input);
   }
+
+  delete(input: Movie): Observable<number> {
+    return this.httpClient.delete<number>(`${environment.keepTrackApiUrl}/api/movies/${input.id}`);
+  }
 }

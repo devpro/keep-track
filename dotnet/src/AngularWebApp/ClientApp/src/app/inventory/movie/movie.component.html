@@ -5,17 +5,21 @@
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movies">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Movie</th>
+      <th>Title</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let movie of movies">
-      <td>{{ movie.id }}</td>
       <td>{{ movie.title }}</td>
+      <td><button class="btn btn-action" (click)="delete(movie)"><span class="fa fa-trash"></span></button></td>
     </tr>
   </tbody>
 </table>
 
-<input id="title" class="form-control" #titleInput type="text" name="title" />
-<button class="btn btn-primary" type="submit" (click)="create(titleInput.value)">Add</button>
+<div class="input-group">
+  <input id="title" class="form-control col-sm-4" #titleInput type="text" name="title" (keydown.enter)="create(titleInput.value)" />
+  <span class="input-group-btn">
+    <button class="btn btn-primary" type="submit" (click)="create(titleInput.value)">Add</button>
+  </span>
+</div>

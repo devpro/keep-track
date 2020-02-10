@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../services/authenticate.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,8 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class LoginComponent {
 
-  constructor(private authenticateService: AuthenticateService) { }
+  constructor(private authenticateService: AuthenticateService) {
+  }
 
   signInWithGitHub() {
     this.authenticateService.signInWithGitHub();
