@@ -36,8 +36,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieComponent.Domain", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieComponent.Infrastructure.MongoDb", "src\MovieComponent.Infrastructure.MongoDb\MovieComponent.Infrastructure.MongoDb.csproj", "{02479358-D65A-4EF1-BA14-BD21706FBA20}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApp", "src\AngularWebApp\AngularWebApp.csproj", "{2177C2C2-4955-4325-A75D-12ED39E3FF1C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.UnitTests", "test\Api.UnitTests\Api.UnitTests.csproj", "{2AA2932C-8CD8-472F-B3D7-EDF6A5583990}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieComponent.Infrastructure.MongoDb.UnitTests", "test\MovieComponent.Infrastructure.MongoDb.UnitTests\MovieComponent.Infrastructure.MongoDb.UnitTests.csproj", "{1B0B35DF-CFA8-41DE-A0A3-FA7818E78B25}"
@@ -78,10 +76,6 @@ Global
 		{02479358-D65A-4EF1-BA14-BD21706FBA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02479358-D65A-4EF1-BA14-BD21706FBA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02479358-D65A-4EF1-BA14-BD21706FBA20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2177C2C2-4955-4325-A75D-12ED39E3FF1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2177C2C2-4955-4325-A75D-12ED39E3FF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2177C2C2-4955-4325-A75D-12ED39E3FF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2177C2C2-4955-4325-A75D-12ED39E3FF1C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AA2932C-8CD8-472F-B3D7-EDF6A5583990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AA2932C-8CD8-472F-B3D7-EDF6A5583990}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AA2932C-8CD8-472F-B3D7-EDF6A5583990}.Release|Any CPU.ActiveCfg = Release|Any CPU
