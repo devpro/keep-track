@@ -9,17 +9,26 @@ namespace KeepTrack.AngularWebApp
 {
     public class Startup
     {
+        #region Private fields & constructor
+
+        private readonly AppConfiguration _configuration;
+
+        /// <summary>
+        /// Create a new instance of <see cref="Startup"/>.
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = new AppConfiguration(configuration);
         }
 
-        public IConfiguration Configuration { get; }
+        #endregion
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
