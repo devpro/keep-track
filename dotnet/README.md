@@ -15,7 +15,7 @@
   docker run --name mongodb422 -d -p 27017:27017 mongo
   ```
 
-  - MongoDB Atlas cluster
+  - [MongoDB Atlas](https://cloud.mongodb.com/) cluster
 
 ## Configuration
 
@@ -57,3 +57,11 @@ dotnet src\ConsoleApp\bin\Debug\netcoreapp3.1\KeepTrack.ConsoleApp.dll -a CarDem
 ```bash
 dotnet run --project src\Api
 ```
+
+## Deploy
+
+- Add the outbout IP to the MongoDB Atlas cluster
+- Add the application url to Firebase domains
+- Create web project in Firebase and grab ids to be set to environment.ts file
+- Create a GitHub OAuth application ([firebase.google.com](https://firebase.google.com/docs/auth/web/github-auth), [github.com](https://github.com/settings/applications/new))
+- Add urls in Azure web app CORS page

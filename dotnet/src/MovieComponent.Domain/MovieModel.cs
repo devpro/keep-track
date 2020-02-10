@@ -7,5 +7,11 @@
         public string OwnerId { get; set; }
 
         public string Title { get; set; }
+
+        public int Year { get; set; }
+
+        public string ImdbPageId { get; set; }
+
+        public string AllocineId { get; set; }
     }
 }
