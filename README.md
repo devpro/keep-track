@@ -1,5 +1,7 @@
 # Keep track
 
+[![Build Status](https://dev.azure.com/devprofr/open-source/_apis/build/status/keeptrack-ci?branchName=master)](https://dev.azure.com/devprofr/open-source/_build/latest?definitionId=26&branchName=master)
+
 Applications and libraries to save and review things we like & own, things we like & saw.
 
 ## Content
