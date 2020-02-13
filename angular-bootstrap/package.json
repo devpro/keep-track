@@ -7,6 +7,7 @@
     "build": "ng build",
     "build:ssr": "ng run AngularWebApp:server:dev",
     "test": "ng test",
+    "test:ci": "ng test --no-watch --configuration=dev --code-coverage --browsers ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -50,6 +51,7 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "karma-junit-reporter": "^1.2.0",
     "typescript": "3.5.3",
     "@angular-devkit/architect": "^0.900.0-0 || ^0.900.0",
     "firebase-tools": "^7.12.1",

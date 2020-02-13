@@ -24,12 +24,12 @@ describe('MovieService', () => {
 
   it('should list', () => {
     // fake response
-    const hardcodedMovies = [{ title: 'Paris' }, { title: 'Tokyo' }, { title: 'Lyon' }] as Array<Movie>;
+    const hardcodedMovies = [{ title: 'Terminator 1' }, { title: 'Terminator 2' }] as Array<Movie>;
 
     let actualMovies: Array<Movie> = [];
     movieService.list().subscribe((movies: Array<Movie>) => actualMovies = movies);
 
-    http.expectOne(`${environment.keepTrackApiUrl}/api/races?status=PENDING`)
+    http.expectOne(`${environment.keepTrackApiUrl}/api/movies`)
       .flush(hardcodedMovies);
 
     expect(actualMovies).toEqual(hardcodedMovies, 'The `list` method should return an array of Movie wrapped in an Observable');
