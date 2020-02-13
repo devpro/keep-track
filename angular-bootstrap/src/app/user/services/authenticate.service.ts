@@ -2,7 +2,8 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 
 @Injectable({
@@ -17,8 +18,8 @@ export class AuthenticateService implements OnDestroy {
     this.userEventsSubscription = this.user.subscribe(user => { if (user) {
       user.getIdToken().then(token => {
         jwtInterceptorService.setJwtToken(token);
-      })};
-    });
+      });
+    }});
   }
 
   ngOnDestroy() {
@@ -29,7 +30,7 @@ export class AuthenticateService implements OnDestroy {
 
   signInWithGitHub() {
     // See https://firebase.google.com/docs/auth/web/github-auth
-    var provider = new firebase.auth.GithubAuthProvider();
+    const provider = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
       this.user = result.user;
     }).catch(function(error) {

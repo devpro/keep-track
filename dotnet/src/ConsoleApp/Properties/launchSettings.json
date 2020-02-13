@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "ConsoleApp": {
-      "commandName": "Project",
-      "commandLineArgs": "-a CarDemo --id MyCar"
-    }
-  }
-}

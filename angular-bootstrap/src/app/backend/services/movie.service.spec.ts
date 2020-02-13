@@ -1,12 +1,37 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { MovieService } from './movie.service';
+import { Movie } from '../types/movie';
+import { environment } from 'src/environments/environment.dev';
 
 describe('MovieService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
-    const service: MovieService = TestBed.get(MovieService);
-    expect(service).toBeTruthy();
+  let movieService: MovieService;
+  let http: HttpTestingController;
+
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [
+      HttpClientTestingModule
+    ]
+  }));
+
+  beforeEach(() => {
+    http = TestBed.get(HttpTestingController);
+    movieService = TestBed.get(MovieService);
+  });
+
+  afterAll(() => http.verify());
+
+  it('should list', () => {
+    // fake response
+    const hardcodedMovies = [{ title: 'Terminator 1' }, { title: 'Terminator 2' }] as Array<Movie>;
+
+    let actualMovies: Array<Movie> = [];
+    movieService.list().subscribe((movies: Array<Movie>) => actualMovies = movies);
+
+    http.expectOne(`${environment.keepTrackApiUrl}/api/movies`)
+      .flush(hardcodedMovies);
+
+    expect(actualMovies).toEqual(hardcodedMovies, 'The `list` method should return an array of Movie wrapped in an Observable');
   });
 });

@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Api.Dto\Api.Dto.csproj" />
     <ProjectReference Include="..\CarComponent.Domain\CarComponent.Domain.csproj" />
     <ProjectReference Include="..\CarComponent.Infrastructure.MongoDb\CarComponent.Infrastructure.MongoDb.csproj" />
     <ProjectReference Include="..\MovieComponent.Domain\MovieComponent.Domain.csproj" />

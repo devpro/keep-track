@@ -45,3 +45,9 @@ Thumbs.db
 # Angular development config
 environment.dev.ts
 environment.prod.ts
+
+# Temporary files
+/temp.txt
+
+# Test report files
+/TESTS*.xml
