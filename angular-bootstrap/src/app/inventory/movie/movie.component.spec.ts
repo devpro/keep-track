@@ -13,7 +13,6 @@ describe('MovieComponent', () => {
   } as AuthenticateService;
 
   let component: MovieComponent;
-  let fixture: ComponentFixture<MovieComponent>;
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [AppModule],

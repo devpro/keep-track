@@ -4,20 +4,12 @@ import { HeaderComponent } from './header.component';
 import { AppModule } from 'src/app/app.module';
 
 describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule, RouterTestingModule]
     });
   }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('display a link to go the login', () => {
     const fixture = TestBed.createComponent(HeaderComponent);
