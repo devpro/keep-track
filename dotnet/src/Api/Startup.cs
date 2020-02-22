@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using AutoMapper;
 using KeepTrack.CarComponent.Infrastructure.MongoDb.DependencyInjection;
+using KeepTrack.InventoryComponent.Infrastructure.MongoDb.DependencyInjection;
 using KeepTrack.MovieComponent.Infrastructure.MongoDb.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -50,6 +51,7 @@ namespace KeepTrack.Api
         {
             services.AddSingleton(_configuration.ConfigurationRoot)
                 .AddCarInfrastructureMongoDb()
+                .AddInventoryInfrastructureMongoDb()
                 .AddMovieInfrastructureMongoDb()
                 .AddMongoDbContext<AppConfiguration>();
 
@@ -122,6 +124,7 @@ namespace KeepTrack.Api
             {
                 // Infrastructure MongoDB
                 x.AddProfile(new CarComponent.Infrastructure.MongoDb.MappingProfiles.CarMappingProfile());
+                x.AddProfile(new InventoryComponent.Infrastructure.MongoDb.MappingProfiles.InventoryMappingProfile());
                 x.AddProfile(new MovieComponent.Infrastructure.MongoDb.MappingProfiles.MovieMappingProfile());
                 x.CreateMap<ObjectId, string>().ConvertUsing<ObjectIdToStringConverter>();
                 x.CreateMap<string, ObjectId>().ConvertUsing<StringToObjectIdConverter>();

@@ -14,21 +14,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0" />
-    <PackageReference Include="Withywoods.Configuration" Version="1.2.0" />
+    <PackageReference Include="Withywoods.Configuration" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Api.Dto\Api.Dto.csproj" />
     <ProjectReference Include="..\CarComponent.Domain\CarComponent.Domain.csproj" />
     <ProjectReference Include="..\CarComponent.Infrastructure.MongoDb\CarComponent.Infrastructure.MongoDb.csproj" />
+    <ProjectReference Include="..\InventoryComponent.Domain\InventoryComponent.Domain.csproj" />
+    <ProjectReference Include="..\InventoryComponent.Infrastructure.MongoDb\InventoryComponent.Infrastructure.MongoDb.csproj" />
     <ProjectReference Include="..\MovieComponent.Domain\MovieComponent.Domain.csproj" />
     <ProjectReference Include="..\MovieComponent.Infrastructure.MongoDb\MovieComponent.Infrastructure.MongoDb.csproj" />
   </ItemGroup>

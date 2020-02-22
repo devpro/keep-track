@@ -27,6 +27,10 @@ namespace KeepTrack.Api.MappingProfiles
             CreateMap<Dto.CarHistoryDto, CarComponent.Domain.CarHistoryModel>()
                 .ForMember(x => x.OwnerId, opt => opt.Ignore());
             CreateMap<CarComponent.Domain.CarHistoryModel, Dto.CarHistoryDto>();
+
+            CreateMap<Dto.BookDto, InventoryComponent.Domain.Models.BookModel>()
+                .ForMember(x => x.OwnerId, opt => opt.Ignore());
+            CreateMap<InventoryComponent.Domain.Models.BookModel, Dto.BookDto>();
         }
     }
 }
