@@ -29,4 +29,9 @@
       </DataCollector>
     </DataCollectors>
   </DataCollectionRunSettings>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <AllowedOrigins__0>http://localhost:4200</AllowedOrigins__0>
+    </EnvironmentVariables>
+  </RunConfiguration>
 </RunSettings>

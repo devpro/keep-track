@@ -59,17 +59,20 @@ namespace KeepTrack.Api
 
             ConfigureAuthentication(services, _configuration.ConfigurationRoot);
 
-            services.AddCors(options =>
+            if (_configuration.CorsAllowedOrigin != null)
             {
-                options.AddPolicy(_CorsPolicyName,
-                builder =>
+                services.AddCors(options =>
                 {
-                    builder
-                        .WithOrigins(_configuration.CorsAllowedOrigin.ToArray())
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
+                    options.AddPolicy(_CorsPolicyName,
+                    builder =>
+                    {
+                        builder
+                            .WithOrigins(_configuration.CorsAllowedOrigin.ToArray())
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
                 });
-            });
+            }
 
             services.AddControllers(opts =>
             {
