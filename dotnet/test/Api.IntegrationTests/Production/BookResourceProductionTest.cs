@@ -34,19 +34,25 @@ namespace KeepTrack.Api.IntegrationTests.Deployed
             await _bookResource.Authenticate();
 
             var created = await _bookResource.Create();
-            created.Id.Should().NotBeNullOrEmpty();
 
-            created.Title = "New shiny title";
-            await _bookResource.Update(created.Id, created);
+            try
+            {
+                created.Title = "New shiny title";
+                await _bookResource.Update(created.Id, created);
 
-            var updated = await _bookResource.FindOneById(created.Id, created);
+                var updated = await _bookResource.FindOneById(created.Id, created);
+                updated.Should().BeEquivalentTo(created);
 
-            var finalItems = await _bookResource.FindAll();
-            finalItems.Count.Should().BeGreaterOrEqualTo(1);
-            finalItems.FirstOrDefault(x => x.Id == updated.Id).Should().NotBeNull();
-            finalItems.First().Title.Should().Be(updated.Title);
-
-            await _bookResource.Delete(updated.Id);
+                var finalItems = await _bookResource.FindAll();
+                finalItems.Count.Should().BeGreaterOrEqualTo(1);
+                var firstItem = finalItems.FirstOrDefault(x => x.Id == updated.Id);
+                firstItem.Should().NotBeNull();
+                firstItem.Title.Should().Be(updated.Title);
+            }
+            finally
+            {
+                await _bookResource.Delete(created.Id);
+            }
         }
     }
 }

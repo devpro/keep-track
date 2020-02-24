@@ -34,19 +34,25 @@ namespace KeepTrack.Api.IntegrationTests.Deployed
             await _movieResource.Authenticate();
 
             var created = await _movieResource.Create();
-            created.Id.Should().NotBeNullOrEmpty();
 
-            created.Title = "New shiny title";
-            await _movieResource.Update(created.Id, created);
+            try
+            {
+                created.Title = "New shiny title";
+                await _movieResource.Update(created.Id, created);
 
-            var updated = await _movieResource.FindOneById(created.Id, created);
+                var updated = await _movieResource.FindOneById(created.Id, created);
+                updated.Should().BeEquivalentTo(created);
 
-            var finalItems = await _movieResource.FindAll();
-            finalItems.Count.Should().BeGreaterOrEqualTo(1);
-            finalItems.FirstOrDefault(x => x.Id == updated.Id).Should().NotBeNull();
-            finalItems.First().Title.Should().Be(updated.Title);
-
-            await _movieResource.Delete(updated.Id);
+                var finalItems = await _movieResource.FindAll();
+                finalItems.Count.Should().BeGreaterOrEqualTo(1);
+                var firstItem = finalItems.FirstOrDefault(x => x.Id == updated.Id);
+                firstItem.Should().NotBeNull();
+                firstItem.Title.Should().Be(updated.Title);
+            }
+            finally
+            {
+                await _movieResource.Delete(created.Id);
+            }
         }
     }
 }
