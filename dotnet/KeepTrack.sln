@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		..\.azure\pipelines\cd.json = ..\.azure\pipelines\cd.json
 		..\.azure\pipelines\ci.yml = ..\.azure\pipelines\ci.yml
 		CodeCoverage.runsettings = CodeCoverage.runsettings
 		..\.azure\pipelines\pkg.yml = ..\.azure\pipelines\pkg.yml
@@ -50,6 +51,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryComponent.Infrastructure.MongoDb", "src\InventoryComponent.Infrastructure.MongoDb\InventoryComponent.Infrastructure.MongoDb.csproj", "{597D37CF-D230-42C7-A168-01605114170D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryComponent.Infrastructure.MongoDb.UnitTests", "test\InventoryComponent.Infrastructure.MongoDb.UnitTests\InventoryComponent.Infrastructure.MongoDb.UnitTests.csproj", "{042D62F6-C2DD-4DAD-A2B5-9440871875B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.IntegrationTests", "test\Api.IntegrationTests\Api.IntegrationTests.csproj", "{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +112,10 @@ Global
 		{042D62F6-C2DD-4DAD-A2B5-9440871875B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{042D62F6-C2DD-4DAD-A2B5-9440871875B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{042D62F6-C2DD-4DAD-A2B5-9440871875B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +137,7 @@ Global
 		{19F13DE8-3351-45C5-82C7-DB127E318306} = {E0274864-4E39-481B-A93B-7368E68B8902}
 		{597D37CF-D230-42C7-A168-01605114170D} = {E0274864-4E39-481B-A93B-7368E68B8902}
 		{042D62F6-C2DD-4DAD-A2B5-9440871875B8} = {E0274864-4E39-481B-A93B-7368E68B8902}
+		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {876333E7-72D4-4F43-B6F9-9432CA2B7425}

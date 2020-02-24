@@ -24,7 +24,7 @@ end_of_line = lf
 indent_size = 4
 dotnet_sort_system_directives_first = true
 
-[*.{xml,config,*proj,nuspec,props,resx,targets,yml,tasks,json,md,ts,csroj}]
+[*.{xml,config,*proj,nuspec,props,resx,targets,yml,yaml,tasks,json,md,ts,csroj}]
 indent_size = 2
 
 [*.{md}]

@@ -13,6 +13,14 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
 - [.NET Core 3.1 SDK](dot.net)
 - MongoDB 4.2 database
   - Local server
+
+  ```bash
+  cd D:\Programs\mongodb-4.2.3\bin
+  md log
+  md data
+  mongod --logpath log/mongod.log --dbpath data --port 27017
+  ```
+
   - Docker
 
   ```bash
