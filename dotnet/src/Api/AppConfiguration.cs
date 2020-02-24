@@ -37,17 +37,17 @@ namespace KeepTrack.Api
         /// MongoDB connection string => secret!
         /// This is really a sensitive information so better defined as an environment variable.
         /// </summary>
-        public string ConnectionString => ConfigurationRoot.TryGetSection("Infrastructure:MongoDB:ConnectionString").Value;
+        string IMongoDbConfiguration.ConnectionString => ConfigurationRoot.TryGetSection("Infrastructure:MongoDB:ConnectionString").Value;
 
         /// <summary>
         /// MongoDB collection name.
         /// </summary>
-        public string DatabaseName => ConfigurationRoot.TryGetSection("Infrastructure:MongoDB:DatabaseName").Value;
+        string IMongoDbConfiguration.DatabaseName => ConfigurationRoot.TryGetSection("Infrastructure:MongoDB:DatabaseName").Value;
 
         /// <summary>
         /// MongoDB serialization conventions.
         /// </summary>
-        public List<string> SerializationConventions =>
+        List<string> IMongoDbConfiguration.SerializationConventions =>
             new List<string>
             {
                 ConventionValues.CamelCaseElementName,

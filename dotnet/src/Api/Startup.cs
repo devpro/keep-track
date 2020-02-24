@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using AutoMapper;
 using KeepTrack.CarComponent.Infrastructure.MongoDb.DependencyInjection;
+using KeepTrack.InventoryComponent.Infrastructure.MongoDb.DependencyInjection;
 using KeepTrack.MovieComponent.Infrastructure.MongoDb.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -50,6 +51,7 @@ namespace KeepTrack.Api
         {
             services.AddSingleton(_configuration.ConfigurationRoot)
                 .AddCarInfrastructureMongoDb()
+                .AddInventoryInfrastructureMongoDb()
                 .AddMovieInfrastructureMongoDb()
                 .AddMongoDbContext<AppConfiguration>();
 
@@ -57,17 +59,20 @@ namespace KeepTrack.Api
 
             ConfigureAuthentication(services, _configuration.ConfigurationRoot);
 
-            services.AddCors(options =>
+            if (_configuration.CorsAllowedOrigin != null)
             {
-                options.AddPolicy(_CorsPolicyName,
-                builder =>
+                services.AddCors(options =>
                 {
-                    builder
-                        .WithOrigins(_configuration.CorsAllowedOrigin.ToArray())
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
+                    options.AddPolicy(_CorsPolicyName,
+                    builder =>
+                    {
+                        builder
+                            .WithOrigins(_configuration.CorsAllowedOrigin.ToArray())
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
                 });
-            });
+            }
 
             services.AddControllers(opts =>
             {
@@ -122,6 +127,7 @@ namespace KeepTrack.Api
             {
                 // Infrastructure MongoDB
                 x.AddProfile(new CarComponent.Infrastructure.MongoDb.MappingProfiles.CarMappingProfile());
+                x.AddProfile(new InventoryComponent.Infrastructure.MongoDb.MappingProfiles.InventoryMappingProfile());
                 x.AddProfile(new MovieComponent.Infrastructure.MongoDb.MappingProfiles.MovieMappingProfile());
                 x.CreateMap<ObjectId, string>().ConvertUsing<ObjectIdToStringConverter>();
                 x.CreateMap<string, ObjectId>().ConvertUsing<StringToObjectIdConverter>();

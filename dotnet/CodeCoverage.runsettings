@@ -29,4 +29,11 @@
       </DataCollector>
     </DataCollectors>
   </DataCollectionRunSettings>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <AllowedOrigins__0>http://localhost:4200</AllowedOrigins__0>
+      <Infrastructure__MongoDB__ConnectionString>mongodb://localhost:27017</Infrastructure__MongoDB__ConnectionString>
+      <Infrastructure__MongoDB__DatabaseName>keeptrack_integrationtests</Infrastructure__MongoDB__DatabaseName>
+    </EnvironmentVariables>
+  </RunConfiguration>
 </RunSettings>

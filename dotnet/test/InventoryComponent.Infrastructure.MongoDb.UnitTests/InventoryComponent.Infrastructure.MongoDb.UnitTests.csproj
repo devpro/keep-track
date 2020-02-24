@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>KeepTrack.CarComponent.Infrastructure.MongoDb.UnitTests</AssemblyName>
-    <RootNamespace>KeepTrack.CarComponent.Infrastructure.MongoDb.UnitTests</RootNamespace>
-    <ProjectGuid>{245ABB46-29DB-4314-9B9F-0899FAD2AA33}</ProjectGuid>
+    <AssemblyName>KeepTrack.InventoryComponent.Infrastructure.MongoDb.UnitTests</AssemblyName>
+    <RootNamespace>KeepTrack.InventoryComponent.Infrastructure.MongoDb.UnitTests</RootNamespace>
+    <ProjectGuid>{042D62F6-C2DD-4DAD-A2B5-9440871875B8}</ProjectGuid>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CarComponent.Infrastructure.MongoDb\CarComponent.Infrastructure.MongoDb.csproj" />
+    <ProjectReference Include="..\..\src\InventoryComponent.Infrastructure.MongoDb\InventoryComponent.Infrastructure.MongoDb.csproj" />
   </ItemGroup>
 
 </Project>

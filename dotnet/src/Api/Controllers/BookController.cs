@@ -2,55 +2,56 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using KeepTrack.Api.Dto;
-using KeepTrack.MovieComponent.Domain;
+using KeepTrack.InventoryComponent.Domain.Models;
+using KeepTrack.InventoryComponent.Domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KeepTrack.Api.Controllers
 {
     /// <summary>
-    /// Movie controller.
+    /// Book controller.
     /// </summary>
     [ApiController]
     [Authorize]
-    [Route("api/movies")]
-    public class MovieController : ControllerBase
+    [Route("api/books")]
+    public class BookController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IMovieRepository _movieRepository;
+        private readonly IBookRepository _bookRepository;
 
         /// <summary>
-        /// Creates a new instance of <see cref="MovieController"/>.
+        /// Creates a new instance of <see cref="BookController"/>.
         /// </summary>
         /// <param name="mapper"></param>
-        /// <param name="movieRepository"></param>
-        public MovieController(IMapper mapper, IMovieRepository movieRepository)
+        /// <param name="bookRepository"></param>
+        public BookController(IMapper mapper, IBookRepository bookRepository)
         {
             _mapper = mapper;
-            _movieRepository = movieRepository;
+            _bookRepository = bookRepository;
         }
 
         /// <summary>
-        /// Gets all the movies.
+        /// Gets all the books.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(List<MovieDto>))]
+        [ProducesResponseType(200, Type = typeof(List<BookDto>))]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> Get()
         {
-            var models = await _movieRepository.FindAllAsync(GetUserId());
-            return Ok(_mapper.Map<List<MovieDto>>(models));
+            var models = await _bookRepository.FindAllAsync(GetUserId());
+            return Ok(_mapper.Map<List<BookDto>>(models));
         }
 
         /// <summary>
-        /// Gets information from a single movie.
+        /// Gets information from a single book.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}", Name = "GetMovieById")]
-        [ProducesResponseType(200, Type = typeof(MovieDto))]
+        [HttpGet("{id}", Name = "GetBookById")]
+        [ProducesResponseType(200, Type = typeof(BookDto))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -61,31 +62,31 @@ namespace KeepTrack.Api.Controllers
                 return BadRequest();
             }
 
-            var model = await _movieRepository.FindOneAsync(id, GetUserId());
+            var model = await _bookRepository.FindOneAsync(id, GetUserId());
             if (model == null)
             {
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<MovieDto>(model));
+            return Ok(_mapper.Map<BookDto>(model));
         }
 
         /// <summary>
-        /// Creates a new movie.
+        /// Creates a new book.
         /// </summary>
         /// <param name="dto"></param>
         [HttpPost]
         [ProducesResponseType(201)]
-        public async Task<IActionResult> Post([FromBody] MovieDto dto)
+        public async Task<IActionResult> Post([FromBody] BookDto dto)
         {
-            var input = _mapper.Map<MovieModel>(dto);
+            var input = _mapper.Map<BookModel>(dto);
             input.OwnerId = GetUserId();
-            var model = await _movieRepository.CreateAsync(input);
-            return CreatedAtRoute("GetMovieById", new { id = model.Id }, _mapper.Map<MovieDto>(model));
+            var model = await _bookRepository.CreateAsync(input);
+            return CreatedAtRoute("GetBookById", new { id = model.Id }, _mapper.Map<BookDto>(model));
         }
 
         /// <summary>
-        /// Updates a movie.
+        /// Updates a book.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="dto"></param>
@@ -93,21 +94,21 @@ namespace KeepTrack.Api.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<IActionResult> Put(string id, [FromBody] MovieDto dto)
+        public async Task<IActionResult> Put(string id, [FromBody] BookDto dto)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return BadRequest();
             }
 
-            var input = _mapper.Map<MovieModel>(dto);
+            var input = _mapper.Map<BookModel>(dto);
             input.OwnerId = GetUserId();
-            await _movieRepository.UpdateAsync(id, input, GetUserId());
+            await _bookRepository.UpdateAsync(id, input, GetUserId());
             return NoContent();
         }
 
         /// <summary>
-        /// Deletes a movie.
+        /// Deletes a book.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -122,7 +123,7 @@ namespace KeepTrack.Api.Controllers
                 return BadRequest();
             }
 
-            await _movieRepository.DeleteAsync(id, GetUserId());
+            await _bookRepository.DeleteAsync(id, GetUserId());
             return NoContent();
         }
     }
