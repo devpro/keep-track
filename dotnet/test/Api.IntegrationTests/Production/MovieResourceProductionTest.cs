@@ -1,49 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
+using AutoFixture;
 using FluentAssertions;
 using KeepTrack.Api.Dto;
 using KeepTrack.Api.IntegrationTests.TestingLogic.Resources;
+using Withywoods.Serialization.Json;
 using Xunit;
 using Xunit.Sdk;
 
 namespace KeepTrack.Api.IntegrationTests.Deployed
 {
     [Trait("Environment", "Production")]
-    public class MovieResourceProductionTest
+    public class MovieResourceProductionTest : ResourceBase
     {
-        private readonly GenericResource<MovieDto> _movieResource;
+        private const string ResourceEndpoint = "api/movies";
 
         public MovieResourceProductionTest()
+            : base(Environment.GetEnvironmentVariable("Keeptrack__Production__Url"))
         {
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri(Environment.GetEnvironmentVariable("Production_Url"))
-            };
-            _movieResource = new GenericResource<MovieDto>(client, "api/movies");
         }
 
         [Fact]
         public async Task MovieResourceProductionFullCycle_IsOk()
         {
             // check not authorized if not logged
-            (await Assert.ThrowsAsync<XunitException>(async () => await _movieResource.FindAll()))
+            (await Assert.ThrowsAsync<XunitException>(async () => await GetAsync<List<MovieDto>>($"/{ResourceEndpoint}")))
                 .Message.Should().Be("Expected object to be OK, but found Unauthorized.");
 
-            await _movieResource.Authenticate();
+            await Authenticate();
 
-            var created = await _movieResource.Create();
+            var input = Fixture.Create<MovieDto>();
+            input.Id = null;
+            var created = await PostAsync<MovieDto>($"/{ResourceEndpoint}", input.ToJson());
 
             try
             {
                 created.Title = "New shiny title";
-                await _movieResource.Update(created.Id, created);
+                await PutAsync<MovieDto>($"/{ResourceEndpoint}/{created.Id}", created.ToJson());
 
-                var updated = await _movieResource.FindOneById(created.Id, created);
+                var updated = await GetAsync<MovieDto>($"/{ResourceEndpoint}/{created.Id}");
                 updated.Should().BeEquivalentTo(created);
 
-                var finalItems = await _movieResource.FindAll();
+                var finalItems = await GetAsync<List<MovieDto>>($"/{ResourceEndpoint}");
                 finalItems.Count.Should().BeGreaterOrEqualTo(1);
                 var firstItem = finalItems.FirstOrDefault(x => x.Id == updated.Id);
                 firstItem.Should().NotBeNull();
@@ -51,7 +51,7 @@ namespace KeepTrack.Api.IntegrationTests.Deployed
             }
             finally
             {
-                await _movieResource.Delete(created.Id);
+                await DeleteAsync($"/{ResourceEndpoint}/{created.Id}");
             }
         }
     }

@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 		.gitignore = .gitignore
 		..\.azure\pipelines\cd.json = ..\.azure\pipelines\cd.json
 		..\.azure\pipelines\ci.yml = ..\.azure\pipelines\ci.yml
-		CodeCoverage.runsettings = CodeCoverage.runsettings
+		Local.runsettings = Local.runsettings
 		..\.azure\pipelines\pkg.yml = ..\.azure\pipelines\pkg.yml
 		README.md = README.md
 	EndProjectSection
