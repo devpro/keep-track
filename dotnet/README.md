@@ -29,7 +29,7 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
 
   - [MongoDB Atlas](https://cloud.mongodb.com/) cluster
 
-## Configuration
+## How to configure
 
 Key | Description | Default value
 --- | ----------- | -------------
@@ -38,39 +38,54 @@ Key | Description | Default value
 
 This values can be easily provided as environment variables (replace ":" by "__") or by configuration (json).
 
-## Build & debug
-
-- Clone the solution
+## How to build
 
 ```bash
-git clone https://github.com/devpro/keep-track.git
-```
-
-- Build the solution
-
-```bash
+dotnet restore
 dotnet build
 ```
-
-- Run the tests
-
-```bash
-dotnet build
-```
-
-- Run the console application:
-
-```bash
-dotnet src\ConsoleApp\bin\Debug\netcoreapp3.1\KeepTrack.ConsoleApp.dll -a CarDemo
-```
-
-- Run the web api application:
 
 ```bash
 dotnet run --project src\Api
 ```
 
-## Deploy
+## How to debug
+
+```bash
+dotnet run --project src\Api
+```
+
+## How to test
+
+For integration tests, to manage the configuration (secrets) you can create a file at the root directory called `Local.runsettings` or define them as environment variables:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <AllowedOrigins__0>http://localhost:4200</AllowedOrigins__0>
+      <Infrastructure__MongoDB__ConnectionString>mongodb://localhost:27017</Infrastructure__MongoDB__ConnectionString>
+      <Infrastructure__MongoDB__DatabaseName>keeptrack_integrationtests</Infrastructure__MongoDB__DatabaseName>
+      <Authentication__JwtBearer__Authority></Authentication__JwtBearer__Authority>
+      <Authentication__JwtBearer__TokenValidation__Issuer></Authentication__JwtBearer__TokenValidation__Issuer>
+      <Authentication__JwtBearer__TokenValidation__Audience></Authentication__JwtBearer__TokenValidation__Audience>
+      <Keeptrack__Production__Url>xxxx</Keeptrack__Production__Url>
+      <Firebase__Application__Key>xxxx</Firebase__Application__Key>
+      <Firebase__Username>xxxx</Firebase__Username>
+      <Firebase__Password>xxxx</Firebase__Password>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>
+```
+
+And execute all tests (unit and integration ones):
+
+```bash
+dotnet test --settings Local.runsettings
+```
+
+## How to deploy
 
 - Add the outbout IP to the MongoDB Atlas cluster
 - Add the application url to Firebase domains
