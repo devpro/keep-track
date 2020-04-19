@@ -25,7 +25,7 @@
     <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="Withywoods.Selenium" Version="1.2.5" />
     <PackageReference Include="Withywoods.Serialization" Version="1.2.5" />
-    <PackageReference Include="Withywoods.WebTesting" Version="1.2.5" />
+    <PackageReference Include="Withywoods.WebTesting" Version="1.2.7" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
