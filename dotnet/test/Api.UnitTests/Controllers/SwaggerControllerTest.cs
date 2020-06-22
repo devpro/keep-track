@@ -9,7 +9,7 @@ namespace KeepTrack.Api.UnitTests.Controllers
     [Trait("Category", "UnitTests")]
     public class SwaggerControllerTest : SeleniumTestBase, IClassFixture<LocalServerFactory<Startup>>
     {
-        private const string _ResourceEndpoint = "swagger";
+        private const string ResourceEndpoint = "swagger";
 
         private readonly LocalServerFactory<Startup> _server;
 
@@ -28,7 +28,7 @@ namespace KeepTrack.Api.UnitTests.Controllers
             try
             {
                 // Arrange & Act
-                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
+                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{ResourceEndpoint}");
 
                 // Assert
                 WebDriver.FindElement(By.ClassName("title"), 60);
