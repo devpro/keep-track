@@ -14,7 +14,7 @@ namespace KeepTrack.Api.UnitTests.Controllers
         private readonly LocalServerFactory<Startup> _server;
 
         public SwaggerControllerTest(LocalServerFactory<Startup> server)
-            : base()
+            : base(new WebDriverOptions { IsHeadless = true })
         {
             _server = server;
             _ = server.CreateClient(); // needed to change server state
