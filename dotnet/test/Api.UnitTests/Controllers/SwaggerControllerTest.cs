@@ -9,12 +9,12 @@ namespace KeepTrack.Api.UnitTests.Controllers
     [Trait("Category", "UnitTests")]
     public class SwaggerControllerTest : SeleniumTestBase, IClassFixture<LocalServerFactory<Startup>>
     {
-        private const string _ResourceEndpoint = "swagger";
+        private const string ResourceEndpoint = "swagger";
 
         private readonly LocalServerFactory<Startup> _server;
 
         public SwaggerControllerTest(LocalServerFactory<Startup> server)
-            : base()
+            : base(new WebDriverOptions { IsHeadless = true })
         {
             _server = server;
             _ = server.CreateClient(); // needed to change server state
@@ -28,7 +28,7 @@ namespace KeepTrack.Api.UnitTests.Controllers
             try
             {
                 // Arrange & Act
-                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{_ResourceEndpoint}");
+                WebDriver.Navigate().GoToUrl($"{_server.RootUri}/{ResourceEndpoint}");
 
                 // Assert
                 WebDriver.FindElement(By.ClassName("title"), 60);

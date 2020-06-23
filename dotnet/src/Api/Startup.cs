@@ -26,7 +26,7 @@ namespace KeepTrack.Api
     {
         #region Private fields & constructor
 
-        private const string _CorsPolicyName = "CorsPolicyName";
+        private const string CorsPolicyName = "CorsPolicyName";
 
         private readonly AppConfiguration _configuration;
 
@@ -63,7 +63,7 @@ namespace KeepTrack.Api
             {
                 services.AddCors(options =>
                 {
-                    options.AddPolicy(_CorsPolicyName,
+                    options.AddPolicy(CorsPolicyName,
                     builder =>
                     {
                         builder
@@ -109,7 +109,7 @@ namespace KeepTrack.Api
 
             app.UseAuthorization();
 
-            app.UseCors(_CorsPolicyName);
+            app.UseCors(CorsPolicyName);
 
             app.UseEndpoints(endpoints =>
             {
