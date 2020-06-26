@@ -21,7 +21,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
     <PackageReference Include="Withywoods.Configuration" Version="1.3.0" />
   </ItemGroup>
 
