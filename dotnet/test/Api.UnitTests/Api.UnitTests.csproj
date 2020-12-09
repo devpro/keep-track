@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>KeepTrack.Api.UnitTests</AssemblyName>
     <RootNamespace>KeepTrack.Api.UnitTests</RootNamespace>
     <ProjectGuid>{4A5DD2D1-38C0-45AA-8208-D3F22F01139B}</ProjectGuid>
@@ -14,18 +14,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoFixture" Version="4.13.0" />
-    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="AutoFixture" Version="4.14.0" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.7" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="85.0.4183.8300" />
-    <PackageReference Include="Moq" Version="4.14.5" />
-    <PackageReference Include="Withywoods.Selenium" Version="1.3.2" />
-    <PackageReference Include="Withywoods.Serialization" Version="1.3.2" />
-    <PackageReference Include="Withywoods.WebTesting" Version="1.3.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="87.0.4280.8800" />
+    <PackageReference Include="Moq" Version="4.15.2" />
+    <PackageReference Include="Withywoods.Selenium" Version="1.4.0" />
+    <PackageReference Include="Withywoods.Serialization" Version="1.4.0" />
+    <PackageReference Include="Withywoods.WebTesting" Version="1.4.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
