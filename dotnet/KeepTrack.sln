@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 		..\.azure\pipelines\cd.json = ..\.azure\pipelines\cd.json
 		..\.azure\pipelines\ci.yml = ..\.azure\pipelines\ci.yml
 		Local.runsettings = Local.runsettings
+		..\.azure\pipelines\nightly.yml = ..\.azure\pipelines\nightly.yml
 		..\.azure\pipelines\pkg.yml = ..\.azure\pipelines\pkg.yml
 		README.md = README.md
 	EndProjectSection
