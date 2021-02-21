@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { MovieService } from 'src/app/backend/services/movie.service';
 import { Movie } from 'src/app/backend/types/movie';
 import { Subscription } from 'rxjs';
@@ -13,6 +13,7 @@ export class MovieComponent implements OnInit, OnDestroy {
 
   movies: Array<Movie> = [];
   userEventsSubscription: Subscription;
+  @ViewChild('titleInput') titleInput: ElementRef;
 
   constructor(private movieService: MovieService, private authenticateService: AuthenticateService) { }
 
@@ -35,7 +36,10 @@ export class MovieComponent implements OnInit, OnDestroy {
   }
 
   create(title: string) {
-    this.movieService.create({ title }).subscribe(movie => this.movies.push(movie));
+    this.movieService.create({ title }).subscribe(movie => {
+      this.movies.push(movie);
+      this.titleInput.nativeElement.value = '';
+    });
   }
 
   delete(movie: Movie) {
