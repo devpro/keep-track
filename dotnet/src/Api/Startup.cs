@@ -63,14 +63,15 @@ namespace KeepTrack.Api
             {
                 services.AddCors(options =>
                 {
-                    options.AddPolicy(CorsPolicyName,
-                    builder =>
-                    {
-                        builder
-                            .WithOrigins(_configuration.CorsAllowedOrigin.ToArray())
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                    });
+                    options.AddPolicy(
+                        CorsPolicyName,
+                        builder =>
+                        {
+                            builder
+                                .WithOrigins(_configuration.CorsAllowedOrigin.ToArray())
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                        });
                 });
             }
 

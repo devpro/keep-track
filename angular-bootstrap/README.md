@@ -9,9 +9,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [NPM (Node.js)](https://nodejs.org/en/)
 * [Angular CLI](https://cli.angular.io/): `npm install -g @angular/cli`
 
+### Configuration
+
+* Create a file `src/environments/environment.dev.ts` and update it
+  * Open your Firebase project and go in the properties pages (General tab), inside "Your apps" part you'll have all Firebase information
+  * Get values from your local API URL (`https://localhost:5011` for example)
+
 ### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+_Warning_: you may encounter CORS issues while testing with Firefox, use Curome for local debug
 
 ### Code scaffolding
 
@@ -36,3 +44,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ### Update procedure
 
 * Update NPM: `npm install --global npm`
+* Follow procedure described by [update.angular.io](https://update.angular.io/)
