@@ -16,6 +16,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { JwtInterceptorService } from './user/services/jwt-interceptor.service';
 import { BackendModule } from './backend/backend.module';
 import { InventoryModule } from './inventory/inventory.module';
+import { FirebaseApp } from '@angular/fire';
 
 @NgModule({
   declarations: [
@@ -44,4 +45,7 @@ import { InventoryModule } from './inventory/inventory.module';
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+  public constructor(app: FirebaseApp) {
+  }
+}

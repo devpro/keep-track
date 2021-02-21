@@ -1,8 +1,8 @@
-import { Injectable, OnInit, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 
@@ -47,5 +47,4 @@ export class AuthenticateService implements OnDestroy {
           console.warn(error);
         });
   }
-
 }

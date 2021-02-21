@@ -21,10 +21,10 @@ describe('AuthenticateService', () => {
   }));
 
   beforeEach(() => {
-    http = TestBed.get(HttpTestingController);
-    firebaseAuth = TestBed.get(AngularFireAuth);
-    jwtInterceptorService = TestBed.get(JwtInterceptorService);
-    authenticateService = TestBed.get(AuthenticateService);
+    http = TestBed.inject(HttpTestingController);
+    firebaseAuth = TestBed.inject(AngularFireAuth);
+    jwtInterceptorService = TestBed.inject(JwtInterceptorService);
+    authenticateService = TestBed.inject(AuthenticateService);
   });
 
   afterAll(() => http.verify());

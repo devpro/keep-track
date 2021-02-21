@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Observable } from 'rxjs';
+import firebase from 'firebase/app';
 import { MovieComponent } from './movie.component';
 import { AppModule } from 'src/app/app.module';
 import { MovieService } from 'src/app/backend/services/movie.service';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
-import { Observable } from 'rxjs';
 
 describe('MovieComponent', () => {
 
@@ -22,7 +23,7 @@ describe('MovieComponent', () => {
     ]
   }));
 
-  it('should listen to userEvents in ngOnInit', async(() => {
+  it('should listen to userEvents in ngOnInit', waitForAsync(() => {
     const fixture = TestBed.createComponent(MovieComponent);
     component = fixture.componentInstance;
     component.ngOnInit();

@@ -1,3 +1,4 @@
+import '@angular/localize/init';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -18,3 +19,6 @@ if (environment.production) {
 
 platformBrowserDynamic(providers).bootstrapModule(AppModule)
   .catch(err => console.log(err));
+
+// BTH 2021-02-21: commented (see issue https://stackoverflow.com/questions/60114758)
+// export { renderModule, renderModuleFactory } from '@angular/platform-server';

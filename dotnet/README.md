@@ -8,23 +8,23 @@
 
 This design of API has been inspired by the [Hexagonal Architecture](https://blog.octo.com/en/hexagonal-architecture-three-principles-and-an-implementation-example/).
 
-## Dependencies
+## Requirements
 
-- [.NET Core 3.1 SDK](dot.net)
-- MongoDB 4.2 database
+- [.NET 5.0 SDK](dot.net)
+- MongoDB 4.4 database
   - Local server
 
   ```bash
-  cd D:\Programs\mongodb-4.2.3\bin
+  cd D:\Programs\mongodb-4.4.4\bin
   md log
   md data
   mongod --logpath log/mongod.log --dbpath data --port 27017
   ```
 
-  - Docker
+  - [Docker](https://hub.docker.com/_/mongo/)
 
   ```bash
-  docker run --name mongodb422 -d -p 27017:27017 mongo
+  docker run --name mongodb444 -d -p 27017:27017 mongo:4.4.4
   ```
 
   - [MongoDB Atlas](https://cloud.mongodb.com/) cluster
@@ -38,15 +38,36 @@ Key | Description | Default value
 
 This values can be easily provided as environment variables (replace ":" by "__") or by configuration (json).
 
+Template for `src/Api/appsettings.Development.json`:
+
+```json
+{
+  "Infrastructure": {
+    "MongoDB": {
+      "ConnectionString": "mongodb://localhost:27017",
+      "DatabaseName": "inventory"
+    }
+  },
+  "AllowedOrigins": [
+    "http://localhost:4200"
+  ],
+  "Authentication": {
+    "JwtBearer": {
+      "Authority": "https://securetoken.google.com/<firebase-project-id>",
+      "TokenValidation": {
+        "Issuer": "https://securetoken.google.com/<firebase-project-id>",
+        "Audience": "<firebase-project-id>"
+      }
+    }
+  }
+}
+```
+
 ## How to build
 
 ```bash
 dotnet restore
 dotnet build
-```
-
-```bash
-dotnet run --project src\Api
 ```
 
 ## How to debug
