@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BookComponent } from './book.component';
 import { AppModule } from 'src/app/app.module';
 import { BookService } from 'src/app/backend/services/book.service';
@@ -22,7 +22,7 @@ describe('BookComponent', () => {
     ]
   }));
 
-  it('should listen to userEvents in ngOnInit', async(() => {
+  it('should listen to userEvents in ngOnInit', waitForAsync(() => {
     const fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
     component.ngOnInit();

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MovieComponent } from './movie.component';
 import { AppModule } from 'src/app/app.module';
 import { MovieService } from 'src/app/backend/services/movie.service';
@@ -22,7 +22,7 @@ describe('MovieComponent', () => {
     ]
   }));
 
-  it('should listen to userEvents in ngOnInit', async(() => {
+  it('should listen to userEvents in ngOnInit', waitForAsync(() => {
     const fixture = TestBed.createComponent(MovieComponent);
     component = fixture.componentInstance;
     component.ngOnInit();
