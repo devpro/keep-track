@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import firebase from 'firebase/app';
-require('firebase/auth');
+import 'firebase/auth';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 
 @Injectable({
