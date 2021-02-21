@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Observable } from 'rxjs';
+import firebase from 'firebase/app';
 import { BookComponent } from './book.component';
 import { AppModule } from 'src/app/app.module';
 import { BookService } from 'src/app/backend/services/book.service';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
-import { Observable } from 'rxjs';
 
 describe('BookComponent', () => {
 
