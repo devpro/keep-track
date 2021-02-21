@@ -47,4 +47,5 @@ export class AuthenticateService implements OnDestroy {
           console.warn(error);
         });
   }
+
 }
