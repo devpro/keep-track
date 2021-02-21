@@ -8,12 +8,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 * [NPM (Node.js)](https://nodejs.org/en/)
 * [Angular CLI](https://cli.angular.io/): `npm install -g @angular/cli`
+* [Firebase CLI](https://www.npmjs.com/package/firebase-tools): `npm install -g firebase-tools`
 
 ### Configuration
 
 * Create a file `src/environments/environment.dev.ts` and update it (this file is not purposed to node save secret values)
   * Open your project in the [Firebase console](https://console.firebase.google.com/), go in the properties pages (General tab), inside "Your apps" part you'll have all Firebase information
   * Get value from your local API URL (`https://localhost:5011`)
+
+### Installation of package
+
+Run `npm install` to load all dependencies.
 
 ### Development server
 
