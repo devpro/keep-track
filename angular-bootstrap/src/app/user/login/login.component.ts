@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthenticateService } from '../services/authenticate.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',

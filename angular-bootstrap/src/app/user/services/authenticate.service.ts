@@ -32,9 +32,8 @@ export class AuthenticateService implements OnDestroy {
     // See https://firebase.google.com/docs/auth/web/github-auth
     const provider = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
-      this.user = result.user;
     }).catch(function(error) {
-      console.warn(`Error code: ${error.code}, message: ${error.message}, email: ${error.email}, credential: ${error.credential}`);
+      console.warn(error);
     });
   }
 
