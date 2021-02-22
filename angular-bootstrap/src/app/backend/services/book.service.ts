@@ -23,4 +23,5 @@ export class BookService {
   delete(input: Book): Observable<number> {
     return this.httpClient.delete<number>(`${environment.keepTrackApiUrl}/api/books/${input.id}`);
   }
+
 }

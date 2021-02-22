@@ -1,6 +1,6 @@
 ﻿namespace KeepTrack.InventoryComponent.Domain.Models
 {
-    public class BookModel : IDataModel
+    public class TvShowModel : IDataModel
     {
         public string Id { get; set; }
 

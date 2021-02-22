@@ -3,28 +3,28 @@ import { Observable } from 'rxjs';
 import firebase from 'firebase/app';
 import { AppModule } from 'src/app/app.module';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
-import { MovieComponent } from './movie.component';
-import { MovieService } from 'src/app/backend/services/movie.service';
+import { TvShowService } from 'src/app/backend/services/tv-show.service';
+import { TvShowComponent } from './tv-show.component';
 
-describe('MovieComponent', () => {
+describe('TvShowComponent', () => {
 
-  const fakeMovieService = jasmine.createSpyObj('MovieService', ['list']);
+  const fakeTvShowService = jasmine.createSpyObj('TvShowService', ['list']);
   const fakeAuthenticateService = {
     user: new Observable<firebase.User>()
   } as AuthenticateService;
 
-  let component: MovieComponent;
+  let component: TvShowComponent;
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [AppModule],
     providers: [
-      { provide: MovieService, useValue: fakeMovieService },
+      { provide: TvShowService, useValue: fakeTvShowService },
       { provide: AuthenticateService, useValue: fakeAuthenticateService }
     ]
   }));
 
   it('should listen to userEvents in ngOnInit', waitForAsync(() => {
-    const fixture = TestBed.createComponent(MovieComponent);
+    const fixture = TestBed.createComponent(TvShowComponent);
     component = fixture.componentInstance;
     component.ngOnInit();
   }));

@@ -8,19 +8,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace KeepTrack.Api.Controllers
 {
     /// <summary>
-    /// Book controller.
+    /// Video Games controller.
     /// </summary>
     [ApiController]
     [Authorize]
-    [Route("api/books")]
-    public class BookController : DataCrudController<BookDto, BookModel>
+    [Route("api/video-games")]
+    public class VideoGameController : DataCrudController<VideoGameDto, VideoGameModel>
     {
         /// <summary>
-        /// Creates a new instance of <see cref="BookController"/>.
+        /// Creates a new instance of <see cref="TvShowController"/>.
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="dataRepository"></param>
-        public BookController(IMapper mapper, IBookRepository dataRepository)
+        public VideoGameController(IMapper mapper, IVideoGameRepository dataRepository)
             : base(mapper, dataRepository)
         {
         }

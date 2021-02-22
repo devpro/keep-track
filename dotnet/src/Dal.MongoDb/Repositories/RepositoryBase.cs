@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using KeepTrack.Dal.MongoDb.Entities;
@@ -9,6 +10,11 @@ using Withywoods.Dal.MongoDb;
 
 namespace KeepTrack.Dal.MongoDb.Repositories
 {
+    /// <summary>
+    /// MongoDB Data Access Layer repository abstract class.
+    /// </summary>
+    /// <typeparam name="T">Data Model class</typeparam>
+    /// <typeparam name="U">Business class</typeparam>
     public abstract class RepositoryBase<T, U> : Withywoods.Dal.MongoDb.Repositories.RepositoryBase where U : IEntity
     {
         protected RepositoryBase(IMongoDbContext mongoDbContext, ILogger<RepositoryBase<T, U>> logger, IMapper mapper)
@@ -22,6 +28,13 @@ namespace KeepTrack.Dal.MongoDb.Repositories
             var collection = GetCollection<U>();
             var dbEntries = await collection.FindAsync(x => x.Id == objectId && x.OwnerId == ownerId);
             return Mapper.Map<T>(dbEntries.FirstOrDefault());
+        }
+
+        public async Task<List<T>> FindAllAsync(string ownerId)
+        {
+            var collection = GetCollection<U>();
+            var dbEntries = await collection.FindAsync(x => x.OwnerId == ownerId);
+            return Mapper.Map<List<T>>(dbEntries.ToList());
         }
 
         public async Task<T> CreateAsync(T model)

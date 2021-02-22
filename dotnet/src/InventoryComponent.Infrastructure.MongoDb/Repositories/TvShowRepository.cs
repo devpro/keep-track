@@ -8,13 +8,13 @@ using Withywoods.Dal.MongoDb;
 
 namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
 {
-    public class BookRepository : RepositoryBase<BookModel, Book>, IDataRepository<BookModel>, IBookRepository
+    public class TvShowRepository : RepositoryBase<TvShowModel, TvShow>, IDataRepository<TvShowModel>, ITvShowRepository
     {
-        public BookRepository(IMongoDbContext mongoDbContext, ILogger<BookRepository> logger, IMapper mapper)
+        public TvShowRepository(IMongoDbContext mongoDbContext, ILogger<TvShowRepository> logger, IMapper mapper)
             : base(mongoDbContext, logger, mapper)
         {
         }
 
-        protected override string CollectionName => "book";
+        protected override string CollectionName => "tvshow";
     }
 }

@@ -12,15 +12,15 @@ namespace KeepTrack.Api.Controllers
     /// </summary>
     [ApiController]
     [Authorize]
-    [Route("api/books")]
-    public class BookController : DataCrudController<BookDto, BookModel>
+    [Route("api/tv-shows")]
+    public class TvShowController : DataCrudController<TvShowDto, TvShowModel>
     {
         /// <summary>
-        /// Creates a new instance of <see cref="BookController"/>.
+        /// Creates a new instance of <see cref="TvShowController"/>.
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="dataRepository"></param>
-        public BookController(IMapper mapper, IBookRepository dataRepository)
+        public TvShowController(IMapper mapper, ITvShowRepository dataRepository)
             : base(mapper, dataRepository)
         {
         }

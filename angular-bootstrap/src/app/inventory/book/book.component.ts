@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BookService } from 'src/app/backend/services/book.service';
 import { Book } from 'src/app/backend/types/book';
-import { Subscription } from 'rxjs';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class BookComponent implements OnInit, OnDestroy {
 
   books: Array<Book> = [];
   userEventsSubscription: Subscription;
+  @ViewChild('titleInput') titleInput: ElementRef;
 
   constructor(private bookService: BookService, private authenticateService: AuthenticateService) { }
 
@@ -35,7 +36,10 @@ export class BookComponent implements OnInit, OnDestroy {
   }
 
   create(title: string) {
-    this.bookService.create({ title }).subscribe(book => this.books.push(book));
+    this.bookService.create({ title }).subscribe(book => {
+      this.books.push(book);
+      this.titleInput.nativeElement.value = '';
+    });
   }
 
   delete(book: Book) {

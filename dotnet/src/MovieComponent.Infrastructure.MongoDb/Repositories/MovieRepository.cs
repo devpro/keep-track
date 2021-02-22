@@ -18,12 +18,5 @@ namespace KeepTrack.MovieComponent.Infrastructure.MongoDb.Repositories
         }
 
         protected override string CollectionName => "movie";
-
-        public async Task<List<MovieModel>> FindAllAsync(string ownerId)
-        {
-            var collection = GetCollection<Movie>();
-            var dbEntries = await collection.FindAsync(x => x.OwnerId == ownerId);
-            return Mapper.Map<List<MovieModel>>(dbEntries.ToList());
-        }
     }
 }

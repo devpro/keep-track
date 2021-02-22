@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MovieService } from 'src/app/backend/services/movie.service';
 import { Movie } from 'src/app/backend/types/movie';
-import { Subscription } from 'rxjs';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
 
 @Component({

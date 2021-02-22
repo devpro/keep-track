@@ -2,7 +2,7 @@
 
 namespace KeepTrack.InventoryComponent.Domain.Repositories
 {
-    public interface IBookRepository : IDataRepository<BookModel>
+    public interface ITvShowRepository : IDataRepository<TvShowModel>
     {
     }
 }

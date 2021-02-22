@@ -20,6 +20,12 @@
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
             <a class="nav-link text-dark" [routerLink]="['/movies']">Movies</a>
           </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
+            <a class="nav-link text-dark" [routerLink]="['/tv-shows']">TV Shows</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
+            <a class="nav-link text-dark" [routerLink]="['/video-games']">Video Games</a>
+          </li>
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!user">
             <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
           </li>
