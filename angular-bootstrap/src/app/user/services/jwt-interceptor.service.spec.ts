@@ -6,7 +6,7 @@ describe('JwtInterceptorService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: JwtInterceptorService = TestBed.get(JwtInterceptorService);
+    const service: JwtInterceptorService = TestBed.inject(JwtInterceptorService);
     expect(service).toBeTruthy();
   });
 });

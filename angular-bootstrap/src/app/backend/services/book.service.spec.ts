@@ -16,8 +16,8 @@ describe('BookService', () => {
   }));
 
   beforeEach(() => {
-    http = TestBed.get(HttpTestingController);
-    bookService = TestBed.get(BookService);
+    http = TestBed.inject(HttpTestingController);
+    bookService = TestBed.inject(BookService);
   });
 
   afterAll(() => http.verify());

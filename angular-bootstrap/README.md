@@ -28,7 +28,7 @@ _Warning_: you may encounter CORS issues while testing with Firefox, use Chrome 
 
 ### Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component <folder>/<component-name> --module=<module-name>` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ### Build
 
@@ -40,7 +40,11 @@ Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.gi
 
 ### Running end-to-end tests
 
-Run `npm run  e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+### Running linter
+
+Run `npm run lint` to validate source code standards.
 
 ### Further help
 

@@ -16,8 +16,8 @@ describe('MovieService', () => {
   }));
 
   beforeEach(() => {
-    http = TestBed.get(HttpTestingController);
-    movieService = TestBed.get(MovieService);
+    http = TestBed.inject(HttpTestingController);
+    movieService = TestBed.inject(MovieService);
   });
 
   afterAll(() => http.verify());
