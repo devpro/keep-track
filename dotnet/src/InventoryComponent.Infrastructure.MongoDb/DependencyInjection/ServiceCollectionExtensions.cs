@@ -14,6 +14,8 @@ namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.DependencyInjectio
             }
 
             services.TryAddTransient<Domain.Repositories.IBookRepository, Repositories.BookRepository>();
+            services.TryAddTransient<Domain.Repositories.ITvShowRepository, Repositories.TvShowRepository>();
+            services.TryAddTransient<Domain.Repositories.IVideoGameRepository, Repositories.VideoGameRepository>();
 
             return services;
         }

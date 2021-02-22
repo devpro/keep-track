@@ -81,6 +81,8 @@ namespace KeepTrack.Api
             });
 
             ConfigureSwagger(services, _configuration.OpenApiInfo);
+
+            services.AddHealthChecks();
         }
 
         /// <summary>
@@ -115,6 +117,7 @@ namespace KeepTrack.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
 

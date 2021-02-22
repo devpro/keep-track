@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment.dev';
 import { MovieService } from './movie.service';
 import { Movie } from '../types/movie';
-import { environment } from 'src/environments/environment.dev';
 
 describe('MovieService', () => {
 
@@ -16,8 +16,8 @@ describe('MovieService', () => {
   }));
 
   beforeEach(() => {
-    http = TestBed.get(HttpTestingController);
-    movieService = TestBed.get(MovieService);
+    http = TestBed.inject(HttpTestingController);
+    movieService = TestBed.inject(MovieService);
   });
 
   afterAll(() => http.verify());

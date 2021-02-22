@@ -8,12 +8,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 * [NPM (Node.js)](https://nodejs.org/en/)
 * [Angular CLI](https://cli.angular.io/): `npm install -g @angular/cli`
+* [Firebase CLI](https://www.npmjs.com/package/firebase-tools): `npm install -g firebase-tools`
 
 ### Configuration
 
 * Create a file `src/environments/environment.dev.ts` and update it (this file is not purposed to node save secret values)
   * Open your project in the [Firebase console](https://console.firebase.google.com/), go in the properties pages (General tab), inside "Your apps" part you'll have all Firebase information
   * Get value from your local API URL (`https://localhost:5011`)
+
+### Installation of package
+
+Run `npm install` to load all dependencies.
 
 ### Development server
 
@@ -23,7 +28,7 @@ _Warning_: you may encounter CORS issues while testing with Firefox, use Chrome 
 
 ### Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component <folder>/<component-name> --module=<module-name>` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ### Build
 
@@ -35,7 +40,11 @@ Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.gi
 
 ### Running end-to-end tests
 
-Run `npm run  e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+### Running linter
+
+Run `npm run lint` to validate source code standards.
 
 ### Further help
 

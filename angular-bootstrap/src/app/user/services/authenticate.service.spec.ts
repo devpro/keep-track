@@ -5,6 +5,7 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthenticateService } from './authenticate.service';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { environment } from 'src/environments/environment.dev';
+import { AppModule } from 'src/app/app.module';
 
 describe('AuthenticateService', () => {
   let authenticateService: AuthenticateService;
@@ -16,7 +17,8 @@ describe('AuthenticateService', () => {
     imports: [
       HttpClientTestingModule,
       AngularFireModule.initializeApp(environment.firebase),
-      AngularFireAuthModule
+      AngularFireAuthModule,
+      AppModule
     ]
   }));
 
