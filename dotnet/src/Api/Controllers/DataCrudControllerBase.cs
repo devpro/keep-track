@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using KeepTrack.InventoryComponent.Domain.Repositories;
+using KeepTrack.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KeepTrack.Api.Controllers
@@ -11,20 +11,18 @@ namespace KeepTrack.Api.Controllers
     /// </summary>
     /// <typeparam name="T">Data Transfer Object</typeparam>
     /// <typeparam name="U">Domain Model</typeparam>
-    public abstract class DataCrudController<T, U> : ControllerBase
-        where U : InventoryComponent.Domain.Models.IDataModel
+    public abstract class DataCrudControllerBase<T, U> : ControllerBase
+        where U : Domain.Models.IDataModel
     {
         private readonly IMapper _mapper;
         private readonly IDataRepository<U> _dataRepository;
-
-        private const string Toto = "eddd";
 
         /// <summary>
         /// Creates a new instance.
         /// </summary>
         /// <param name="mapper"></param>
         /// <param name="dataRepository"></param>
-        protected DataCrudController(IMapper mapper, IDataRepository<U> dataRepository)
+        protected DataCrudControllerBase(IMapper mapper, IDataRepository<U> dataRepository)
         {
             _mapper = mapper;
             _dataRepository = dataRepository;

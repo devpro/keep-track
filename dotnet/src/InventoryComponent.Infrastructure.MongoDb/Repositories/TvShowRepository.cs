@@ -8,7 +8,7 @@ using Withywoods.Dal.MongoDb;
 
 namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
 {
-    public class TvShowRepository : RepositoryBase<TvShowModel, TvShow>, IDataRepository<TvShowModel>, ITvShowRepository
+    public class TvShowRepository : RepositoryBase<TvShowModel, TvShow>, ITvShowRepository
     {
         public TvShowRepository(IMongoDbContext mongoDbContext, ILogger<TvShowRepository> logger, IMapper mapper)
             : base(mongoDbContext, logger, mapper)

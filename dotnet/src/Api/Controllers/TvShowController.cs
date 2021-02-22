@@ -13,7 +13,7 @@ namespace KeepTrack.Api.Controllers
     [ApiController]
     [Authorize]
     [Route("api/tv-shows")]
-    public class TvShowController : DataCrudController<TvShowDto, TvShowModel>
+    public class TvShowController : DataCrudControllerBase<TvShowDto, TvShowModel>
     {
         /// <summary>
         /// Creates a new instance of <see cref="TvShowController"/>.

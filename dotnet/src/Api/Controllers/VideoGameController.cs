@@ -13,7 +13,7 @@ namespace KeepTrack.Api.Controllers
     [ApiController]
     [Authorize]
     [Route("api/video-games")]
-    public class VideoGameController : DataCrudController<VideoGameDto, VideoGameModel>
+    public class VideoGameController : DataCrudControllerBase<VideoGameDto, VideoGameModel>
     {
         /// <summary>
         /// Creates a new instance of <see cref="TvShowController"/>.

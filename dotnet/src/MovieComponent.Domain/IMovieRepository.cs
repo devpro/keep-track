@@ -1,18 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using KeepTrack.Domain.Repositories;
 
 namespace KeepTrack.MovieComponent.Domain
 {
-    public interface IMovieRepository
+    public interface IMovieRepository : IDataRepository<MovieModel>
     {
-        Task<MovieModel> FindOneAsync(string id, string ownerId);
-
-        Task<List<MovieModel>> FindAllAsync(string ownerId);
-
-        Task<MovieModel> CreateAsync(MovieModel model);
-
-        Task<long> UpdateAsync(string id, MovieModel model, string ownerId);
-
-        Task<long> DeleteAsync(string id, string ownerId);
     }
 }

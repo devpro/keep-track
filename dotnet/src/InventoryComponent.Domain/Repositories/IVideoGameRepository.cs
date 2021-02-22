@@ -1,4 +1,5 @@
-﻿using KeepTrack.InventoryComponent.Domain.Models;
+﻿using KeepTrack.Domain.Repositories;
+using KeepTrack.InventoryComponent.Domain.Models;
 
 namespace KeepTrack.InventoryComponent.Domain.Repositories
 {

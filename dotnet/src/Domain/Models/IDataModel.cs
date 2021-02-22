@@ -1,4 +1,4 @@
-﻿namespace KeepTrack.InventoryComponent.Domain.Models
+﻿namespace KeepTrack.Domain.Models
 {
     public interface IDataModel
     {

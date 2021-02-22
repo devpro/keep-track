@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using KeepTrack.Dal.MongoDb.Repositories;
 using KeepTrack.MovieComponent.Domain;
 using KeepTrack.MovieComponent.Infrastructure.MongoDb.Entities;
 using Microsoft.Extensions.Logging;
-using MongoDB.Driver;
 using Withywoods.Dal.MongoDb;
 
 namespace KeepTrack.MovieComponent.Infrastructure.MongoDb.Repositories

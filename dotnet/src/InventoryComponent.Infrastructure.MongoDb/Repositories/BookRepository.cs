@@ -8,7 +8,7 @@ using Withywoods.Dal.MongoDb;
 
 namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
 {
-    public class BookRepository : RepositoryBase<BookModel, Book>, IDataRepository<BookModel>, IBookRepository
+    public class BookRepository : RepositoryBase<BookModel, Book>, IBookRepository
     {
         public BookRepository(IMongoDbContext mongoDbContext, ILogger<BookRepository> logger, IMapper mapper)
             : base(mongoDbContext, logger, mapper)

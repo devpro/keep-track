@@ -13,7 +13,7 @@ namespace KeepTrack.Api.Controllers
     [ApiController]
     [Authorize]
     [Route("api/books")]
-    public class BookController : DataCrudController<BookDto, BookModel>
+    public class BookController : DataCrudControllerBase<BookDto, BookModel>
     {
         /// <summary>
         /// Creates a new instance of <see cref="BookController"/>.

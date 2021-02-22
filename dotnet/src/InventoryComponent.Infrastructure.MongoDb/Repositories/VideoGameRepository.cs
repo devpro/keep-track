@@ -8,7 +8,7 @@ using Withywoods.Dal.MongoDb;
 
 namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
 {
-    public class VideoGameRepository : RepositoryBase<VideoGameModel, VideoGame>, IDataRepository<VideoGameModel>, IVideoGameRepository
+    public class VideoGameRepository : RepositoryBase<VideoGameModel, VideoGame>, IVideoGameRepository
     {
         public VideoGameRepository(IMongoDbContext mongoDbContext, ILogger<VideoGameRepository> logger, IMapper mapper)
             : base(mongoDbContext, logger, mapper)

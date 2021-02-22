@@ -1,6 +1,8 @@
-﻿namespace KeepTrack.MovieComponent.Domain
+﻿using KeepTrack.Domain.Models;
+
+namespace KeepTrack.MovieComponent.Domain
 {
-    public class MovieModel
+    public class MovieModel : IDataModel
     {
         public string Id { get; set; }
 

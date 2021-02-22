@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KeepTrack.InventoryComponent.Domain.Models;
+using KeepTrack.Domain.Models;
 
-namespace KeepTrack.InventoryComponent.Domain.Repositories
+namespace KeepTrack.Domain.Repositories
 {
     public interface IDataRepository<T> where T : IDataModel
     {

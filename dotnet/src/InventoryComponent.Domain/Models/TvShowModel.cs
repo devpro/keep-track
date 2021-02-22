@@ -1,4 +1,6 @@
-﻿namespace KeepTrack.InventoryComponent.Domain.Models
+﻿using KeepTrack.Domain.Models;
+
+namespace KeepTrack.InventoryComponent.Domain.Models
 {
     public class TvShowModel : IDataModel
     {
