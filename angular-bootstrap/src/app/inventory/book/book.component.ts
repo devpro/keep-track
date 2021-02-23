@@ -11,9 +11,10 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 })
 export class BookComponent implements OnInit, OnDestroy {
 
+  @ViewChild('titleInput') titleInput: ElementRef;
+
   books: Array<Book> = [];
   userEventsSubscription: Subscription;
-  @ViewChild('titleInput') titleInput: ElementRef;
 
   constructor(private bookService: BookService, private authenticateService: AuthenticateService) { }
 
