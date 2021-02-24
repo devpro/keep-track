@@ -11,9 +11,10 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 })
 export class MovieComponent implements OnInit, OnDestroy {
 
+  @ViewChild('titleInput') titleInput: ElementRef;
+
   movies: Array<Movie> = [];
   userEventsSubscription: Subscription;
-  @ViewChild('titleInput') titleInput: ElementRef;
 
   constructor(private movieService: MovieService, private authenticateService: AuthenticateService) { }
 

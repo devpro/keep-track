@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http/http';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class JwtInterceptorService {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.token) {
-      const clone = req.clone({ setHeaders: { 'Authorization': `Bearer ${this.token}` } });
+      const clone = req.clone({ setHeaders: { Authorization: `Bearer ${this.token}` } });
       return next.handle(clone);
     }
     return next.handle(req);
@@ -30,4 +30,5 @@ export class JwtInterceptorService {
   removeJwtToken() {
     this.token = null;
   }
+
 }

@@ -11,9 +11,10 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 })
 export class TvShowComponent implements OnInit, OnDestroy {
 
+  @ViewChild('titleInput') titleInput: ElementRef;
+
   tvShows: Array<TvShow> = [];
   userEventsSubscription: Subscription;
-  @ViewChild('titleInput') titleInput: ElementRef;
 
   constructor(private tvShowService: TvShowService, private authenticateService: AuthenticateService) { }
 

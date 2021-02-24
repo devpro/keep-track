@@ -11,9 +11,10 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 })
 export class VideoGameComponent implements OnInit, OnDestroy {
 
+  @ViewChild('titleInput') titleInput: ElementRef;
+
   videoGames: Array<VideoGame> = [];
   userEventsSubscription: Subscription;
-  @ViewChild('titleInput') titleInput: ElementRef;
 
   constructor(private videoGameService: VideoGameService, private authenticateService: AuthenticateService) { }
 

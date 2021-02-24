@@ -15,11 +15,13 @@ export class AuthenticateService implements OnDestroy {
 
   constructor(private firebaseAuth: AngularFireAuth, private jwtInterceptorService: JwtInterceptorService) {
     this.user = firebaseAuth.authState;
-    this.userEventsSubscription = this.user.subscribe(user => { if (user) {
-      user.getIdToken().then(token => {
-        jwtInterceptorService.setJwtToken(token);
-      });
-    }});
+    this.userEventsSubscription = this.user.subscribe(user => {
+      if (user) {
+        user.getIdToken().then(token => {
+          jwtInterceptorService.setJwtToken(token);
+        });
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -31,18 +33,20 @@ export class AuthenticateService implements OnDestroy {
   signInWithGitHub() {
     // See https://firebase.google.com/docs/auth/web/github-auth
     const provider = new firebase.auth.GithubAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-    }).catch(function(error) {
-      console.warn(error);
-    });
+    firebase.auth()
+      .signInWithPopup(provider)
+        .then(result => {})
+        .catch(error => {
+          console.warn(error);
+        });
   }
 
   logout() {
     this.jwtInterceptorService.removeJwtToken();
     firebase.auth()
       .signOut()
-        .then(function() {})
-        .catch(function(error) {
+        .then(result => {})
+        .catch(error => {
           console.warn(error);
         });
   }

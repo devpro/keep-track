@@ -12,12 +12,10 @@ export class AuthGuard implements CanActivate {
   constructor(public authenticateService: AuthenticateService) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
-    : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authenticateService.user.pipe(
-      map(user => {
-        return user !== null;
-      }),
+      map(user => (user !== null)),
       catchError((error) => {
         console.warn(error);
         return throwError(error);
