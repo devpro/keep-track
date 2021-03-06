@@ -1,0 +1,40 @@
+﻿@inherits LayoutComponentBase
+@inject KeepTrack.BlazorWebAssemblyApp.Authorization.ExternalAuthStateProvider externalAuthStateProvider
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+        <p>@User</p>
+    </div>
+
+    <div class="main">
+        <div class="top-row px-4 auth">
+            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+        </div>
+
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>
+</div>
+
+@code {
+    public static string User { get; set; } = "Not Signed In";
+
+    [JSInvokable]
+    public void LoginCallback(string email, string display, string token)
+    {
+        User = display;
+        externalAuthStateProvider.UpdateAuthentitationState(display, email, token);
+        InvokeAsync(StateHasChanged);
+    }
+
+    [JSInvokable]
+    public void LogoutCallback()
+    {
+        Console.WriteLine("Callback in C# called");
+        User = "Not Signed In";
+        externalAuthStateProvider.UpdateAuthentitationState(null, null, null);
+        InvokeAsync(StateHasChanged);
+    }
+}

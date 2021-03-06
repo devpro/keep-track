@@ -1,0 +1,44 @@
+﻿@page "/fetchdata"
+@inject HttpClient Http
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (videoGames == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Platform</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var videoGame in videoGames)
+            {
+            <tr>
+                <td>@videoGame.Id</td>
+                <td>@videoGame.Title</td>
+                <td>@videoGame.Year</td>
+                <td>@videoGame.Platform</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private VideoGameDto[] videoGames;
+
+    protected override async Task OnInitializedAsync()
+    {
+        videoGames = await Http.GetFromJsonAsync<VideoGameDto[]>("api/video-games");
+    }
+}
