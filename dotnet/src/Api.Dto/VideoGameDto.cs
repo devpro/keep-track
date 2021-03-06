@@ -14,5 +14,15 @@
         /// Video Game title.
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Plaform.
+        /// </summary>
+        public string Platform { get; set; }
+
+        /// <summary>
+        /// Year (of the released date).
+        /// </summary>
+        public int Year { get; set; }
     }
 }
