@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class LoginComponent {
 
-  constructor(private authenticateService: AuthenticateService) {
+  constructor(private authenticateService: AuthenticateService, private router: Router) {
   }
 
   signInWithGitHub() {
     this.authenticateService.signInWithGitHub();
+    this.router.navigate(['/']);
   }
 
 }
