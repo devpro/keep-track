@@ -43,13 +43,10 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine("FetchData OnInitializedAsync");
-
         var authState = await authenticationStateTask;
         var user = authState.User;
 
         var token = user.Identity.IsAuthenticated ? user.Claims.ToList().FirstOrDefault(x => x.Type == "Token") : null;
-        Console.WriteLine($"token {token}");
         if (token == null)
         {
             videoGames = new VideoGameDto[0];

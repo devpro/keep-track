@@ -21,9 +21,7 @@ namespace KeepTrack.BlazorWebAssemblyApp
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddScoped<ExternalAuthStateProvider>();
             builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<ExternalAuthStateProvider>());
-
-            // TODO: put in config, use HttClientFactory
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5011") });
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["Keeptrack:Api:Url"]) });
 
             await builder.Build().RunAsync();
         }

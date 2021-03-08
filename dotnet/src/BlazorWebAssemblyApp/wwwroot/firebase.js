@@ -14,7 +14,6 @@ function login(provider, instance) {
     console.log('Call Firefase auth signInWithPopup');
     firebase.auth().signInWithPopup(provider).then(function (result) {
       console.log('Result firefase auth signInWithPopup');
-      console.log(result);
       var user = result.user;
       saveUserInformation(user.displayName, user.email, user.za);
       instance.invokeMethod('LoginCallback', user.email, user.displayName, user.za);
