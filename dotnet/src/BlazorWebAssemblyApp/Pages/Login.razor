@@ -24,8 +24,16 @@
     [JSInvokable]
     public void LoginCallback(string email, string display, string token)
     {
-        externalAuthStateProvider.UpdateAuthentitationState(display, email, token);
+        externalAuthStateProvider.UpdateAuthentitationStateAsync(display, email, token);
         InvokeAsync(StateHasChanged);
         NavigationManager.NavigateTo($"/");
+    }
+
+    [JSInvokable]
+    public void LoginErrorCallback(string message)
+    {
+        Console.WriteLine($"Error: {message}");
+        externalAuthStateProvider.UpdateAuthentitationStateAsync(null, null, null);
+        InvokeAsync(StateHasChanged);
     }
 }

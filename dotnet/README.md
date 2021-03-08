@@ -31,6 +31,8 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
 
 ## How to configure
 
+### API
+
 Key | Description | Default value
 --- | ----------- | -------------
 `Infrastructure:MongoDB:ConnectionString` | MongoDB connection string |
@@ -63,6 +65,25 @@ Template for `src/Api/appsettings.Development.json`:
 }
 ```
 
+### Blazor WebAssembly Firebase information
+
+Create a file `firebase.config.js` in `src/BlasorWebAssemblyApp/wwwroot`:
+
+```js
+var firebaseConfig = {
+  apiKey: "******",
+  authDomain: "******.firebaseapp.com",
+  databaseURL: "******.firebaseio.com",
+  projectId: "******",
+  storageBucket: "******.appspot.com",
+  messagingSenderId: "******",
+  appId: "1:******:web:******",
+  measurementId: "******"
+};
+firebase.initializeApp(firebaseConfig);
+
+```
+
 ## How to build
 
 ```bash
@@ -73,7 +94,11 @@ dotnet build
 ## How to debug
 
 ```bash
+# run the API (https://localhost:5011/)
 dotnet run --project src\Api
+
+# run the Blazor WebAssembly web app (https://localhost:5021)
+dotnet watch run --project src\BlazorWebAssemblyApp
 ```
 
 ## How to test

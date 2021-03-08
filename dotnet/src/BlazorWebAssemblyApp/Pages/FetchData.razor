@@ -1,5 +1,6 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
+@inject KeepTrack.BlazorWebAssemblyApp.Authorization.ExternalAuthStateProvider externalAuthStateProvider
 
 <h1>Weather forecast</h1>
 
@@ -35,10 +36,27 @@ else
 }
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
     private VideoGameDto[] videoGames;
 
     protected override async Task OnInitializedAsync()
     {
+        Console.WriteLine("FetchData OnInitializedAsync");
+
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+
+        var token = user.Identity.IsAuthenticated ? user.Claims.ToList().FirstOrDefault(x => x.Type == "Token") : null;
+        Console.WriteLine($"token {token}");
+        if (token == null)
+        {
+            videoGames = new VideoGameDto[0];
+            return;
+        }
+
+        Http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.Value);
         videoGames = await Http.GetFromJsonAsync<VideoGameDto[]>("api/video-games");
     }
 }

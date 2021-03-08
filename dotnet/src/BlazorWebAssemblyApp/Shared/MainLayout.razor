@@ -4,12 +4,20 @@
 <div class="page">
     <div class="sidebar">
         <NavMenu />
-        <p>@User</p>
     </div>
 
     <div class="main">
         <div class="top-row px-4 auth">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+            <AuthorizeView>
+                <Authorized>
+                    @context.User.Identity.Name
+                    <botton class="btn btn-light" @onclick="@(() => Logout())">Logout</botton>
+                </Authorized>
+                <NotAuthorized>
+                    Not signed in
+                    <NavLink class="ml-md-auto" href="login">Login</NavLink>
+                </NotAuthorized>
+            </AuthorizeView>
         </div>
 
         <div class="content px-4">
@@ -19,22 +27,19 @@
 </div>
 
 @code {
-    public static string User { get; set; } = "Not Signed In";
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
 
-    [JSInvokable]
-    public void LoginCallback(string email, string display, string token)
+    protected async Task Logout()
     {
-        User = display;
-        externalAuthStateProvider.UpdateAuthentitationState(display, email, token);
-        InvokeAsync(StateHasChanged);
+        await JSRuntime.InvokeAsync<object>("FirebaseLogout", DotNetObjectReference.Create(this));
     }
 
     [JSInvokable]
     public void LogoutCallback()
     {
         Console.WriteLine("Callback in C# called");
-        User = "Not Signed In";
-        externalAuthStateProvider.UpdateAuthentitationState(null, null, null);
+        externalAuthStateProvider.UpdateAuthentitationStateAsync(null, null, null);
         InvokeAsync(StateHasChanged);
     }
 }
