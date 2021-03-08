@@ -5,7 +5,7 @@
 }
 
 function login(provider, instance) {
-  // TODO: Set an authentication state observer and get user data (https://firebase.google.com/docs/auth/web/start)
+  // idea: set an authentication state observer and get user data (https://firebase.google.com/docs/auth/web/start)
 
   if (localStorage.token) {
     console.log('Firefase token found');
