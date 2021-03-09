@@ -70,7 +70,7 @@ Template for `src/Api/appsettings.Development.json`:
 Create a file `firebase.config.js` in `src/BlasorWebAssemblyApp/wwwroot`:
 
 ```js
-var firebaseConfig = {
+export var firebaseConfig = {
   apiKey: "******",
   authDomain: "******.firebaseapp.com",
   databaseURL: "******.firebaseio.com",
@@ -80,8 +80,6 @@ var firebaseConfig = {
   appId: "1:******:web:******",
   measurementId: "******"
 };
-firebase.initializeApp(firebaseConfig);
-
 ```
 
 ## How to build

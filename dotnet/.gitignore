@@ -7,3 +7,5 @@ appsettings.Development.json
 TestResults/*
 Local.runsettings
 firebase.config.js
+node_modules
+dist/

@@ -5,12 +5,24 @@
     <AssemblyName>KeepTrack.BlazorWebAssemblyApp</AssemblyName>
     <RootNamespace>KeepTrack.BlazorWebAssemblyApp</RootNamespace>
     <ProjectGuid>{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C}</ProjectGuid>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\js\dist\**" />
+    <Content Remove="wwwroot\js\dist\**" />
+    <EmbeddedResource Remove="wwwroot\js\dist\**" />
+    <None Remove="wwwroot\js\dist\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Blazored.LocalStorage" Version="3.0.0" />
