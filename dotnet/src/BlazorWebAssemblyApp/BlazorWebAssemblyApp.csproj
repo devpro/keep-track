@@ -14,14 +14,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\js\dist\**" />
-    <Content Remove="wwwroot\js\dist\**" />
-    <EmbeddedResource Remove="wwwroot\js\dist\**" />
-    <None Remove="wwwroot\js\dist\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="webpack.config.js" />
+    <Content Update="wwwroot\js\src\*.*">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
