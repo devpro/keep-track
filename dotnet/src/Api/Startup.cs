@@ -108,15 +108,16 @@ namespace KeepTrack.Api
 
             app.UseRouting();
 
+            app.UseCors(CorsPolicyName);
+
             app.UseAuthentication();
 
             app.UseAuthorization();
 
-            app.UseCors(CorsPolicyName);
-
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                    .RequireCors(CorsPolicyName);
                 endpoints.MapHealthChecks("/health");
             });
         }

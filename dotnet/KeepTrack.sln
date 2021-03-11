@@ -57,6 +57,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.IntegrationTests", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyApp", "src\BlazorWebAssemblyApp\BlazorWebAssemblyApp.csproj", "{71AB9170-6C4C-4636-921A-9B7ED19926B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Testing", "4 - Testing", "{C187108D-14A3-4B63-8B0F-6E144E6CE77C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +127,10 @@ Global
 		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,6 +154,7 @@ Global
 		{042D62F6-C2DD-4DAD-A2B5-9440871875B8} = {E0274864-4E39-481B-A93B-7368E68B8902}
 		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
 		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732} = {215584EC-8DFC-4DAD-B3A0-D419CEC24260}
+		{71AB9170-6C4C-4636-921A-9B7ED19926B2} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {876333E7-72D4-4F43-B6F9-9432CA2B7425}

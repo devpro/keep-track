@@ -1,0 +1,24 @@
+{
+  "name": "keeptrack-blazorwebassembly",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Keeptrack Blazor WebAssembly application",
+  "scripts": {
+    "webpack:dev": "webpack --config=webpack.config.js --mode=development",
+    "webpack:prod": "webpack --config=webpack.config.js --mode=production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^8.2.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "babel-loader": "^8.2.2",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.2.3",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0"
+  }
+}

@@ -9,5 +9,9 @@ namespace KeepTrack.InventoryComponent.Domain.Models
         public string OwnerId { get; set; }
 
         public string Title { get; set; }
+
+        public string Platform { get; set; }
+
+        public int Year { get; set; }
     }
 }
