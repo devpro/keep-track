@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 # check command line arguments
 if [ -z $1 ]; then echo "runsettings file path is missing"; exit 1; fi
@@ -26,7 +26,7 @@ cat > $outputfilepath <<EOL
 <RunSettings>
   <RunConfiguration>
     <EnvironmentVariables>
-      <Authentication__JwtBearer__TokenValidation__Issuer>$tokenvalidationissuer</Authentication__JwtBearer__TokenValidation__Issuer>
+      <Authentication__JwtBearer__TokenValidation__Issuer>${tokenvalidationissuer}</Authentication__JwtBearer__TokenValidation__Issuer>
       <Authentication__JwtBearer__Authority>${tokenvalidationauthority}</Authentication__JwtBearer__Authority>
       <Authentication__JwtBearer__TokenValidation__Audience>${tokenvalidationaudience}</Authentication__JwtBearer__TokenValidation__Audience>
       <Firebase__Application__Key>${firebaseapplicationkey}</Firebase__Application__Key>
