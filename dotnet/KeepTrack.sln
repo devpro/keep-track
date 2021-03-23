@@ -29,6 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 		..\.azure\pipelines\nightly.yml = ..\.azure\pipelines\nightly.yml
 		..\.azure\pipelines\pkg.yml = ..\.azure\pipelines\pkg.yml
 		README.md = README.md
+		scripts\write_angularconfig.sh = scripts\write_angularconfig.sh
+		scripts\write_blazorconfig.sh = scripts\write_blazorconfig.sh
+		scripts\write_testrunsettings.sh = scripts\write_testrunsettings.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Api\Api.csproj", "{651432D5-8481-4807-A422-552EEB4DE8C2}"
@@ -55,9 +58,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryComponent.Infrastr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.IntegrationTests", "test\Api.IntegrationTests\Api.IntegrationTests.csproj", "{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{B325E1DE-7912-4D37-849F-807EE7F672A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyApp", "src\BlazorWebAssemblyApp\BlazorWebAssemblyApp.csproj", "{71AB9170-6C4C-4636-921A-9B7ED19926B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp", "src\BlazorWebAssemblyApp\BlazorWebAssemblyApp.csproj", "{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Testing", "4 - Testing", "{C187108D-14A3-4B63-8B0F-6E144E6CE77C}"
 EndProject
@@ -123,14 +126,14 @@ Global
 		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71AB9170-6C4C-4636-921A-9B7ED19926B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B325E1DE-7912-4D37-849F-807EE7F672A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B325E1DE-7912-4D37-849F-807EE7F672A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B325E1DE-7912-4D37-849F-807EE7F672A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B325E1DE-7912-4D37-849F-807EE7F672A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,8 +156,8 @@ Global
 		{597D37CF-D230-42C7-A168-01605114170D} = {E0274864-4E39-481B-A93B-7368E68B8902}
 		{042D62F6-C2DD-4DAD-A2B5-9440871875B8} = {E0274864-4E39-481B-A93B-7368E68B8902}
 		{7B16ABC4-AF0C-4E6D-AFD9-2097CDF77679} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
-		{7FC2A36D-FDA3-4EBB-8266-4111A66A0732} = {215584EC-8DFC-4DAD-B3A0-D419CEC24260}
-		{71AB9170-6C4C-4636-921A-9B7ED19926B2} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
+		{B325E1DE-7912-4D37-849F-807EE7F672A2} = {215584EC-8DFC-4DAD-B3A0-D419CEC24260}
+		{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C} = {61C528CD-816E-4FC5-ADFA-C5C25A3C4052}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {876333E7-72D4-4F43-B6F9-9432CA2B7425}
