@@ -1,6 +1,4 @@
-﻿#!/bin/bash
-
-# check command line arguments
+﻿# check command line arguments
 if [ -z $1 ]; then echo "angular config file path is missing"; exit 1; fi
 if [ -z $2 ]; then echo "firebase API key is missing"; exit 1; fi
 if [ -z $3 ]; then echo "firebase project ID is missing"; exit 1; fi

@@ -29,9 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 		..\.azure\pipelines\nightly.yml = ..\.azure\pipelines\nightly.yml
 		..\.azure\pipelines\pkg.yml = ..\.azure\pipelines\pkg.yml
 		README.md = README.md
-		scripts\write_angularconfig.sh = scripts\write_angularconfig.sh
-		scripts\write_blazorconfig.sh = scripts\write_blazorconfig.sh
-		scripts\write_testrunsettings.sh = scripts\write_testrunsettings.sh
+		..\scripts\write_angularconfig.sh = ..\scripts\write_angularconfig.sh
+		..\scripts\write_blazorconfig.sh = ..\scripts\write_blazorconfig.sh
+		..\scripts\write_testrunsettings.sh = ..\scripts\write_testrunsettings.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Api\Api.csproj", "{651432D5-8481-4807-A422-552EEB4DE8C2}"
