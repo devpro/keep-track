@@ -1,4 +1,6 @@
-﻿# check command line arguments
+﻿#!/bin/bash
+
+# check command line arguments
 if [ -z $1 ]; then echo "runsettings file path is missing"; exit 1; fi
 if [ -z $2 ]; then echo "authentication JWT bearer token validator issuer is missing"; exit 1; fi
 if [ -z $3 ]; then echo "authentication JWT bearer token validator authority is missing"; exit 1; fi
