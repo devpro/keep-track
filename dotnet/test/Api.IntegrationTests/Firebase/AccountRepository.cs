@@ -26,6 +26,7 @@ namespace KeepTrack.Api.IntegrationTests.Firebase
         /// <summary>
         /// Authenticate with username/password.
         /// </summary>
+        /// <remarks>https://cloud.google.com/identity-platform/docs/reference/rest/v1/accounts/signInWithPassword</remarks>
         /// <returns>Received token</returns>
         public async Task<string> Authenticate()
         {
