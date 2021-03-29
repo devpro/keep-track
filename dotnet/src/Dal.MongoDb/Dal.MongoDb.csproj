@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Withywoods.Dal.MongoDb" Version="1.4.1" />
+    <PackageReference Include="Withywoods.Dal.MongoDb" Version="1.4.2" />
   </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ using Withywoods.WebTesting.Rest;
 
 namespace KeepTrack.Api.IntegrationTests.TestingLogic.Resources
 {
-    public abstract class ResourceBase : ResourceTestBase
+    public abstract class ResourceBase : RestClient
     {
         private readonly AccountRepository _accountRepository;
 
