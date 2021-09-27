@@ -27,7 +27,7 @@ namespace KeepTrack.Api.IntegrationTests.Localhost
         {
             // check not authorized if not logged
             (await Assert.ThrowsAsync<XunitException>(async () => await GetAsync<List<MovieDto>>($"/{ResourceEndpoint}")))
-                .Message.Should().Be("Expected object to be OK, but found Unauthorized.");
+                .Message.Should().Be("Expected the enum to be HttpStatusCode.OK {value: 200}, but found HttpStatusCode.Unauthorized {value: 401}.");
 
             await Authenticate();
 
