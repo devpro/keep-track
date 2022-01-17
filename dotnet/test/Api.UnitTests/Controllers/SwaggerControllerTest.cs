@@ -33,7 +33,7 @@ namespace KeepTrack.Api.UnitTests.Controllers
                 // Assert
                 WebDriver.FindElement(By.ClassName("title"), 60);
                 WebDriver.Title.Should().Be("Swagger UI");
-                WebDriver.FindElementByClassName("title").Text.Should().Contain("Keep Track API");
+                WebDriver.FindElement(By.ClassName("title")).Text.Should().Contain("Keep Track API");
             }
             catch
             {
