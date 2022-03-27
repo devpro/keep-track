@@ -44,12 +44,6 @@ Template for `src/Api/appsettings.Development.json`:
 
 ```json
 {
-  "Infrastructure": {
-    "MongoDB": {
-      "ConnectionString": "mongodb://localhost:27017",
-      "DatabaseName": "inventory"
-    }
-  },
   "AllowedOrigins": [
     "http://localhost:4200"
   ],
@@ -60,6 +54,12 @@ Template for `src/Api/appsettings.Development.json`:
         "Issuer": "https://securetoken.google.com/<firebase-project-id>",
         "Audience": "<firebase-project-id>"
       }
+    }
+  },
+  "Infrastructure": {
+    "MongoDB": {
+      "ConnectionString": "mongodb://localhost:27017",
+      "DatabaseName": "keeptrack"
     }
   }
 }
