@@ -54,3 +54,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * Update NPM: `npm install --global npm`
 * Follow procedure described by [update.angular.io](https://update.angular.io/): `ng update <component>`
+
+### Firebase guide
+
+* [Getting started with Firebase Authentication](https://github.com/angular/angularfire/blob/master/docs/auth/getting-started.md)
+* [angularfire/samples/compat](https://github.com/angular/angularfire/tree/master/samples/compat)
