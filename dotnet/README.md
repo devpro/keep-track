@@ -44,9 +44,6 @@ Template for `src/Api/appsettings.Development.json`:
 
 ```json
 {
-  "AllowedOrigins": [
-    "http://localhost:4200"
-  ],
   "Authentication": {
     "JwtBearer": {
       "Authority": "https://securetoken.google.com/<firebase-project-id>",
