@@ -19,7 +19,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   constructor(private movieService: MovieService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.user.subscribe(user => {
+    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(user => {
       this.movieService.list()
         .subscribe(
           movies => {

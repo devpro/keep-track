@@ -1,21 +1,19 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 import { Subscription } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 
+// see https://github.com/angular/angularfire/blob/master/docs/auth/getting-started.md
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateService implements OnDestroy {
-  public user: Observable<firebase.User | null>;
+
   userEventsSubscription: Subscription;
 
-  constructor(private firebaseAuth: AngularFireAuth, private jwtInterceptorService: JwtInterceptorService) {
-    this.user = firebaseAuth.authState;
-    this.userEventsSubscription = this.user.subscribe(user => {
+  constructor(public auth: AngularFireAuth, private jwtInterceptorService: JwtInterceptorService) {
+    this.userEventsSubscription = this.auth.user.subscribe(user => {
       if (user) {
         user.getIdToken().then(token => {
           jwtInterceptorService.setJwtToken(token);
@@ -31,24 +29,13 @@ export class AuthenticateService implements OnDestroy {
   }
 
   signInWithGitHub() {
-    // See https://firebase.google.com/docs/auth/web/github-auth
-    const provider = new firebase.auth.GithubAuthProvider();
-    firebase.auth()
-      .signInWithPopup(provider)
-        .then(result => {})
-        .catch(error => {
-          console.warn(error);
-        });
+    // see https://firebase.google.com/docs/auth/web/github-auth
+    this.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
   }
 
   logout() {
     this.jwtInterceptorService.removeJwtToken();
-    firebase.auth()
-      .signOut()
-        .then(result => {})
-        .catch(error => {
-          console.warn(error);
-        });
+    this.auth.signOut();
   }
 
 }

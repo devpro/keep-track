@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private authenticateService: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.user.subscribe(user => this.user = user);
+    this.userEventsSubscription = this.authenticateService.auth.user.subscribe((user: firebase.User) => this.user = user);
   }
 
   ngOnDestroy() {

@@ -58,6 +58,12 @@ Template for `src/Api/appsettings.Development.json`:
       "ConnectionString": "mongodb://localhost:27017",
       "DatabaseName": "keeptrack"
     }
+  },
+  "Logging": {
+    "LogLevel": {
+      "KeepTrack": "Debug",
+      "Withywoods": "Debug"
+    }
   }
 }
 ```
