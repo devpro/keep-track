@@ -24,8 +24,6 @@ namespace KeepTrack.Api
     /// </summary>
     public class Startup
     {
-        #region Private fields & constructor
-
         private const string CorsPolicyName = "CorsPolicyName";
 
         private readonly AppConfiguration _configuration;
@@ -38,10 +36,6 @@ namespace KeepTrack.Api
         {
             _configuration = new AppConfiguration(configuration);
         }
-
-        #endregion
-
-        #region Public methods
 
         /// <summary>
         /// Configure services.
@@ -122,10 +116,6 @@ namespace KeepTrack.Api
             });
         }
 
-        #endregion
-
-        #region Private methods
-
         private static void ConfigureAutoMapper(IServiceCollection serviceCollection)
         {
             var mappingConfig = new MapperConfiguration(x =>
@@ -195,7 +185,5 @@ namespace KeepTrack.Api
                 c.IncludeXmlComments(xmlPath);
             });
         }
-
-        #endregion
     }
 }

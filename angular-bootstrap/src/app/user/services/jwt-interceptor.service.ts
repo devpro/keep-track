@@ -13,7 +13,7 @@ export class JwtInterceptorService {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.token) {
-      const clone = req.clone({ setHeaders: { Authorization: `Bearer ${this.token}` } });
+      const clone = req.clone({ setHeaders: { authorization: `Bearer ${this.token}` } });
       return next.handle(clone);
     }
     return next.handle(req);

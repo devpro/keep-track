@@ -13,8 +13,6 @@ namespace KeepTrack.Api
     /// </summary>
     public class AppConfiguration : IMongoDbConfiguration
     {
-        #region Constructor & private fields
-
         /// <summary>
         /// Create a new instance of <see cref="AppConfiguration"/>
         /// </summary>
@@ -28,10 +26,6 @@ namespace KeepTrack.Api
         /// Configuration root.
         /// </summary>
         public IConfiguration ConfigurationRoot { get; set; }
-
-        #endregion
-
-        #region IMongoDbConfiguration properties
 
         /// <summary>
         /// MongoDB connection string => secret!
@@ -48,7 +42,7 @@ namespace KeepTrack.Api
         /// MongoDB serialization conventions.
         /// </summary>
         List<string> IMongoDbConfiguration.SerializationConventions =>
-            new List<string>
+            new()
             {
                 ConventionValues.CamelCaseElementName,
                 ConventionValues.EnumAsString,
@@ -56,15 +50,11 @@ namespace KeepTrack.Api
                 ConventionValues.IgnoreNullValues
             };
 
-        #endregion
-
-        #region General properties
-
         /// <summary>
         /// Open API information.
         /// </summary>
         public OpenApiInfo OpenApiInfo =>
-            new OpenApiInfo
+            new()
             {
                 Title = "Keep Track API",
                 Version = "1.0"
@@ -77,7 +67,5 @@ namespace KeepTrack.Api
         /// See https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-3.1
         /// </remarks>
         public List<string> CorsAllowedOrigin => ConfigurationRoot.TryGetSection("AllowedOrigins").Get<List<string>>();
-
-        #endregion
     }
 }
