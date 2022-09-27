@@ -19,7 +19,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.3" />
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.3" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.0" />
     <PackageReference Include="Withywoods.Configuration" Version="1.4.6" />
