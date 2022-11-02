@@ -5,7 +5,8 @@
     <AssemblyName>KeepTrack.Api</AssemblyName>
     <RootNamespace>KeepTrack.Api</RootNamespace>
     <ProjectGuid>{651432D5-8481-4807-A422-552EEB4DE8C2}</ProjectGuid>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

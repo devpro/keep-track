@@ -7,17 +7,17 @@ using Xunit;
 namespace KeepTrack.Api.UnitTests.Controllers
 {
     [Trait("Category", "UnitTests")]
-    public class SwaggerControllerTest : SeleniumTestBase, IClassFixture<WebApplicationFactoryFixture<Startup>>
+    public class SwaggerControllerTest : SeleniumTestBase, IClassFixture<WebApplicationFactoryFixture<Program>>
     {
         private const string ResourceEndpoint = "swagger";
 
         private readonly string _webUrl = "https://localhost:5001";
 
-        public SwaggerControllerTest(WebApplicationFactoryFixture<Startup> factory)
+        public SwaggerControllerTest(WebApplicationFactoryFixture<Program> factory)
             : base(new WebDriverOptions { IsHeadless = true })
         {
             factory.HostUrl = _webUrl;
-            factory.CreateClient();
+            factory.CreateDefaultClient();
         }
 
         [Fact]
