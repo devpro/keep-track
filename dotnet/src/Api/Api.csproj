@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.4.0" />
-    <PackageReference Include="Withywoods.Configuration" Version="1.5.0" />
+    <PackageReference Include="Withywoods.Configuration" Version="1.5.1" />
   </ItemGroup>
 
   <ItemGroup>
