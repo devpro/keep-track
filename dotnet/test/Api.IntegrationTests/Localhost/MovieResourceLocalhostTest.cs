@@ -13,11 +13,11 @@ using Xunit.Sdk;
 namespace KeepTrack.Api.IntegrationTests.Localhost
 {
     [Trait("Environment", "Localhost")]
-    public class MovieResourceLocalhostTest : ResourceBase, IClassFixture<WebApplicationFactory<Startup>>
+    public class MovieResourceLocalhostTest : ResourceBase, IClassFixture<WebApplicationFactory<Program>>
     {
         private const string ResourceEndpoint = "api/movies";
 
-        public MovieResourceLocalhostTest(WebApplicationFactory<Startup> factory)
+        public MovieResourceLocalhostTest(WebApplicationFactory<Program> factory)
             : base(factory.CreateClient())
         {
         }

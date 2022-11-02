@@ -13,11 +13,11 @@ using Xunit.Sdk;
 namespace KeepTrack.Api.IntegrationTests.Localhost
 {
     [Trait("Environment", "Localhost")]
-    public class BookResourceLocalhostTest : ResourceBase, IClassFixture<WebApplicationFactory<Startup>>
+    public class BookResourceLocalhostTest : ResourceBase, IClassFixture<WebApplicationFactory<Program>>
     {
         private const string ResourceEndpoint = "api/books";
 
-        public BookResourceLocalhostTest(WebApplicationFactory<Startup> factory)
+        public BookResourceLocalhostTest(WebApplicationFactory<Program> factory)
             : base(factory.CreateClient())
         {
         }
