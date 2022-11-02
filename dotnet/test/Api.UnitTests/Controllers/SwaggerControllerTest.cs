@@ -17,7 +17,7 @@ namespace KeepTrack.Api.UnitTests.Controllers
             : base(new WebDriverOptions { IsHeadless = true })
         {
             factory.HostUrl = _webUrl;
-            factory.CreateDefaultClient();
+            factory.CreateClient();
         }
 
         [Fact]
