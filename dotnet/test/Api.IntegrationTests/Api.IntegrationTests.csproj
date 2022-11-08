@@ -20,7 +20,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.10" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="106.0.5249.6100" />
     <PackageReference Include="Withywoods.Selenium" Version="1.5.1" />
     <PackageReference Include="Withywoods.Serialization" Version="1.5.1" />
