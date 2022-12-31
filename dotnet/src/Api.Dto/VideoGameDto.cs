@@ -1,4 +1,6 @@
-﻿namespace KeepTrack.Api.Dto
+﻿using System;
+
+namespace KeepTrack.Api.Dto
 {
     /// <summary>
     /// Video Game data transfer object.
@@ -16,13 +18,23 @@
         public string Title { get; set; }
 
         /// <summary>
-        /// Plaform.
+        /// Latest plaform the game has been played on.
         /// </summary>
         public string Platform { get; set; }
 
         /// <summary>
-        /// Year (of the released date).
+        /// Released date.
         /// </summary>
-        public int Year { get; set; }
+        public DateTime? ReleasedAt { get; set; }
+
+        /// <summary>
+        /// Current payling state.
+        /// </summary>
+        public string State { get; set; }
+
+        /// <summary>
+        /// Finished date.
+        /// </summary>
+        public DateTime? FinishedAt { get; set; }
     }
 }

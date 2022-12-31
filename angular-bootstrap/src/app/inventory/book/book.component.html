@@ -6,13 +6,51 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Author</th>
+      <th>Series</th>
+      <th>Finished date</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let book of books">
-      <td>{{ book.title }}</td>
-      <td><button class="btn btn-action" (click)="delete(book)"><span class="fa fa-trash"></span></button></td>
+    <tr *ngFor="let book of books; let i = index">
+      <td>
+        <ng-container *ngIf="!book.isEditable ">
+          {{ book.title }}
+        </ng-container>
+        <div *ngIf="book.isEditable">
+          <input type="text" [(ngModel)]="book.title"/>
+        </div></td>
+      <td>
+        <ng-container *ngIf="!book.isEditable ">
+          {{ book.author }}
+        </ng-container>
+        <div *ngIf="book.isEditable">
+          <input type="text" [(ngModel)]="book.author"/>
+        </div>
+      </td>
+      <td>
+        <ng-container *ngIf="!book.isEditable ">
+          {{ book.series }}
+        </ng-container>
+        <div *ngIf="book.isEditable">
+          <input type="text" [(ngModel)]="book.series"/>
+        </div>
+      </td>
+      <td>
+        <ng-container *ngIf="!book.isEditable ">
+          {{ book.finishedAt }}
+        </ng-container>
+        <div *ngIf="book.isEditable">
+          <input type="text" [(ngModel)]="book.finishedAt"/>
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-action" *ngIf="!book.isEditable" (click)="startEditing(book)"><span class="fa fa-pencil-square-o"></span></button>
+        <button class="btn btn-action" *ngIf="book.isEditable" (click)="update(book)"><span class="fa fa-floppy-o"></span></button>
+        <button class="btn btn-action" *ngIf="book.isEditable" (click)="cancel(book)"><span class="fa fa-ban"></span></button>
+        <button class="btn btn-action" *ngIf="!book.isEditable" (click)="delete(book)"><span class="fa fa-trash"></span></button>
+      </td>
     </tr>
   </tbody>
 </table>

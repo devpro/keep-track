@@ -6,13 +6,52 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Platform</th>
+      <th>State</th>
+      <th>Finished date</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let videoGame of videoGames">
-      <td>{{ videoGame.title }}</td>
-      <td><button class="btn btn-action" (click)="delete(videoGame)"><span class="fa fa-trash"></span></button></td>
+      <td>
+        <ng-container *ngIf="!videoGame.isEditable ">
+          {{ videoGame.title }}
+        </ng-container>
+        <div *ngIf="videoGame.isEditable">
+          <input type="text" [(ngModel)]="videoGame.title"/>
+        </div>
+      </td>
+      <td>
+        <ng-container *ngIf="!videoGame.isEditable ">
+          {{ videoGame.platform }}
+        </ng-container>
+        <div *ngIf="videoGame.isEditable">
+          <input type="text" [(ngModel)]="videoGame.platform"/>
+        </div>
+      </td>
+      <td>
+        <ng-container *ngIf="!videoGame.isEditable ">
+          {{ videoGame.state }}
+        </ng-container>
+        <div *ngIf="videoGame.isEditable">
+          <input type="text" [(ngModel)]="videoGame.state"/>
+        </div>
+      </td>
+      <td>
+        <ng-container *ngIf="!videoGame.isEditable ">
+          {{ videoGame.finishedAt }}
+        </ng-container>
+        <div *ngIf="videoGame.isEditable">
+          <input type="text" [(ngModel)]="videoGame.finishedAt"/>
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-action" *ngIf="!videoGame.isEditable" (click)="startEditing(videoGame)"><span class="fa fa-pencil-square-o"></span></button>
+        <button class="btn btn-action" *ngIf="videoGame.isEditable" (click)="update(videoGame)"><span class="fa fa-floppy-o"></span></button>
+        <button class="btn btn-action" *ngIf="videoGame.isEditable" (click)="cancel(videoGame)"><span class="fa fa-ban"></span></button>
+        <button class="btn btn-action" *ngIf="!videoGame.isEditable" (click)="delete(videoGame)"><span class="fa fa-trash"></span></button>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -5,6 +5,7 @@
     <AssemblyName>KeepTrack.InventoryComponent.Domain</AssemblyName>
     <RootNamespace>KeepTrack.InventoryComponent.Domain</RootNamespace>
     <ProjectGuid>{19F13DE8-3351-45C5-82C7-DB127E318306}</ProjectGuid>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

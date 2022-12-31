@@ -43,6 +43,24 @@ export class BookComponent implements OnInit, OnDestroy {
     });
   }
 
+  startEditing(book: Book) {
+    book.isEditable = true;
+  }
+
+  cancel(book: Book) {
+    book.isEditable = false;
+    this.bookService.get(book.id).subscribe(item => {
+      book.title = item.title;
+      book.author = item.author;
+      book.series = item.series;
+      book.finishedAt = item.finishedAt;
+    });
+  }
+
+  update(book: Book) {
+    this.bookService.update(book).subscribe(updatedCount => book.isEditable = false);
+  }
+
   delete(book: Book) {
     this.bookService.delete(book).subscribe(deletedCount => this.books.splice(this.books.findIndex(x => x.id === book.id), 1));
   }

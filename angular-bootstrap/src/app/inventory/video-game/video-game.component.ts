@@ -43,6 +43,25 @@ export class VideoGameComponent implements OnInit, OnDestroy {
     });
   }
 
+  startEditing(videoGame: VideoGame) {
+    videoGame.isEditable = true;
+  }
+
+  cancel(videoGame: VideoGame) {
+    videoGame.isEditable = false;
+    this.videoGameService.get(videoGame.id).subscribe(item => {
+      videoGame.title = item.title;
+      videoGame.platform = item.platform;
+      videoGame.releasedAt = item.releasedAt;
+      videoGame.state = item.state;
+      videoGame.finishedAt = item.finishedAt;
+    });
+  }
+
+  update(videoGame: VideoGame) {
+    this.videoGameService.update(videoGame).subscribe(updatedCount => videoGame.isEditable = false);
+  }
+
   delete(videoGame: VideoGame) {
     this.videoGameService.delete(videoGame)
       .subscribe(deletedCount => this.videoGames.splice(this.videoGames.findIndex(x => x.id === videoGame.id), 1));

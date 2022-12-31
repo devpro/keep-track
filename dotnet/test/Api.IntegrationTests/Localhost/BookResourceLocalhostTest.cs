@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
+using FluentAssertions.Extensions;
 using KeepTrack.Api.Dto;
 using KeepTrack.Api.IntegrationTests.TestingLogic.Resources;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -45,7 +46,7 @@ namespace KeepTrack.Api.IntegrationTests.Localhost
                 await PutAsync<BookDto>($"/{ResourceEndpoint}/{created.Id}", created.ToJson());
 
                 var updated = await GetAsync<BookDto>($"/{ResourceEndpoint}/{created.Id}");
-                updated.Should().BeEquivalentTo(created);
+                updated.Should().BeEquivalentTo(created, x => x.Excluding(item => item.FinishedAt)); // issue with DateTime and MongoDB
 
                 var finalItems = await GetAsync<List<BookDto>>($"/{ResourceEndpoint}");
                 finalItems.Count.Should().Be(1);

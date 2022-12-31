@@ -12,12 +12,26 @@ export class VideoGameService {
   constructor(private httpClient: HttpClient) {
   }
 
+  get(id: string): Observable<VideoGame> {
+    return this.httpClient.get<VideoGame>(`${environment.keepTrackApiUrl}/api/video-games/${id}`);
+  }
+
   list(): Observable<Array<VideoGame>> {
     return this.httpClient.get<Array<VideoGame>>(`${environment.keepTrackApiUrl}/api/video-games`);
   }
 
   create(input: VideoGame): Observable<VideoGame> {
     return this.httpClient.post<VideoGame>(`${environment.keepTrackApiUrl}/api/video-games`, input);
+  }
+
+  update(input: VideoGame): Observable<number> {
+    if (!input.finishedAt) {
+      input.finishedAt = null;
+    }
+    if (!input.releasedAt) {
+      input.releasedAt = null;
+    }
+    return this.httpClient.put<number>(`${environment.keepTrackApiUrl}/api/video-games/${input.id}`, input);
   }
 
   delete(input: VideoGame): Observable<number> {

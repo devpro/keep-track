@@ -1,4 +1,6 @@
-﻿namespace KeepTrack.Api.Dto
+﻿using System;
+
+namespace KeepTrack.Api.Dto
 {
     /// <summary>
     /// Book data transfer object.
@@ -14,5 +16,20 @@
         /// Book title.
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Book author.
+        /// </summary>
+        public string Author { get; set; }
+
+        /// <summary>
+        /// Book series.
+        /// </summary>
+        public string Series { get; set; }
+
+        /// <summary>
+        /// Book finished reading date.
+        /// </summary>
+        public DateTime? FinishedAt { get; set; }
     }
 }

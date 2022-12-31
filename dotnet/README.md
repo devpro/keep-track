@@ -33,10 +33,10 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
 
 ### API
 
-Key | Description | Default value
---- | ----------- | -------------
+Key                                       | Description               | Default value
+----------------------------------------- | ------------------------- | -------------
 `Infrastructure:MongoDB:ConnectionString` | MongoDB connection string |
-`Infrastructure:MongoDB:DatabaseName` | MongoDB connection string | inventory
+`Infrastructure:MongoDB:DatabaseName`     | MongoDB connection string | inventory
 
 This values can be easily provided as environment variables (replace ":" by "__") or by configuration (json).
 
@@ -140,3 +140,17 @@ dotnet test --settings Local.runsettings
 - Create a GitHub OAuth application ([firebase.google.com](https://firebase.google.com/docs/auth/web/github-auth),
 [github.com](https://github.com/settings/applications/new))
 - Add urls in Azure web app CORS page
+
+## How to operate
+
+- Backup MongoDB database
+
+```bash
+docker run --rm -it --workdir=/data --volume $(pwd):/data mongo:6.0 /bin/sh -c "mongodump --uri mongodb+srv://<USER>:<PASSWORD>@<CLUSTER>.<PROJECT>.mongodb.net/test"
+```
+
+- Restore MongoDB database
+
+```bash
+docker run --rm -it --workdir=/data --volume $(pwd):/data mongo:6.0 /bin/sh -c "mongorestore --uri mongodb+srv://<USER>:<PASSWORD>@<CLUSTER>.<PROJECT>.mongodb.net"
+```
