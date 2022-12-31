@@ -33,10 +33,10 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
 
 ### API
 
-Key | Description | Default value
---- | ----------- | -------------
+Key                                       | Description               | Default value
+----------------------------------------- | ------------------------- | -------------
 `Infrastructure:MongoDB:ConnectionString` | MongoDB connection string |
-`Infrastructure:MongoDB:DatabaseName` | MongoDB connection string | inventory
+`Infrastructure:MongoDB:DatabaseName`     | MongoDB connection string | inventory
 
 This values can be easily provided as environment variables (replace ":" by "__") or by configuration (json).
 

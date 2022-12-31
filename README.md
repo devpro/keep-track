@@ -8,5 +8,5 @@ KeepTrack is a free open source application to save a memory of what we do: read
 
 ## Software design
 
-* [.NET Core 5.0](dotnet/README.md): API (backend)
-* [Angular 11 with Bootstrap](angular-bootstrap/README.md): Web app #1 (frontend)
+* [Angular 13 with Bootstrap](angular-bootstrap/README.md): Web app #1 (frontend)
+* [.NET 6.0](dotnet/README.md): ASP.NET REST API (backend) & Blazor web app #2 (frontend)
