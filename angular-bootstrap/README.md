@@ -59,3 +59,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * [Getting started with Firebase Authentication](https://github.com/angular/angularfire/blob/master/docs/auth/getting-started.md)
 * [angularfire/samples/compat](https://github.com/angular/angularfire/tree/master/samples/compat)
+
+### Graphic design
+
+* [Font Awesome v.4.7.0](https://fontawesome.bootstrapcheatsheets.com/)

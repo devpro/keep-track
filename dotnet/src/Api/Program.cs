@@ -127,7 +127,9 @@ app.UseEndpoints(endpoints =>
 
 app.Run();
 
-// fix: make Program class public for tests
 #pragma warning disable CA1050 // Declare types in namespaces
+/// <summary>
+/// Fix: make Program class public for tests
+/// </summary>
 public partial class Program { }
 #pragma warning restore CA1050

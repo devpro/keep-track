@@ -1,17 +1,22 @@
-﻿using KeepTrack.Domain.Models;
+﻿using System;
+using KeepTrack.Domain.Models;
 
 namespace KeepTrack.InventoryComponent.Domain.Models
 {
     public class VideoGameModel : IDataModel
     {
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
-        public string OwnerId { get; set; }
+        public string OwnerId { get; set; } = string.Empty;
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public string Platform { get; set; }
+        public string Platform { get; set; } = string.Empty;
 
-        public int Year { get; set; }
+        public DateTime? ReleasedAt { get; set; }
+
+        public string State { get; set; } = string.Empty;
+
+        public DateTime? FinishedAt { get; set; }
     }
 }
