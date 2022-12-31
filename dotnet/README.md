@@ -140,3 +140,17 @@ dotnet test --settings Local.runsettings
 - Create a GitHub OAuth application ([firebase.google.com](https://firebase.google.com/docs/auth/web/github-auth),
 [github.com](https://github.com/settings/applications/new))
 - Add urls in Azure web app CORS page
+
+## How to operate
+
+- Backup MongoDB database
+
+```bash
+docker run --rm -it --workdir=/data --volume $(pwd):/data mongo:6.0 /bin/sh -c "mongodump --uri mongodb+srv://<USER>:<PASSWORD>@<CLUSTER>.<PROJECT>.mongodb.net/test"
+```
+
+- Restore MongoDB database
+
+```bash
+docker run --rm -it --workdir=/data --volume $(pwd):/data mongo:6.0 /bin/sh -c "mongorestore --uri mongodb+srv://<USER>:<PASSWORD>@<CLUSTER>.<PROJECT>.mongodb.net"
+```
