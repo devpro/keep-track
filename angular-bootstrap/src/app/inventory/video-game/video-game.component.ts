@@ -12,6 +12,8 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 export class VideoGameComponent implements OnInit, OnDestroy {
 
   @ViewChild('titleInput') titleInput: ElementRef;
+  @ViewChild('platformInput') platformInput: ElementRef;
+  @ViewChild('stateInput') stateInput: ElementRef;
 
   videoGames: Array<VideoGame> = [];
   userEventsSubscription: Subscription;
@@ -36,10 +38,12 @@ export class VideoGameComponent implements OnInit, OnDestroy {
     }
   }
 
-  create(title: string) {
-    this.videoGameService.create({ title }).subscribe(videoGame => {
+  create(title: string, platform: string, state: string) {
+    this.videoGameService.create({ title, platform, state }).subscribe(videoGame => {
       this.videoGames.push(videoGame);
       this.titleInput.nativeElement.value = '';
+      this.platformInput.nativeElement.value = '';
+      this.stateInput.nativeElement.value = '';
     });
   }
 
@@ -59,7 +63,8 @@ export class VideoGameComponent implements OnInit, OnDestroy {
   }
 
   update(videoGame: VideoGame) {
-    this.videoGameService.update(videoGame).subscribe(updatedCount => videoGame.isEditable = false);
+    this.videoGameService.update(videoGame)
+      .subscribe(updatedCount => videoGame.isEditable = false);
   }
 
   delete(videoGame: VideoGame) {

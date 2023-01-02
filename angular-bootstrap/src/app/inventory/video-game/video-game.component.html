@@ -2,63 +2,94 @@
 
 <p *ngIf="!videoGames"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="videoGames">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Platform</th>
-      <th>State</th>
-      <th>Finished date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let videoGame of videoGames">
-      <td>
-        <ng-container *ngIf="!videoGame.isEditable ">
-          {{ videoGame.title }}
-        </ng-container>
-        <div *ngIf="videoGame.isEditable">
-          <input type="text" [(ngModel)]="videoGame.title"/>
-        </div>
-      </td>
-      <td>
-        <ng-container *ngIf="!videoGame.isEditable ">
-          {{ videoGame.platform }}
-        </ng-container>
-        <div *ngIf="videoGame.isEditable">
-          <input type="text" [(ngModel)]="videoGame.platform"/>
-        </div>
-      </td>
-      <td>
-        <ng-container *ngIf="!videoGame.isEditable ">
-          {{ videoGame.state }}
-        </ng-container>
-        <div *ngIf="videoGame.isEditable">
-          <input type="text" [(ngModel)]="videoGame.state"/>
-        </div>
-      </td>
-      <td>
-        <ng-container *ngIf="!videoGame.isEditable ">
-          {{ videoGame.finishedAt }}
-        </ng-container>
-        <div *ngIf="videoGame.isEditable">
-          <input type="text" [(ngModel)]="videoGame.finishedAt"/>
-        </div>
-      </td>
-      <td>
-        <button class="btn btn-action" *ngIf="!videoGame.isEditable" (click)="startEditing(videoGame)"><span class="fa fa-pencil-square-o"></span></button>
-        <button class="btn btn-action" *ngIf="videoGame.isEditable" (click)="update(videoGame)"><span class="fa fa-floppy-o"></span></button>
-        <button class="btn btn-action" *ngIf="videoGame.isEditable" (click)="cancel(videoGame)"><span class="fa fa-ban"></span></button>
-        <button class="btn btn-action" *ngIf="!videoGame.isEditable" (click)="delete(videoGame)"><span class="fa fa-trash"></span></button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class='table table-striped table-sm' aria-labelledby="tableLabel" *ngIf="videoGames">
+    <thead>
+      <tr>
+        <th class="col-md-3">Title</th>
+        <th class="col-md-2">Platform</th>
+        <th class="col-md-2">State</th>
+        <th class="col-md-2">Finished date</th>
+        <th class="col-md-1">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let videoGame of videoGames">
+        <td>
+          <ng-container *ngIf="!videoGame.isEditable ">
+            {{ videoGame.title }}
+          </ng-container>
+          <div *ngIf="videoGame.isEditable">
+            <input class="form-control" type="text" [(ngModel)]="videoGame.title"/>
+          </div>
+        </td>
+        <td>
+          <ng-container *ngIf="!videoGame.isEditable ">
+            {{ videoGame.platform }}
+          </ng-container>
+          <div *ngIf="videoGame.isEditable">
+            <input class="form-control" type="text" [(ngModel)]="videoGame.platform"/>
+          </div>
+        </td>
+        <td>
+          <ng-container *ngIf="!videoGame.isEditable ">
+            {{ videoGame.state }}
+          </ng-container>
+          <div *ngIf="videoGame.isEditable">
+            <input class="form-control" type="text" [(ngModel)]="videoGame.state"/>
+          </div>
+        </td>
+        <td>
+          <ng-container *ngIf="!videoGame.isEditable ">
+            {{ videoGame.finishedAt }}
+          </ng-container>
+          <div *ngIf="videoGame.isEditable">
+            <input class="form-control" type="text" [(ngModel)]="videoGame.finishedAt"/>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-action" *ngIf="!videoGame.isEditable" (click)="startEditing(videoGame)"><span class="fa fa-pencil-square-o"></span></button>
+          <button class="btn btn-action" *ngIf="videoGame.isEditable" (click)="update(videoGame)"><span class="fa fa-floppy-o"></span></button>
+          <button class="btn btn-action" *ngIf="videoGame.isEditable" (click)="cancel(videoGame)"><span class="fa fa-ban"></span></button>
+          <button class="btn btn-action" *ngIf="!videoGame.isEditable" (click)="delete(videoGame)"><span class="fa fa-trash"></span></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<div class="input-group">
-  <input id="title" class="form-control col-sm-4" #titleInput type="text" name="title" (keydown.enter)="create(titleInput.value)" />
-  <span class="input-group-btn">
-    <button class="btn btn-primary" type="submit" (click)="create(titleInput.value)">Add</button>
-  </span>
+<div class="form-row">
+  <div class="form-group col-md-4">
+    <label for="inputTitle">Title</label>
+    <input id="inputTitle" class="form-control" #titleInput type="text" name="title" />
+  </div>
+  <div class="form-group col-md-2">
+    <label for="inputPlatform">platform</label>
+    <select id="inputPlatform" class="form-control" #platformInput>
+      <option selected></option>
+      <option>Xbox Series X</option>
+      <option>PS5</option>
+      <option>Xbox One X</option>
+      <option>PS4</option>
+      <option>WII</option>
+      <option>Xbox 360</option>
+      <option>PS2</option>
+      <option>PS1</option>
+    </select>
+  </div>
+  <div class="form-group col-md-2">
+    <label for="inputState">State</label>
+    <select id="inputState" class="form-control" #stateInput (keydown.enter)="create(titleInput.value, platformInput.value, stateInput.value)">
+      <option selected>Available</option>
+      <option>Completed</option>
+      <option>To resume</option>
+      <option>Current</option>
+      <option>On-hold</option>
+    </select>
+  </div>
+  <div class="form-group col-md-1">
+    <label>Validate</label>
+    <br />
+    <button class="btn btn-primary" type="submit" (click)="create(titleInput.value, platformInput.value, stateInput.value)">Add</button>
+  </div>
 </div>

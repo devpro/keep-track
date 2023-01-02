@@ -12,6 +12,8 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 export class BookComponent implements OnInit, OnDestroy {
 
   @ViewChild('titleInput') titleInput: ElementRef;
+  @ViewChild('authorInput') authorInput: ElementRef;
+  @ViewChild('seriesInput') seriesInput: ElementRef;
 
   books: Array<Book> = [];
   userEventsSubscription: Subscription;
@@ -36,10 +38,12 @@ export class BookComponent implements OnInit, OnDestroy {
     }
   }
 
-  create(title: string) {
-    this.bookService.create({ title }).subscribe(book => {
+  create(title: string, author: string, series: string) {
+    this.bookService.create({ title, author, series }).subscribe(book => {
       this.books.push(book);
       this.titleInput.nativeElement.value = '';
+      this.authorInput.nativeElement.value = '';
+      this.seriesInput.nativeElement.value = '';
     });
   }
 
@@ -58,11 +62,13 @@ export class BookComponent implements OnInit, OnDestroy {
   }
 
   update(book: Book) {
-    this.bookService.update(book).subscribe(updatedCount => book.isEditable = false);
+    this.bookService.update(book)
+      .subscribe(updatedCount => book.isEditable = false);
   }
 
   delete(book: Book) {
-    this.bookService.delete(book).subscribe(deletedCount => this.books.splice(this.books.findIndex(x => x.id === book.id), 1));
+    this.bookService.delete(book)
+      .subscribe(deletedCount => this.books.splice(this.books.findIndex(x => x.id === book.id), 1));
   }
 
 }
