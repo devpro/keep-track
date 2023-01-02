@@ -99,14 +99,12 @@ var app = builder.Build();
 if (builder.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint($"/swagger/{configuration.OpenApiInfo.Version}/swagger.json", configuration.OpenApiInfo.Title);
+    });
 }
-
-app.UseSwagger();
-
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint($"/swagger/{configuration.OpenApiInfo.Version}/swagger.json", configuration.OpenApiInfo.Title);
-});
 
 app.UseHttpsRedirection();
 
