@@ -62,4 +62,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ### Graphic design
 
-* [Font Awesome v.4.7.0](https://fontawesome.bootstrapcheatsheets.com/)
+* [Bootstrap v4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+* [Font Awesome v4.7.0](https://fontawesome.bootstrapcheatsheets.com/)
