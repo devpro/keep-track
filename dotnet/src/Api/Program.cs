@@ -116,12 +116,9 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers()
-        .RequireCors("CorsPolicyName");
-    endpoints.MapHealthChecks("/health");
-});
+app.MapControllers().RequireCors("CorsPolicyName");
+
+app.MapHealthChecks("/health");
 
 app.Run();
 
