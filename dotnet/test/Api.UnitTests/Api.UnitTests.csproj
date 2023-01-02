@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>KeepTrack.Api.UnitTests</AssemblyName>
     <RootNamespace>KeepTrack.Api.UnitTests</RootNamespace>
     <ProjectGuid>{4A5DD2D1-38C0-45AA-8208-D3F22F01139B}</ProjectGuid>
@@ -17,15 +17,15 @@
     <PackageReference Include="AutoFixture" Version="4.17.0" />
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="FluentAssertions" Version="6.8.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.12" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="108.0.5359.2200" />
     <PackageReference Include="Moq" Version="4.18.4" />
-    <PackageReference Include="Withywoods.Selenium" Version="1.5.1" />
-    <PackageReference Include="Withywoods.Serialization" Version="1.5.1" />
-    <PackageReference Include="Withywoods.WebTesting" Version="1.5.1" />
+    <PackageReference Include="Withywoods.Selenium" Version="1.5.2" />
+    <PackageReference Include="Withywoods.Serialization" Version="1.5.2" />
+    <PackageReference Include="Withywoods.WebTesting" Version="1.5.2" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <PrivateAssets>all</PrivateAssets>

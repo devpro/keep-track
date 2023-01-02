@@ -55,8 +55,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp", "src\BlazorWebAssemblyApp\BlazorWebAssemblyApp.csproj", "{AB9965A5-CC64-46F4-9ABF-C5FFD1570F7C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Testing", "4 - Testing", "{C187108D-14A3-4B63-8B0F-6E144E6CE77C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{70F3E3A9-2AB3-415C-BFD9-E07ABB1674C7}"
 	ProjectSection(SolutionItems) = preProject
 		..\scripts\write_angularconfig.sh = ..\scripts\write_angularconfig.sh
