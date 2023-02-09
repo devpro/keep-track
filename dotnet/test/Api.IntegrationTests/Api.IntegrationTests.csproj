@@ -21,7 +21,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="108.0.5359.2200" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="110.0.5481.7700" />
     <PackageReference Include="Withywoods.Selenium" Version="1.5.2" />
     <PackageReference Include="Withywoods.Serialization" Version="1.5.2" />
     <PackageReference Include="Withywoods.WebTesting" Version="1.5.2" />
