@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
-using KeepTrack.Domain.Repositories;
+﻿using KeepTrack.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KeepTrack.Api.Controllers
@@ -36,7 +33,7 @@ namespace KeepTrack.Api.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<List<T>>> Get()
+        public async Task<ActionResult<List<T>>> Get(int? page, int? pageSize)
         {
             var models = await _dataRepository.FindAllAsync(GetUserId());
             return Ok(_mapper.Map<List<T>>(models));
