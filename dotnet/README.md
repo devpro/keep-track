@@ -10,12 +10,12 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
 
 ## Requirements
 
-- [.NET 6.0 SDK](dot.net)
-- MongoDB 5.0 database
+- [.NET 7.0 SDK](dot.net)
+- MongoDB 7.0 database
   - Local server
 
   ```bash
-  cd D:\Programs\mongodb-5.0\bin
+  cd D:/Programs/mongodb-7.0/bin
   md log
   md data
   mongod --logpath log/mongod.log --dbpath data --port 27017
@@ -24,7 +24,7 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
   - [Docker](https://hub.docker.com/_/mongo/)
 
   ```bash
-  docker run --name mongodb50 -d -p 27017:27017 mongo:5.0
+  docker run --name mongodb70 -d -p 27017:27017 mongo:7.0
   ```
 
   - [MongoDB Atlas](https://cloud.mongodb.com/) cluster
