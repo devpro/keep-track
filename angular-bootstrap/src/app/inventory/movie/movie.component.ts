@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { MovieService } from 'src/app/backend/services/movie.service';
 import { Movie } from 'src/app/backend/types/movie';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
@@ -11,29 +12,33 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 })
 export class MovieComponent implements OnInit, OnDestroy {
 
-  @ViewChild('titleInput') titleInput: ElementRef;
+  @ViewChild('titleInput') titleInput= {} as ElementRef;
 
   movies: Array<Movie> = [];
-  userEventsSubscription: Subscription;
+  userEventsSubscription: Subscription | undefined;
 
   constructor(private movieService: MovieService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(user => {
-      this.movieService.list()
-        .subscribe(
-          movies => {
-            this.movies = movies;
-          },
-          error => console.warn(error)
-        );
+    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(() => {
+      this.movieService.list().subscribe({
+        next: (movies) => this.movies = movies,
+        error: (error) => console.warn(error)
       });
+    });
   }
 
   ngOnDestroy() {
     if (this.userEventsSubscription) {
       this.userEventsSubscription.unsubscribe();
     }
+  }
+
+  filter(search: string) {
+    this.movieService.list(search).subscribe({
+      next: (movies) => this.movies = movies,
+      error: (error) => console.warn(error)
+    });
   }
 
   create(title: string) {
@@ -44,7 +49,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   }
 
   delete(movie: Movie) {
-    this.movieService.delete(movie).subscribe(deletedCount => this.movies.splice(this.movies.findIndex(x => x.id === movie.id), 1));
+    this.movieService.delete(movie).subscribe(() => this.movies.splice(this.movies.findIndex(x => x.id === movie.id), 1));
   }
 
 }

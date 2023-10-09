@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
-using KeepTrack.Api.Dto;
+﻿using KeepTrack.Api.Dto;
 using KeepTrack.CarComponent.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

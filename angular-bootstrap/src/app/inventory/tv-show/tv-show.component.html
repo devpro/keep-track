@@ -2,6 +2,13 @@
 
 <p *ngIf="!tvShows"><em>Loading...</em></p>
 
+<div class="form-group row">
+  <label class="col-sm-1 col-form-label">Filter:</label>
+  <div class="col-sm-3">
+    <input class="form-control" type="text" #searchInput placeholder="Search" (input)="filter(searchInput.value)">
+  </div>
+</div>
+
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="tvShows">
   <thead>
     <tr>
@@ -17,9 +24,18 @@
   </tbody>
 </table>
 
-<div class="input-group">
-  <input id="title" class="form-control col-sm-4" #titleInput type="text" name="title" (keydown.enter)="create(titleInput.value)" />
-  <span class="input-group-btn">
-    <button class="btn btn-primary" type="submit" (click)="create(titleInput.value)">Add</button>
-  </span>
+<div class="card-deck mb-1 text-center mx-auto" style="width: 70%;">
+  <div class="card mb-1 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">Add</h4>
+    </div>
+    <div class="card-body">
+      <div class="input-group">
+        <input id="title" class="form-control col-sm-4" #titleInput type="text" name="title" (keydown.enter)="create(titleInput.value)" />
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit" (click)="create(titleInput.value)">Add</button>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>

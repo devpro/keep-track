@@ -13,8 +13,8 @@ export class MovieService {
   constructor(private httpClient: HttpClient) {
   }
 
-  list(): Observable<Array<Movie>> {
-    return this.httpClient.get<Array<Movie>>(`${environment.keepTrackApiUrl}/api/movies`);
+  list(search?: string): Observable<Array<Movie>> {
+    return this.httpClient.get<Array<Movie>>(`${environment.keepTrackApiUrl}/api/movies?search=${search ?? ''}&page=0&pageSize=50`);
   }
 
   create(input: Movie): Observable<Movie> {

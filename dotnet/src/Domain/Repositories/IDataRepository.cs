@@ -8,7 +8,7 @@ namespace KeepTrack.Domain.Repositories
     {
         Task<T> FindOneAsync(string id, string ownerId);
 
-        Task<List<T>> FindAllAsync(string ownerId);
+        Task<List<T>> FindAllAsync(string ownerId, int page, int pageSize, string search);
 
         Task<T> CreateAsync(T model);
 

@@ -28,14 +28,17 @@ namespace KeepTrack.Api.Controllers
         /// <summary>
         /// Gets all models.
         /// </summary>
+        /// <param name="page">Requested page</param>
+        /// <param name="pageSize">Number of elements per page</param>
+        /// <param name="search"></param>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<List<T>>> Get(int? page, int? pageSize)
+        public async Task<ActionResult<List<T>>> Get(int page = 0, int pageSize = 20, string search = "")
         {
-            var models = await _dataRepository.FindAllAsync(GetUserId());
+            var models = await _dataRepository.FindAllAsync(GetUserId(), page, pageSize, search);
             return Ok(_mapper.Map<List<T>>(models));
         }
 

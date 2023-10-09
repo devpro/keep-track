@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using KeepTrack.Api.Dto;
+﻿using KeepTrack.Api.Dto;
 using KeepTrack.MovieComponent.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

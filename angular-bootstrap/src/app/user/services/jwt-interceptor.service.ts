@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class JwtInterceptorService {
 
-  private token: string | null;
+  private token: string | null = null;
 
   constructor() { }
 
@@ -19,7 +19,7 @@ export class JwtInterceptorService {
     return next.handle(req);
   }
 
-  getJwtToken(): string {
+  getJwtToken(): string | null {
     return this.token;
   }
 

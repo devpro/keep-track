@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using KeepTrack.Api.Dto;
+﻿using KeepTrack.Api.Dto;
 using KeepTrack.InventoryComponent.Domain.Models;
 using KeepTrack.InventoryComponent.Domain.Repositories;
 using Microsoft.AspNetCore.Authorization;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace KeepTrack.Api.Controllers
+﻿namespace KeepTrack.Api.Controllers
 {
     /// <summary>
     /// Base controller for the web application.

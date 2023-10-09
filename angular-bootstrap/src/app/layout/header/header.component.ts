@@ -12,13 +12,15 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 export class HeaderComponent implements OnInit, OnDestroy {
   isExpanded = false;
 
-  user: firebase.User;
-  userEventsSubscription: Subscription;
+  user = null as firebase.User | null;
+  userEventsSubscription: Subscription | undefined;
 
   constructor(private authenticateService: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.auth.user.subscribe((user: firebase.User) => this.user = user);
+    this.userEventsSubscription = this.authenticateService.auth.user.subscribe({
+      next: (user: firebase.User | null) => this.user = user
+    });
   }
 
   ngOnDestroy() {

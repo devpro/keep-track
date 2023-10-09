@@ -11,29 +11,33 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 })
 export class TvShowComponent implements OnInit, OnDestroy {
 
-  @ViewChild('titleInput') titleInput: ElementRef;
+  @ViewChild('titleInput') titleInput= {} as ElementRef;
 
   tvShows: Array<TvShow> = [];
-  userEventsSubscription: Subscription;
+  userEventsSubscription: Subscription | undefined;
 
   constructor(private tvShowService: TvShowService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
     this.userEventsSubscription = this.authenticateService.auth.user.subscribe(user => {
-      this.tvShowService.list()
-        .subscribe(
-          books => {
-            this.tvShows = books;
-          },
-          error => console.warn(error)
-        );
+      this.tvShowService.list().subscribe({
+        next: tvShows => this.tvShows = tvShows,
+        error: error => console.warn(error)
       });
+    });
   }
 
   ngOnDestroy() {
     if (this.userEventsSubscription) {
       this.userEventsSubscription.unsubscribe();
     }
+  }
+
+  filter(search: string) {
+    this.tvShowService.list(search).subscribe({
+      next: (tvShows) => this.tvShows = tvShows,
+      error: (error) => console.warn(error)
+    });
   }
 
   create(title: string) {

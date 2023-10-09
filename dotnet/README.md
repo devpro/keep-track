@@ -29,6 +29,12 @@ This design of API has been inspired by the [Hexagonal Architecture](https://blo
 
   - [MongoDB Atlas](https://cloud.mongodb.com/) cluster
 
+  - Database indexes
+
+  ```bash
+  docker run --rm --link mongodb -v "$(pwd)/scripts":/home/scripts mongo:7.0 bash -c "mongo mongodb://mongodb:27017/keeptrack /home/scripts/mongo-create-index.js"
+  ```
+
 ## How to configure
 
 ### API

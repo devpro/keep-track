@@ -17,8 +17,8 @@ export class BookService {
     return this.httpClient.get<Book>(`${environment.keepTrackApiUrl}/api/books/${id}`);
   }
 
-  list(): Observable<Array<Book>> {
-    return this.httpClient.get<Array<Book>>(`${environment.keepTrackApiUrl}/api/books`);
+  list(search?: string): Observable<Array<Book>> {
+    return this.httpClient.get<Array<Book>>(`${environment.keepTrackApiUrl}/api/books?search=${search ?? ''}&page=0&pageSize=50`);
   }
 
   create(input: Book): Observable<Book> {
@@ -27,7 +27,7 @@ export class BookService {
 
   update(input: Book): Observable<number> {
     if (!input.finishedAt) {
-      input.finishedAt = null;
+      delete input.finishedAt;
     }
     return this.httpClient.put<number>(`${environment.keepTrackApiUrl}/api/books/${input.id}`, input);
   }
