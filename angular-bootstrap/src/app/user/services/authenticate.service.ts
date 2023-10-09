@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { Subscription } from 'rxjs';
+
 import { JwtInterceptorService } from './jwt-interceptor.service';
 
 // see https://github.com/angular/angularfire/blob/master/docs/auth/getting-started.md
