@@ -5,7 +5,31 @@
 <div class="form-group row">
   <label class="col-sm-1 col-form-label">Filter:</label>
   <div class="col-sm-3">
-    <input class="form-control" type="text" #searchInput placeholder="Search" (input)="filter(searchInput.value)">
+    <input class="form-control" type="text" #searchInput placeholder="Search" (input)="filter(searchInput.value, platformFilter.value, stateFilter.value)">
+  </div>
+  <div class="col-sm-2">
+    <select class="form-control" #platformFilter (input)="filter(searchInput.value, platformFilter.value, stateFilter.value)">
+      <option selected value="" style="color: #6f747e;">Platform</option>
+      <option>Xbox Series X</option>
+      <option>PS5</option>
+      <option>PC</option>
+      <option>Xbox One X</option>
+      <option>PS4</option>
+      <option>WII</option>
+      <option>Xbox 360</option>
+      <option>PS2</option>
+      <option>PS1</option>
+    </select>
+  </div>
+  <div class="col-sm-2">
+    <select class="form-control" #stateFilter (input)="filter(searchInput.value, platformFilter.value, stateFilter.value)">
+      <option selected value="" style="color: #6f747e;">State</option>
+      <option>Available</option>
+      <option>Completed</option>
+      <option>To resume</option>
+      <option>Current</option>
+      <option>On-hold</option>
+    </select>
   </div>
 </div>
 
@@ -85,11 +109,12 @@
           <input id="inputTitle" class="form-control" #titleInput type="text" name="title" />
         </div>
         <div class="form-group col-md-3">
-          <label for="inputPlatform">platform</label>
+          <label for="inputPlatform">Platform</label>
           <select id="inputPlatform" class="form-control" #platformInput>
             <option selected></option>
             <option>Xbox Series X</option>
             <option>PS5</option>
+            <option>PC</option>
             <option>Xbox One X</option>
             <option>PS4</option>
             <option>WII</option>

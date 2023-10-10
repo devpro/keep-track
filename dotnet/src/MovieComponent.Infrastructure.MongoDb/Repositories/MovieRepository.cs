@@ -17,11 +17,11 @@ namespace KeepTrack.MovieComponent.Infrastructure.MongoDb.Repositories
 
         protected override string CollectionName => "movie";
 
-        protected override FilterDefinition<Movie> GetFilter(string ownerId, string search)
+        protected override FilterDefinition<Movie> GetFilter(string ownerId, string search, MovieModel input)
         {
             if (string.IsNullOrEmpty(search))
             {
-                return base.GetFilter(ownerId, search);
+                return base.GetFilter(ownerId, search, input);
             }
 
             var builder = Builders<Movie>.Filter;

@@ -13,6 +13,7 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 export class MovieComponent implements OnInit, OnDestroy {
 
   @ViewChild('titleInput') titleInput= {} as ElementRef;
+  @ViewChild('yearInput') yearInput= {} as ElementRef;
 
   movies: Array<Movie> = [];
   userEventsSubscription: Subscription | undefined;
@@ -41,11 +42,32 @@ export class MovieComponent implements OnInit, OnDestroy {
     });
   }
 
-  create(title: string) {
-    this.movieService.create({ title }).subscribe(movie => {
+  create(title: string, year?: number) {
+    this.movieService.create({ title, year }).subscribe(movie => {
       this.movies.push(movie);
       this.titleInput.nativeElement.value = '';
     });
+  }
+
+  startEditing(movie: Movie) {
+    movie.isEditable = true;
+  }
+
+  cancel(movie: Movie) {
+    movie.isEditable = false;
+    if (!movie.id) {
+      return;
+    }
+
+    this.movieService.get(movie.id).subscribe(item => {
+      movie.title = item.title;
+      movie.year = item.year;
+    });
+  }
+
+  update(movie: Movie) {
+    this.movieService.update(movie)
+      .subscribe(() => movie.isEditable = false);
   }
 
   delete(movie: Movie) {

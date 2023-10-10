@@ -30,11 +30,11 @@ namespace KeepTrack.Dal.MongoDb.Repositories
             return Mapper.Map<T>(dbEntries.FirstOrDefault());
         }
 
-        public async Task<List<T>> FindAllAsync(string ownerId, int page, int pageSize, string search)
+        public async Task<List<T>> FindAllAsync(string ownerId, int page, int pageSize, string search, T input)
         {
             var collection = GetCollection<U>();
             var dbEntries = await collection
-                .Find(GetFilter(ownerId, search))
+                .Find(GetFilter(ownerId, search, input))
                 .Skip(page)
                 .Limit(pageSize)
                 .ToListAsync();
@@ -66,7 +66,7 @@ namespace KeepTrack.Dal.MongoDb.Repositories
             return result.DeletedCount;
         }
 
-        protected virtual FilterDefinition<U> GetFilter(string ownerId, string search)
+        protected virtual FilterDefinition<U> GetFilter(string ownerId, string search, T input)
         {
             var builder = Builders<U>.Filter;
             if (string.IsNullOrEmpty(search))

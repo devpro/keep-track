@@ -18,7 +18,7 @@
         /// <summary>
         /// Year.
         /// </summary>
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         /// <summary>
         /// IMDB ID.

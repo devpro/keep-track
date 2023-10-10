@@ -22,7 +22,7 @@ export class VideoGameComponent implements OnInit, OnDestroy {
   constructor(private videoGameService: VideoGameService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(user => {
+    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(() => {
       this.videoGameService.list().subscribe({
           next: (videoGames) => this.videoGames = videoGames,
           error: (error) => console.warn(error)
@@ -36,19 +36,21 @@ export class VideoGameComponent implements OnInit, OnDestroy {
     }
   }
 
-  filter(search: string) {
-    this.videoGameService.list(search).subscribe({
+  filter(search: string, platform: string, state: string) {
+    this.videoGameService.list(search, platform, state).subscribe({
       next: (videoGames) => this.videoGames = videoGames,
       error: (error) => console.warn(error)
     });
   }
 
   create(title: string, platform: string, state: string) {
-    this.videoGameService.create({ title, platform, state }).subscribe(videoGame => {
-      this.videoGames.push(videoGame);
-      this.titleInput.nativeElement.value = '';
-      this.platformInput.nativeElement.value = '';
-      this.stateInput.nativeElement.value = '';
+    this.videoGameService.create({ title, platform, state }).subscribe({
+      next: videoGame => {
+        this.videoGames.push(videoGame);
+        this.titleInput.nativeElement.value = '';
+        this.platformInput.nativeElement.value = '';
+        this.stateInput.nativeElement.value = '';
+      }
     });
   }
 
@@ -62,23 +64,27 @@ export class VideoGameComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.videoGameService.get(videoGame.id).subscribe(item => {
-      videoGame.title = item.title;
-      videoGame.platform = item.platform;
-      videoGame.releasedAt = item.releasedAt;
-      videoGame.state = item.state;
-      videoGame.finishedAt = item.finishedAt;
+    this.videoGameService.get(videoGame.id).subscribe({
+      next: item => {
+        videoGame.title = item.title;
+        videoGame.platform = item.platform;
+        videoGame.releasedAt = item.releasedAt;
+        videoGame.state = item.state;
+        videoGame.finishedAt = item.finishedAt;
+      }
     });
   }
 
   update(videoGame: VideoGame) {
-    this.videoGameService.update(videoGame)
-      .subscribe(() => videoGame.isEditable = false);
+    this.videoGameService.update(videoGame).subscribe({
+      next: () => videoGame.isEditable = false
+    });
   }
 
   delete(videoGame: VideoGame) {
-    this.videoGameService.delete(videoGame)
-      .subscribe(() => this.videoGames.splice(this.videoGames.findIndex(x => x.id === videoGame.id), 1));
+    this.videoGameService.delete(videoGame).subscribe({
+      next: () => this.videoGames.splice(this.videoGames.findIndex(x => x.id === videoGame.id), 1)
+    });
   }
 
 }

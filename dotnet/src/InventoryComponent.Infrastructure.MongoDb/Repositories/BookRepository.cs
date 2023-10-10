@@ -18,11 +18,11 @@ namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
 
         protected override string CollectionName => "book";
 
-        protected override FilterDefinition<Book> GetFilter(string ownerId, string search)
+        protected override FilterDefinition<Book> GetFilter(string ownerId, string search, BookModel input)
         {
             if (string.IsNullOrEmpty(search))
             {
-                return base.GetFilter(ownerId, search);
+                return base.GetFilter(ownerId, search, input);
             }
 
             var builder = Builders<Book>.Filter;

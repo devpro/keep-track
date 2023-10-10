@@ -4,4 +4,5 @@ export interface Movie {
   year?: number;
   imdbPageId?: string;
   allocineId?: string;
+  isEditable?: boolean;
 }

@@ -17,8 +17,8 @@ export class VideoGameService {
     return this.httpClient.get<VideoGame>(`${environment.keepTrackApiUrl}/api/video-games/${id}`);
   }
 
-  list(search?: string): Observable<Array<VideoGame>> {
-    return this.httpClient.get<Array<VideoGame>>(`${environment.keepTrackApiUrl}/api/video-games?search=${search ?? ''}&page=0&pageSize=50`);
+  list(search?: string, platform?: string, state?: string): Observable<Array<VideoGame>> {
+    return this.httpClient.get<Array<VideoGame>>(`${environment.keepTrackApiUrl}/api/video-games?search=${search ?? ''}&platform=${platform ?? ''}&state=${state ?? ''}&page=0&pageSize=50`);
   }
 
   create(input: VideoGame): Observable<VideoGame> {

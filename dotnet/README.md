@@ -8,6 +8,10 @@
 
 This design of API has been inspired by the [Hexagonal Architecture](https://blog.octo.com/en/hexagonal-architecture-three-principles-and-an-implementation-example/).
 
+NuGet Packages:
+
+- [MongoDB C# Driver](https://www.mongodb.com/docs/drivers/csharp/current/)
+
 ## Requirements
 
 - [.NET 7.0 SDK](dot.net)
