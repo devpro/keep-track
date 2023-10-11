@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
+import { AuthGuard } from '@angular/fire/auth-guard';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CounterComponent } from './counter/counter.component';
@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'movies', component: MovieComponent, canActivate: [AngularFireAuthGuard] },
-  { path: 'books', component: BookComponent, canActivate: [AngularFireAuthGuard] },
-  { path: 'cars', component: CarComponent, canActivate: [AngularFireAuthGuard] },
-  { path: 'tv-shows', component: TvShowComponent, canActivate: [AngularFireAuthGuard] },
-  { path: 'video-games', component: VideoGameComponent, canActivate: [AngularFireAuthGuard] }
+  { path: 'movies', component: MovieComponent, canActivate: [AuthGuard] }, // ref. https://github.com/angular/angularfire/blob/master/site/src/auth/route-guards.md
+  { path: 'books', component: BookComponent, canActivate: [AuthGuard] },
+  { path: 'cars', component: CarComponent, canActivate: [AuthGuard] },
+  { path: 'tv-shows', component: TvShowComponent, canActivate: [AuthGuard] },
+  { path: 'video-games', component: VideoGameComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

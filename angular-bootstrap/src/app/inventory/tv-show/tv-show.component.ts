@@ -19,7 +19,7 @@ export class TvShowComponent implements OnInit, OnDestroy {
   constructor(private tvShowService: TvShowService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(user => {
+    this.userEventsSubscription = this.authenticateService.authState$.subscribe(() => {
       this.tvShowService.list().subscribe({
         next: tvShows => this.tvShows = tvShows,
         error: error => console.warn(error)

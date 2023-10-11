@@ -28,7 +28,7 @@ describe('TvShowService', () => {
     let actual: Array<TvShow> = [];
     service.list().subscribe((movies: Array<TvShow>) => actual = movies);
 
-    http.expectOne(`${environment.keepTrackApiUrl}/api/tv-shows`)
+    http.expectOne(`${environment.keepTrackApiUrl}/api/tv-shows?search=&page=0&pageSize=50`)
       .flush(fake);
 
     expect(actual).toEqual(fake, 'The `list` method should return an array of TV Shows wrapped in an Observable');

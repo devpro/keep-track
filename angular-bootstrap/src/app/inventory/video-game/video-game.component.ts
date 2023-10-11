@@ -22,7 +22,7 @@ export class VideoGameComponent implements OnInit, OnDestroy {
   constructor(private videoGameService: VideoGameService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(() => {
+    this.userEventsSubscription = this.authenticateService.authState$.subscribe(() => {
       this.videoGameService.list().subscribe({
           next: (videoGames) => this.videoGames = videoGames,
           error: (error) => console.warn(error)

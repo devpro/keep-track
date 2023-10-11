@@ -100,7 +100,7 @@
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
+            "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
               "src/styles.css"
@@ -127,62 +127,6 @@
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
-            ]
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist-server",
-            "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.server.json",
-            "sourceMap": true,
-            "optimization": false,
-            "buildOptimizer": false
-          },
-          "configurations": {
-            "dev": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "buildOptimizer": true
-            },
-            "production": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "buildOptimizer": true
-            }
-          },
-          "defaultConfiguration": ""
-        },
-        "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {}
-        }
-      }
-    },
-    "AngularWebApp-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AngularWebApp:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "e2e//**/*.ts",
-              "e2e//**/*.html"
             ]
           }
         }

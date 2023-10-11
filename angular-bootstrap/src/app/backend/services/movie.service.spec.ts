@@ -29,7 +29,7 @@ describe('MovieService', () => {
     let actualMovies: Array<Movie> = [];
     movieService.list().subscribe((movies: Array<Movie>) => actualMovies = movies);
 
-    http.expectOne(`${environment.keepTrackApiUrl}/api/movies`)
+    http.expectOne(`${environment.keepTrackApiUrl}/api/movies?search=&page=0&pageSize=50`)
       .flush(hardcodedMovies);
 
     expect(actualMovies).toEqual(hardcodedMovies, 'The `list` method should return an array of Movie wrapped in an Observable');

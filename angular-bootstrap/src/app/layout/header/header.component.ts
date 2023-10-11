@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import firebase from 'firebase/compat/app';
+
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
 
 @Component({
@@ -12,14 +13,15 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
 export class HeaderComponent implements OnInit, OnDestroy {
   isExpanded = false;
 
-  user = null as firebase.User | null;
+  user = null as User | null;
   userEventsSubscription: Subscription | undefined;
 
   constructor(private authenticateService: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.auth.user.subscribe({
-      next: (user: firebase.User | null) => this.user = user
+    this.userEventsSubscription = this.authenticateService.authState$.subscribe({
+      next: (user: User | null) => this.user = user,
+      error: (error: any) => console.log(error)
     });
   }
 

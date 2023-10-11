@@ -22,7 +22,7 @@ export class BookComponent implements OnInit, OnDestroy {
   constructor(private bookService: BookService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.userEventsSubscription = this.authenticateService.auth.user.subscribe(() => {
+    this.userEventsSubscription = this.authenticateService.authState$.subscribe(() => {
       this.bookService.list().subscribe({
         next: (books) => this.books = books,
         error: (error) => console.warn(error)

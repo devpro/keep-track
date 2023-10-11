@@ -1,8 +1,7 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -36,9 +35,8 @@ import { environment } from '../environments/environment';
     LayoutModule,
     BackendModule,
     InventoryModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFireAuthGuardModule
+    provideFirebaseApp(() => initializeApp(environment.firebase)), // ref. https://github.com/angular/angularfire/blob/master/docs/auth.md
+    provideAuth(() => getAuth())
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useExisting: JwtInterceptorService, multi: true }
