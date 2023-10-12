@@ -2,35 +2,32 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { User } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 
-import { BookComponent } from './book.component';
 import { AppModule } from 'src/app/app.module';
-import { BookService } from 'src/app/backend/services/book.service';
 import { AuthenticateService } from 'src/app/user/services/authenticate.service';
+import { BookComponent } from './book.component';
+import { BookService } from 'src/app/backend/services/book.service';
 
 describe('BookComponent', () => {
-
-  const fakeBookService = jasmine.createSpyObj('BookService', ['list']);
-  const fakeAuthenticateService = jasmine.createSpyObj('AuthenticateService', ['authState$']);
-
-  let component: BookComponent;
-
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [AppModule],
-    providers: [
-      { provide: BookService, useValue: fakeBookService },
-      { provide: AuthenticateService, useValue: fakeAuthenticateService }
-    ]
-  }));
+  let fakeBookService: jasmine.SpyObj<BookService>;
+  let fakeAuthenticateService: jasmine.SpyObj<AuthenticateService>;
 
   beforeEach(() => {
-    fakeAuthenticateService.authState$ = {
-      user: new Observable<User>()
-    };
+    const emptyUser = new Observable<User | null>();
+    fakeBookService = jasmine.createSpyObj('BookService', ['list']);
+    fakeAuthenticateService = jasmine.createSpyObj('AuthenticateService', [], { 'authState$': emptyUser });
+
+    TestBed.configureTestingModule({
+      imports: [AppModule],
+      providers: [
+        { provide: BookService, useValue: fakeBookService },
+        { provide: AuthenticateService, useValue: fakeAuthenticateService }
+      ]
+    });
   });
 
   it('should listen to userEvents in ngOnInit', waitForAsync(() => {
     const fixture = TestBed.createComponent(BookComponent);
-    component = fixture.componentInstance;
+    const component = fixture.componentInstance;
     component.ngOnInit();
   }));
 });

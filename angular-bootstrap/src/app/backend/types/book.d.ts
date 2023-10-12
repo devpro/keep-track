@@ -1,4 +1,6 @@
-export interface Book {
+import { BackendData } from "./backend-data";
+
+export interface Book extends BackendData {
   id?: string;
   title?: string;
   author?: string;

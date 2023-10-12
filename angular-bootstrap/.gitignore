@@ -52,3 +52,4 @@ environment.prod.ts
 
 # Test report files
 /TESTS*.xml
+/coverage

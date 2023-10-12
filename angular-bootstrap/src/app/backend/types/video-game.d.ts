@@ -1,4 +1,6 @@
-export interface VideoGame {
+import { BackendData } from "./backend-data";
+
+export interface VideoGame extends BackendData {
   id?: string;
   title?: string;
   platform?: string;

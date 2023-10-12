@@ -10,7 +10,6 @@ import { AuthenticateService } from 'src/app/user/services/authenticate.service'
   styleUrls: ['./tv-show.component.css']
 })
 export class TvShowComponent implements OnInit, OnDestroy {
-
   @ViewChild('titleInput') titleInput= {} as ElementRef;
 
   tvShows: Array<TvShow> = [];
@@ -41,14 +40,17 @@ export class TvShowComponent implements OnInit, OnDestroy {
   }
 
   create(title: string) {
-    this.tvShowService.create({ title }).subscribe(tvShow => {
-      this.tvShows.push(tvShow);
-      this.titleInput.nativeElement.value = '';
+    this.tvShowService.create({ title }).subscribe({
+      next: tvShow => {
+        this.tvShows.push(tvShow);
+        this.titleInput.nativeElement.value = '';
+      }
     });
   }
 
   delete(tvShow: TvShow) {
-    this.tvShowService.delete(tvShow).subscribe(deletedCount => this.tvShows.splice(this.tvShows.findIndex(x => x.id === tvShow.id), 1));
+    this.tvShowService.delete(tvShow).subscribe({
+      next: () => this.tvShows.splice(this.tvShows.findIndex(x => x.id === tvShow.id), 1)
+    });
   }
-
 }

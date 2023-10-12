@@ -8,29 +8,26 @@ import { VideoGameComponent } from './video-game.component';
 import { VideoGameService } from 'src/app/backend/services/video-game.service';
 
 describe('VideoGameComponent', () => {
-
-  const fakeVideoGameService = jasmine.createSpyObj('VideoGameService', ['list']);
-  const fakeAuthenticateService = jasmine.createSpyObj('AuthenticateService', ['authState$']);
-
-  let component: VideoGameComponent;
-
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [AppModule],
-    providers: [
-      { provide: VideoGameService, useValue: fakeVideoGameService },
-      { provide: AuthenticateService, useValue: fakeAuthenticateService }
-    ]
-  }));
+  let fakeVideoGameService: jasmine.SpyObj<VideoGameService>;
+  let fakeAuthenticateService: jasmine.SpyObj<AuthenticateService>;
 
   beforeEach(() => {
-    fakeAuthenticateService.authState$ = {
-      user: new Observable<User>()
-    };
+    const emptyUser = new Observable<User | null>();
+    fakeVideoGameService = jasmine.createSpyObj('VideoGameService', ['list']);
+    fakeAuthenticateService = jasmine.createSpyObj('AuthenticateService', [], { 'authState$': emptyUser });
+
+    TestBed.configureTestingModule({
+      imports: [AppModule],
+      providers: [
+        { provide: VideoGameService, useValue: fakeVideoGameService },
+        { provide: AuthenticateService, useValue: fakeAuthenticateService }
+      ]
+    });
   });
 
   it('should listen to userEvents in ngOnInit', waitForAsync(() => {
     const fixture = TestBed.createComponent(VideoGameComponent);
-    component = fixture.componentInstance;
+    const component = fixture.componentInstance;
     component.ngOnInit();
   }));
 });

@@ -1,4 +1,6 @@
-export interface Movie {
+import { BackendData } from "./backend-data";
+
+export interface Movie extends BackendData {
   id?: string;
   title?: string;
   year?: number;

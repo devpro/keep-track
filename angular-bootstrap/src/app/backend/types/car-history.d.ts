@@ -1,4 +1,6 @@
-export interface CarHistory {
+import { BackendData } from "./backend-data";
+
+export interface CarHistory extends BackendData {
   id?: string;
   carId?: string;
   historyDate?: Date;

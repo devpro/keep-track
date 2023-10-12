@@ -10,6 +10,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -22,15 +23,15 @@
     "lib": [
       "ES2022",
       "dom"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
     ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "extendedDiagnostics": {
+      "defaultCategory": "error"
+    }
   }
 }

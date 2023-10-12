@@ -33,7 +33,7 @@
             {{ movie.year }}
           </ng-container>
           <div *ngIf="movie.isEditable">
-            <input class="form-control" type="text" [(ngModel)]="movie.year" />
+            <input class="form-control" type="number" [(ngModel)]="movie.year" />
           </div>
         </td>
         <td>

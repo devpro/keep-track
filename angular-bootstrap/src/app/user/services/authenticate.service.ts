@@ -22,7 +22,7 @@ export class AuthenticateService implements OnDestroy {
           });
         }
       },
-      error: (error: any) => console.log(error)
+      error: (error) => console.log(error)
     });
   }
 
@@ -36,7 +36,7 @@ export class AuthenticateService implements OnDestroy {
     // see https://firebase.google.com/docs/auth/web/github-auth
     signInWithPopup(this.auth, new GithubAuthProvider())
       .then((userCredential: UserCredential) => {
-        console.log('You have been successfully logged in!');
+        console.log(`You (${userCredential.user.displayName}) have been successfully logged in!`);
       })
       .catch((error) => {
         console.log(error);
