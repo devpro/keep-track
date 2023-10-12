@@ -55,22 +55,22 @@
   </table>
 </div>
 
-<div class="card-deck mb-1 text-center mx-auto" style="width: 70%;">
+<div class="card-group mb-1 text-center mx-auto" style="width: 70%;">
   <div class="card mb-1 box-shadow">
     <div class="card-header">
       <h4 class="my-0 font-weight-normal">Add</h4>
     </div>
     <div class="card-body">
-      <div class="form-row">
-        <div class="form-group col-md-4">
+      <div class="row g-2">
+        <div class="col-md-4">
           <label for="inputTitle">Title</label>
           <input id="inputTitle" class="form-control" #titleInput type="text" name="title" (keydown.enter)="create(titleInput.value)" />
         </div>
-        <div class="form-group col-md-2">
+        <div class="col-md-2">
           <label for="inputYear">Year</label>
           <input id="inputYear" class="form-control" #yearInput type="number" name="year" />
         </div>
-        <div class="form-group col-md-1">
+        <div class="col-md-1">
           <label>Action</label>
           <br />
           <button class="btn btn-primary" type="submit" (click)="create(titleInput.value, yearInput.valueAsNumber)">Validate</button>

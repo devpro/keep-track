@@ -24,17 +24,20 @@
   </tbody>
 </table>
 
-<div class="card-deck mb-1 text-center mx-auto" style="width: 70%;">
-  <div class="card mb-1 box-shadow">
-    <div class="card-header">
-      <h4 class="my-0 font-weight-normal">Add</h4>
-    </div>
-    <div class="card-body">
-      <div class="input-group">
-        <input id="title" class="form-control col-sm-4" #titleInput type="text" name="title" (keydown.enter)="create(titleInput.value)" />
-        <span class="input-group-btn">
-          <button class="btn btn-primary" type="submit" (click)="create(titleInput.value)">Add</button>
-        </span>
+<div class="card mb-1 box-shadow text-center mx-auto" style="width: 70%;">
+  <div class="card-header">
+    <h4 class="my-0 font-weight-normal">Add</h4>
+  </div>
+  <div class="card-body">
+    <div class="row g-2">
+      <div class="col-auto">
+        <label for="inputTitle">Title</label>
+        <input id="inputTitle" class="form-control" #titleInput type="text" name="title" (keydown.enter)="create(titleInput.value)" />
+      </div>
+      <div class="col-auto">
+        <label>Action</label>
+        <br />
+        <button class="btn btn-primary mb-2" type="submit" (click)="create(titleInput.value)">Validate</button>
       </div>
     </div>
   </div>
