@@ -2,10 +2,10 @@
 {
     public class UserModel
     {
-        public string EmailAddress { get; set; }
+        public required string EmailAddress { get; set; }
 
-        public string DisplayName { get; set; }
+        public required string DisplayName { get; set; }
 
-        public string Token { get; set; }
+        public required string Token { get; set; }
     }
 }

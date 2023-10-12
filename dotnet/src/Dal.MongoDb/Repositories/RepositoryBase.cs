@@ -30,11 +30,15 @@ namespace KeepTrack.Dal.MongoDb.Repositories
             return Mapper.Map<T>(dbEntries.FirstOrDefault());
         }
 
-        public async Task<List<T>> FindAllAsync(string ownerId)
+        public async Task<List<T>> FindAllAsync(string ownerId, int page, int pageSize, string search, T input)
         {
             var collection = GetCollection<U>();
-            var dbEntries = await collection.FindAsync(x => x.OwnerId == ownerId);
-            return Mapper.Map<List<T>>(dbEntries.ToList());
+            var dbEntries = await collection
+                .Find(GetFilter(ownerId, search, input))
+                .Skip(page)
+                .Limit(pageSize)
+                .ToListAsync();
+            return Mapper.Map<List<T>>(dbEntries);
         }
 
         public async Task<T> CreateAsync(T model)
@@ -60,6 +64,17 @@ namespace KeepTrack.Dal.MongoDb.Repositories
             var collection = GetCollection<U>();
             var result = await collection.DeleteOneAsync(x => x.Id == objectId && x.OwnerId == ownerId);
             return result.DeletedCount;
+        }
+
+        protected virtual FilterDefinition<U> GetFilter(string ownerId, string search, T input)
+        {
+            var builder = Builders<U>.Filter;
+            if (string.IsNullOrEmpty(search))
+            {
+                return builder.Eq(f => f.OwnerId, ownerId);
+            }
+
+            return builder.Eq(f => f.OwnerId, ownerId) & builder.Text(search);
         }
 
         protected static ObjectId ParseObjectId(string id, string message = null)

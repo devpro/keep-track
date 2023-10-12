@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 import { VideoGame } from '../types/video-game';
 
@@ -16,8 +17,8 @@ export class VideoGameService {
     return this.httpClient.get<VideoGame>(`${environment.keepTrackApiUrl}/api/video-games/${id}`);
   }
 
-  list(): Observable<Array<VideoGame>> {
-    return this.httpClient.get<Array<VideoGame>>(`${environment.keepTrackApiUrl}/api/video-games`);
+  list(search?: string, platform?: string, state?: string): Observable<Array<VideoGame>> {
+    return this.httpClient.get<Array<VideoGame>>(`${environment.keepTrackApiUrl}/api/video-games?search=${search ?? ''}&platform=${platform ?? ''}&state=${state ?? ''}&page=0&pageSize=50`);
   }
 
   create(input: VideoGame): Observable<VideoGame> {
@@ -26,10 +27,10 @@ export class VideoGameService {
 
   update(input: VideoGame): Observable<number> {
     if (!input.finishedAt) {
-      input.finishedAt = null;
+      delete input.finishedAt;
     }
     if (!input.releasedAt) {
-      input.releasedAt = null;
+      delete input.releasedAt;
     }
     return this.httpClient.put<number>(`${environment.keepTrackApiUrl}/api/video-games/${input.id}`, input);
   }

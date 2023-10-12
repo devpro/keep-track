@@ -29,7 +29,7 @@ describe('BookService', () => {
     let actualBooks: Array<Book> = [];
     bookService.list().subscribe((books: Array<Book>) => actualBooks = books);
 
-    http.expectOne(`${environment.keepTrackApiUrl}/api/books`)
+    http.expectOne(`${environment.keepTrackApiUrl}/api/books?search=&page=0&pageSize=50`)
       .flush(hardcodedBooks);
 
     expect(actualBooks).toEqual(hardcodedBooks, 'The `list` method should return an array of Book wrapped in an Observable');

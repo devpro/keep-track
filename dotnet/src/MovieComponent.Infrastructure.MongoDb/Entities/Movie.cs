@@ -14,7 +14,7 @@ namespace KeepTrack.MovieComponent.Infrastructure.MongoDb.Entities
 
         public string Title { get; set; }
 
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         public Imdb Imdb { get; set; }
 

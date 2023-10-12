@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using KeepTrack.Api.Dto.Queries;
 using KeepTrack.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,14 +29,16 @@ namespace KeepTrack.Api.Controllers
         /// <summary>
         /// Gets all models.
         /// </summary>
+        /// <param name="dataQuery">Query information</param>
+        /// <param name="input">Input data</param>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<List<T>>> Get()
+        public async Task<ActionResult<List<T>>> Get([FromQuery] DataQuery dataQuery, [FromQuery] T input)
         {
-            var models = await _dataRepository.FindAllAsync(GetUserId());
+            var models = await _dataRepository.FindAllAsync(GetUserId(), dataQuery.Page, dataQuery.PageSize, dataQuery.Search, _mapper.Map<U>(input));
             return Ok(_mapper.Map<List<T>>(models));
         }
 

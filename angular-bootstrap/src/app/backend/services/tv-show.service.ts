@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 import { TvShow } from '../types/tv-show';
 
@@ -12,8 +13,8 @@ export class TvShowService {
   constructor(private httpClient: HttpClient) {
   }
 
-  list(): Observable<Array<TvShow>> {
-    return this.httpClient.get<Array<TvShow>>(`${environment.keepTrackApiUrl}/api/tv-shows`);
+  list(search?: string): Observable<Array<TvShow>> {
+    return this.httpClient.get<Array<TvShow>>(`${environment.keepTrackApiUrl}/api/tv-shows?search=${search ?? ''}&page=0&pageSize=50`);
   }
 
   create(input: TvShow): Observable<TvShow> {

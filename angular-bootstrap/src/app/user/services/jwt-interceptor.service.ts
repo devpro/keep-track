@@ -1,17 +1,18 @@
+import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http/http';
 import { Observable } from 'rxjs';
+
+import { BackendData } from 'src/app/backend/types/backend-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtInterceptorService {
+  private token: string | null = null;
 
-  private token: string | null;
-
-  constructor() { }
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<BackendData | null>, next: HttpHandler): Observable<HttpEvent<BackendData | null>> {
+    console.log(req);
+    console.log(req.body);
     if (this.token) {
       const clone = req.clone({ setHeaders: { authorization: `Bearer ${this.token}` } });
       return next.handle(clone);
@@ -19,7 +20,7 @@ export class JwtInterceptorService {
     return next.handle(req);
   }
 
-  getJwtToken(): string {
+  getJwtToken(): string | null {
     return this.token;
   }
 
@@ -30,5 +31,4 @@ export class JwtInterceptorService {
   removeJwtToken() {
     this.token = null;
   }
-
 }

@@ -4,6 +4,7 @@ using KeepTrack.InventoryComponent.Domain.Models;
 using KeepTrack.InventoryComponent.Domain.Repositories;
 using KeepTrack.InventoryComponent.Infrastructure.MongoDb.Entities;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 using Withywoods.Dal.MongoDb;
 
 namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
@@ -16,5 +17,16 @@ namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
         }
 
         protected override string CollectionName => "tvshow";
+
+        protected override FilterDefinition<TvShow> GetFilter(string ownerId, string search, TvShowModel input)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return base.GetFilter(ownerId, search, input);
+            }
+
+            var builder = Builders<TvShow>.Filter;
+            return builder.Eq(f => f.OwnerId, ownerId) & builder.Where(f => f.Title.ToLower().Contains(search.ToLower()));
+        }
     }
 }

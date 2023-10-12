@@ -10,7 +10,7 @@ namespace KeepTrack.MovieComponent.Domain
 
         public string Title { get; set; }
 
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         public string ImdbPageId { get; set; }
 
