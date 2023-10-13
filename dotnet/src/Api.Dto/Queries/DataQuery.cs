@@ -16,7 +16,7 @@
         /// <summary>
         /// Number of elements to return per page.
         /// </summary>
-        public int PageSize { get; set; } = 0;
+        public int PageSize { get; set; } = 20;
 
         /// <summary>
         /// Search text.

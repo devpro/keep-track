@@ -35,7 +35,7 @@ namespace KeepTrack.Dal.MongoDb.Repositories
             var collection = GetCollection<U>();
             var dbEntries = await collection
                 .Find(GetFilter(ownerId, search, input))
-                .Skip(page)
+                .Skip(page * pageSize)
                 .Limit(pageSize)
                 .ToListAsync();
             return Mapper.Map<List<T>>(dbEntries);

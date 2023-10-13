@@ -17,8 +17,8 @@ export class BookService {
     return this.httpClient.get<Book>(`${environment.keepTrackApiUrl}/api/books/${id}`);
   }
 
-  list(search?: string): Observable<Array<Book>> {
-    return this.httpClient.get<Array<Book>>(`${environment.keepTrackApiUrl}/api/books?search=${search ?? ''}&page=0&pageSize=50`);
+  list(search?: string, currentPage?: number, pageSize?: number): Observable<Array<Book>> {
+    return this.httpClient.get<Array<Book>>(`${environment.keepTrackApiUrl}/api/books?search=${search ?? ''}&page=${currentPage ?? 0}&pageSize=${pageSize ?? 50}`);
   }
 
   create(input: Book): Observable<Book> {

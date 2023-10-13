@@ -72,7 +72,7 @@
         </td>
         <td>
           <ng-container *ngIf="!videoGame.isEditable ">
-            {{ videoGame.finishedAt }}
+            {{ videoGame.finishedAt | date: 'yyyy-MM-dd' }}
           </ng-container>
           <div *ngIf="videoGame.isEditable">
             <input class="form-control" type="text" [(ngModel)]="videoGame.finishedAt" />
