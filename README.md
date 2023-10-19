@@ -4,22 +4,20 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devpro.keep-track&metric=alert_status)](https://sonarcloud.io/dashboard?id=devpro.keep-track)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=devpro.keep-track&metric=coverage)](https://sonarcloud.io/dashboard?id=devpro.keep-track)
 
-> Would you like to save somewhere the book you read, the movie you watched or the video game you completed?
-
-Keeptrack is a an open source application to save and review what you like.
+Keeptrack is a an open source application that let you save everything you read, watch, listen or play.
 
 ## Instances
 
-This code can be deployed to any kind of infrastructure. It is Cloud native.
+This code is Cloud Native, it can be deployed to any kind of infrastructure.
 
-A SaaS free version is currently available for early adopters. Contact the main developer for an access.
+A SaaS free version is currently available for early adopters (contact the repository owner to get an access).
 
 ## Software design
 
-Frontend is a [web application](angular-bootstrap/README.md) (Single Page Application) written in Angular/TypeScript (16+).
+Application frontend is a [web application](angular-bootstrap/README.md) (Single Page Application) written in TypeScript (Angular 16+).
 
-Backend is a [web API](dotnet/README.md) (REST) written in .NET/C# (7+).
+Application backend is a [web API](dotnet/README.md) (REST) written in C# (.NET 7+).
 
-Data is persisted in a MongoDB database.
+Application data is persisted in a MongoDB (7.0) database.
 
-Authentication can be done from multiple providers (Google, GitHub, etc.) and is federated by Firebase Authentication.
+Application authentication is federated with Firebase Authentication and can be done from multiple providers (Google, GitHub, etc.).
