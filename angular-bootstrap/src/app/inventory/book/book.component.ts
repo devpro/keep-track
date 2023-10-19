@@ -19,12 +19,13 @@ export class BookComponent implements OnInit, OnDestroy {
   books: Array<Book> = [];
   userEventsSubscription: Subscription | undefined;
   currentPage = 1;
+  pageSize = 50;
 
   constructor(private bookService: BookService, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
     this.userEventsSubscription = this.authenticateService.authState$.subscribe(() => {
-      this.load();
+      this.load('', 1);
     });
   }
 
@@ -34,8 +35,9 @@ export class BookComponent implements OnInit, OnDestroy {
     }
   }
 
-  load(search?: string) {
-    this.bookService.list(search, this.currentPage - 1).subscribe({
+  load(search: string, currentPage: number) {
+    this.currentPage = currentPage;
+    this.bookService.list(search, currentPage - 1, this.pageSize).subscribe({
       next: (books) => this.books = books,
       error: (error) => console.warn(error)
     });
@@ -44,8 +46,7 @@ export class BookComponent implements OnInit, OnDestroy {
   updateCurrentPage(event: Event, newValue: number, search?: string) {
     event.preventDefault();
     if (newValue > 0) {
-      this.currentPage = newValue;
-      this.load(search);
+      this.load(search ?? '', newValue);
     }
   }
 

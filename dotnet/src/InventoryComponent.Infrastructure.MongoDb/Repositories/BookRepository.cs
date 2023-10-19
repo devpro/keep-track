@@ -26,7 +26,9 @@ namespace KeepTrack.InventoryComponent.Infrastructure.MongoDb.Repositories
             }
 
             var builder = Builders<Book>.Filter;
-            return builder.Eq(f => f.OwnerId, ownerId) & builder.Where(f => f.Title.ToLower().Contains(search.ToLower()) || f.Series.ToLower().Contains(search.ToLower()) || f.Author.ToLower() == search.ToLower());
+            return builder.Eq(f => f.OwnerId, ownerId) & builder.Where(f => f.Title.ToLower().Contains(search.ToLower())
+                || f.Series.ToLower().Contains(search.ToLower())
+                || f.Author.ToLower().Contains(search.ToLower()));
         }
     }
 }
