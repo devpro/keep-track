@@ -134,7 +134,8 @@
         <div class="col-md-3">
           <label for="inputState">State</label>
           <select id="inputState" class="form-control" #stateInput (keydown.enter)="create({ title: titleInput.value, platform: platformInput.value, state: stateInput.value })">
-            <option selected>Available</option>
+            <option selected></option>
+            <option>Available</option>
             <option>Completed</option>
             <option>To resume</option>
             <option>Current</option>
