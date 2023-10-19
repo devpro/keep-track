@@ -8,31 +8,31 @@
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
-            <a class="nav-link text-dark" [routerLink]="['/books']">Books</a>
-          </li>
-          <!-- <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
-            <a class="nav-link text-dark" [routerLink]="['/cars']">Cars</a>
-          </li> -->
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
-            <a class="nav-link text-dark" [routerLink]="['/movies']">Movies</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
-            <a class="nav-link text-dark" [routerLink]="['/tv-shows']">TV Shows</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
-            <a class="nav-link text-dark" [routerLink]="['/video-games']">Video Games</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!user">
-            <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
           </li>
           <li class="nav-item" *ngIf="user">
-            <a class="nav-link text-dark">{{ user.email }}</a>
+            <a class="nav-link" [routerLink]="['/books']" [routerLinkActive]="['active']">Books</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user">
+          <!-- <li class="nav-item" [routerLinkActive]="['active']" *ngIf="user">
+            <a class="nav-link" [routerLink]="['/cars']">Cars</a>
+          </li> -->
+          <li class="nav-item" *ngIf="user">
+            <a class="nav-link" [routerLink]="['/movies']" [routerLinkActive]="['active']">Movies</a>
+          </li>
+          <li class="nav-item" *ngIf="user">
+            <a class="nav-link" [routerLink]="['/tv-shows']" [routerLinkActive]="['active']">TV Shows</a>
+          </li>
+          <li class="nav-item" *ngIf="user">
+            <a class="nav-link" [routerLink]="['/video-games']" [routerLinkActive]="['active']">Video Games</a>
+          </li>
+          <li class="nav-item" *ngIf="!user">
+            <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="user">
+            <a class="nav-link">{{ user.email }}</a>
+          </li>
+          <li class="nav-item" *ngIf="user">
             <a class="nav-link" (click)="logout($event)" href="#">
               <span class="fa fa-power-off"></span>
             </a>
