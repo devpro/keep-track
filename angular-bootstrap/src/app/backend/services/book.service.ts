@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { Book } from '../types/book';
+import { DataService } from './data.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
-
+export class BookService implements DataService<Book> {
   constructor(private httpClient: HttpClient) {
   }
 
@@ -26,6 +26,7 @@ export class BookService {
   }
 
   update(input: Book): Observable<number> {
+    delete input.isEditable;
     if (!input.finishedAt) {
       delete input.finishedAt;
     }
@@ -35,5 +36,4 @@ export class BookService {
   delete(input: Book): Observable<number> {
     return this.httpClient.delete<number>(`${environment.keepTrackApiUrl}/api/books/${input.id}`);
   }
-
 }

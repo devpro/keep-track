@@ -1,6 +1,6 @@
 <h1 id="tableLabel">Books</h1>
 
-<p *ngIf="!books"><em>Loading...</em></p>
+<p *ngIf="!items"><em>Loading...</em></p>
 
 <div class="form-group row">
   <label class="col-sm-1 col-form-label">Filter:</label>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="table-responsive">
-  <table class='table table-striped table-sm' aria-labelledby="tableLabel" *ngIf="books">
+  <table class='table table-striped table-sm' aria-labelledby="tableLabel" *ngIf="items">
     <thead>
       <tr>
         <th class="col-md-3">Title</th>
@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books; let i = index">
+      <tr *ngFor="let book of items; let i = index">
         <td>
           <ng-container *ngIf="!book.isEditable ">
             {{ book.title }}
@@ -69,7 +69,7 @@
   <ul class="pagination justify-content-center">
     <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }"><a class="page-link" href="#" (click)="updateCurrentPage($event, currentPage - 1, searchInput.value)">&laquo;</a></li>
     <li class="page-item active" aria-current="page"><a class="page-link">{{ currentPage }}</a></li>
-    <li class="page-item" [ngClass]="{ 'disabled': books.length !== pageSize }"><a class="page-link" href="#" (click)="updateCurrentPage($event, currentPage + 1, searchInput.value)">&raquo;</a></li>
+    <li class="page-item" [ngClass]="{ 'disabled': items.length !== pageSize }"><a class="page-link" href="#" (click)="updateCurrentPage($event, currentPage + 1, searchInput.value)">&raquo;</a></li>
   </ul>
 </nav>
 
@@ -82,7 +82,7 @@
       <div class="row g-4">
         <div class="col-md-4">
           <label for="inputTitle">Title</label>
-          <input id="inputTitle" class="form-control" #titleInput type="text" name="title" />
+          <input id="inputTitle" class="form-control" #titleInput type="text" name="title" (keydown.enter)="create({ title: titleInput.value, author: authorInput.value, series: seriesInput.value })" />
         </div>
         <div class="col-md-3">
           <label for="inputAuthor">Author</label>
@@ -90,12 +90,12 @@
         </div>
         <div class="col-md-3">
           <label for="inputSeries">Series</label>
-          <input id="inputSeries" class="form-control" #seriesInput type="text" name="series" (keydown.enter)="create(titleInput.value, authorInput.value, seriesInput.value)" />
+          <input id="inputSeries" class="form-control" #seriesInput type="text" name="series" />
         </div>
         <div class="col-md-1">
           <label>Action</label>
           <br />
-          <button class="btn btn-primary" type="submit" (click)="create(titleInput.value, authorInput.value, seriesInput.value)">Validate</button>
+          <button class="btn btn-primary" type="submit" (click)="create({ title: titleInput.value, author: authorInput.value, series: seriesInput.value })">Validate</button>
         </div>
       </div>
     </div>

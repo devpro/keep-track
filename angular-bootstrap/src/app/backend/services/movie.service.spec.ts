@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
 import { environment } from 'src/environments/environment.dev';
 import { MovieService } from './movie.service';
 import { Movie } from '../types/movie';
 
 describe('MovieService', () => {
-
   let movieService: MovieService;
   let http: HttpTestingController;
 

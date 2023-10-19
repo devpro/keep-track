@@ -11,8 +11,6 @@ export class JwtInterceptorService {
   private token: string | null = null;
 
   intercept(req: HttpRequest<BackendData | null>, next: HttpHandler): Observable<HttpEvent<BackendData | null>> {
-    console.log(req);
-    console.log(req.body);
     if (this.token) {
       const clone = req.clone({ setHeaders: { authorization: `Bearer ${this.token}` } });
       return next.handle(clone);
