@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { VideoGame } from '../types/video-game';
+import { DataService } from './data.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VideoGameService {
-
+export class VideoGameService implements DataService<VideoGame> {
   constructor(private httpClient: HttpClient) {
   }
 
@@ -17,8 +17,8 @@ export class VideoGameService {
     return this.httpClient.get<VideoGame>(`${environment.keepTrackApiUrl}/api/video-games/${id}`);
   }
 
-  list(search?: string, platform?: string, state?: string): Observable<Array<VideoGame>> {
-    return this.httpClient.get<Array<VideoGame>>(`${environment.keepTrackApiUrl}/api/video-games?search=${search ?? ''}&platform=${platform ?? ''}&state=${state ?? ''}&page=0&pageSize=50`);
+  list(search?: string, currentPage?: number, pageSize?: number, filter?: VideoGame): Observable<Array<VideoGame>> {
+    return this.httpClient.get<Array<VideoGame>>(`${environment.keepTrackApiUrl}/api/video-games?search=${search ?? ''}&platform=${filter?.platform ?? ''}&state=${filter?.state ?? ''}&page=${currentPage ?? 0}&pageSize=${pageSize ?? 50}`);
   }
 
   create(input: VideoGame): Observable<VideoGame> {
@@ -26,6 +26,7 @@ export class VideoGameService {
   }
 
   update(input: VideoGame): Observable<number> {
+    delete input.isEditable;
     if (!input.finishedAt) {
       delete input.finishedAt;
     }
@@ -38,5 +39,4 @@ export class VideoGameService {
   delete(input: VideoGame): Observable<number> {
     return this.httpClient.delete<number>(`${environment.keepTrackApiUrl}/api/video-games/${input.id}`);
   }
-
 }

@@ -21,14 +21,14 @@ module.exports = function (config) {
       'src/**/*.js': ['coverage']
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../coverage'),
+      dir: require('path').join(__dirname, '/coverage'),
       reporters: [
         { type: 'html', subdir: 'html' },
         { type: 'lcovonly', subdir: '.', file: 'lcov.info' }
       ]
     },
     junitReporter: {
-      outputDir: require('path').join(__dirname, '..'),
+      outputDir: require('path').join(__dirname, '.'),
     },
     reporters: ['progress', 'kjhtml', 'junit', 'coverage'],
     port: 9876,
